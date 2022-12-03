@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Mark Pro.ttf</string>
+		<string>MARKPRO-BLACK.OTF</string>
+		<string>MARKPRO-BOLD.OTF</string>
+		<string>MARKPRO-HEAVY.OTF</string>
+		<string>MARKPRO-MEDIUM.OTF</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

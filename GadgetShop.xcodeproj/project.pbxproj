@@ -24,6 +24,11 @@
 		DE2681BC293BDA7000F1B5FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE2681BF293BDA7000F1B5FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE2681C1293BDA7000F1B5FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE2681CA293BEB2100F1B5FC /* MARKPRO-HEAVY.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MARKPRO-HEAVY.OTF"; sourceTree = "<group>"; };
+		DE2681CB293BEB2100F1B5FC /* MARKPRO-BOLD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MARKPRO-BOLD.OTF"; sourceTree = "<group>"; };
+		DE2681CC293BEB2100F1B5FC /* MARKPRO-BLACK.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MARKPRO-BLACK.OTF"; sourceTree = "<group>"; };
+		DE2681CD293BEB2100F1B5FC /* MARKPRO-MEDIUM.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MARKPRO-MEDIUM.OTF"; sourceTree = "<group>"; };
+		DE2681CE293BEB2D00F1B5FC /* Mark Pro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mark Pro.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,11 +65,32 @@
 				DE2681B5293BDA6D00F1B5FC /* SceneDelegate.swift */,
 				DE2681B7293BDA6D00F1B5FC /* ViewController.swift */,
 				DE2681B9293BDA6D00F1B5FC /* Main.storyboard */,
-				DE2681BC293BDA7000F1B5FC /* Assets.xcassets */,
 				DE2681BE293BDA7000F1B5FC /* LaunchScreen.storyboard */,
+				DE2681C7293BE66400F1B5FC /* Resources */,
 				DE2681C1293BDA7000F1B5FC /* Info.plist */,
 			);
 			path = GadgetShop;
+			sourceTree = "<group>";
+		};
+		DE2681C7293BE66400F1B5FC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DE2681C8293BE68100F1B5FC /* Fonts */,
+				DE2681BC293BDA7000F1B5FC /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		DE2681C8293BE68100F1B5FC /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				DE2681CC293BEB2100F1B5FC /* MARKPRO-BLACK.OTF */,
+				DE2681CB293BEB2100F1B5FC /* MARKPRO-BOLD.OTF */,
+				DE2681CA293BEB2100F1B5FC /* MARKPRO-HEAVY.OTF */,
+				DE2681CD293BEB2100F1B5FC /* MARKPRO-MEDIUM.OTF */,
+				DE2681CE293BEB2D00F1B5FC /* Mark Pro.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,7 +317,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GadgetShop/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -323,7 +349,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GadgetShop/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
