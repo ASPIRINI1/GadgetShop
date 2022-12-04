@@ -21,6 +21,8 @@
 		DEC854C1293CFCCF00A8660E /* DetailProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC854C0293CFCCF00A8660E /* DetailProduct.swift */; };
 		DEC854C4293CFCFF00A8660E /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC854C3293CFCFF00A8660E /* Cart.swift */; };
 		DEC854C6293CFD1400A8660E /* ProductList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC854C5293CFD1400A8660E /* ProductList.swift */; };
+		DEF19E15293C9A7D0080EA00 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF19E14293C9A7D0080EA00 /* AppCoordinator.swift */; };
+		DEF19E17293C9A8A0080EA00 /* FlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF19E16293C9A890080EA00 /* FlowFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		DEC854C0293CFCCF00A8660E /* DetailProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProduct.swift; sourceTree = "<group>"; };
 		DEC854C3293CFCFF00A8660E /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		DEC854C5293CFD1400A8660E /* ProductList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductList.swift; sourceTree = "<group>"; };
+		DEF19E14293C9A7D0080EA00 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		DEF19E16293C9A890080EA00 /* FlowFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,8 @@
 			children = (
 				DE2681B3293BDA6D00F1B5FC /* AppDelegate.swift */,
 				DE2681B5293BDA6D00F1B5FC /* SceneDelegate.swift */,
+				DEF19E14293C9A7D0080EA00 /* AppCoordinator.swift */,
+				DEF19E16293C9A890080EA00 /* FlowFactory.swift */,
 				DEC854B1293C943300A8660E /* Services */,
 				DE2681D9293BF9C600F1B5FC /* Model */,
 				DE2681B7293BDA6D00F1B5FC /* ViewController.swift */,
@@ -212,7 +218,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEF19E15293C9A7D0080EA00 /* AppCoordinator.swift in Sources */,
 				DEC854BF293CFCBE00A8660E /* BestSellerProduct.swift in Sources */,
+				DEF19E17293C9A8A0080EA00 /* FlowFactory.swift in Sources */,
 				DE2681B8293BDA6D00F1B5FC /* ViewController.swift in Sources */,
 				DE2681B4293BDA6D00F1B5FC /* AppDelegate.swift in Sources */,
 				DEC854BD293CFCA000A8660E /* HomeStoreProduct.swift in Sources */,
