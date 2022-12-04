@@ -43,15 +43,21 @@ final class NetwokrService: NetwokrServiceProtocol {
     
     private init() { }
     
+    private func connectionHandle(response: URLResponse?, error: Error?) -> NetworkErrors? {
+        if response == nil {
+            return NetworkErrors.noResponseFromServer
+        }
+        if let error = error {
+            return NetworkErrors.connectingError(error: error)
+        }
+        return nil
+    }
+    
     func getProductList(completion: @escaping(ProductList?, NetworkErrors?) -> ()) {
         guard let url = Paths.productList.url else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                completion(nil, NetworkErrors.connectingError(error: error))
-                return
-            }
-            guard response != nil else {
-                completion(nil, NetworkErrors.noResponseFromServer)
+            if let error = self.connectionHandle(response: response, error: error) {
+                completion(nil, error)
                 return
             }
             guard let data = data else { return }
@@ -68,12 +74,8 @@ final class NetwokrService: NetwokrServiceProtocol {
     func getProductDetail(completion: @escaping(DetailProduct?, NetworkErrors?) -> ()) {
         guard let url = Paths.productDetail.url else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                completion(nil, NetworkErrors.connectingError(error: error))
-                return
-            }
-            guard response != nil else {
-                completion(nil, NetworkErrors.noResponseFromServer)
+            if let error = self.connectionHandle(response: response, error: error) {
+                completion(nil, error)
                 return
             }
             guard let data = data else { return }
@@ -90,12 +92,8 @@ final class NetwokrService: NetwokrServiceProtocol {
     func getCart(completion: @escaping(Cart?, NetworkErrors?) -> ()) {
         guard let url = Paths.cart.url else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                completion(nil, NetworkErrors.connectingError(error: error))
-                return
-            }
-            guard response != nil else {
-                completion(nil, NetworkErrors.noResponseFromServer)
+            if let error = self.connectionHandle(response: response, error: error) {
+                completion(nil, error)
                 return
             }
             guard let data = data else { return }
