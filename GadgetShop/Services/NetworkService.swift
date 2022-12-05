@@ -16,7 +16,7 @@ protocol NetwokrServiceProtocol: AnyObject {
 enum NetworkErrors: Error {
     case noResponseFromServer
     case nilData
-    case dataPharseError(error: Error)
+    case dataParsingError(error: Error)
     case connectingError(error: Error)
 }
 
@@ -66,7 +66,7 @@ final class NetwokrService: NetwokrServiceProtocol {
                 completion(result, nil)
             } catch {
                 print(error)
-                completion(nil, NetworkErrors.dataPharseError(error: error))
+                completion(nil, NetworkErrors.dataParsingError(error: error))
             }
         }.resume()
     }
@@ -84,7 +84,7 @@ final class NetwokrService: NetwokrServiceProtocol {
                 completion(result, nil)
             } catch {
                 print(error)
-                completion(nil, NetworkErrors.dataPharseError(error: error))
+                completion(nil, NetworkErrors.dataParsingError(error: error))
             }
         }.resume()
     }
@@ -102,7 +102,7 @@ final class NetwokrService: NetwokrServiceProtocol {
                 completion(result, nil)
             } catch {
                 print(error)
-                completion(nil, NetworkErrors.dataPharseError(error: error))
+                completion(nil, NetworkErrors.dataParsingError(error: error))
             }
         }.resume()
     }
