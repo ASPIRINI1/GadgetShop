@@ -14,6 +14,8 @@
 		DE4090C02940E2EE00C66086 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4090BF2940E2EE00C66086 /* CoordinatorProtocol.swift */; };
 		DE4090C42940E34200C66086 /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4090C32940E34200C66086 /* MainFlowCoordinator.swift */; };
 		DE4090C82940E8C700C66086 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4090C72940E8C700C66086 /* MainViewModel.swift */; };
+		DE4090CD294110AC00C66086 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4090CC294110AC00C66086 /* DetailViewModel.swift */; };
+		DE4090CF2941139A00C66086 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4090CE2941139A00C66086 /* DetailViewController.swift */; };
 		DEC854B3293C944900A8660E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC854B2293C944900A8660E /* NetworkService.swift */; };
 		DEC854B9293CFC4700A8660E /* ProductProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC854B8293CFC4700A8660E /* ProductProtocol.swift */; };
 		DEC854BB293CFC8100A8660E /* CartProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC854BA293CFC8100A8660E /* CartProduct.swift */; };
@@ -45,6 +47,8 @@
 		DE4090BF2940E2EE00C66086 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		DE4090C32940E34200C66086 /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
 		DE4090C72940E8C700C66086 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		DE4090CC294110AC00C66086 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		DE4090CE2941139A00C66086 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DEC854B2293C944900A8660E /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		DEC854B8293CFC4700A8660E /* ProductProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductProtocol.swift; sourceTree = "<group>"; };
 		DEC854BA293CFC8100A8660E /* CartProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartProduct.swift; sourceTree = "<group>"; };
@@ -95,9 +99,9 @@
 				DE2681B5293BDA6D00F1B5FC /* SceneDelegate.swift */,
 				DEC854B1293C943300A8660E /* Services */,
 				DE4090C62940E3FF00C66086 /* Coordinators */,
-				DEF19E16293C9A890080EA00 /* FlowFactory.swift */,
 				DE2681D9293BF9C600F1B5FC /* Model */,
-				DEF19E20293E3F810080EA00 /* MainModule */,
+				DEF19E16293C9A890080EA00 /* FlowFactory.swift */,
+				DE4090CA2941107900C66086 /* Scenes */,
 				DE2681BE293BDA7000F1B5FC /* LaunchScreen.storyboard */,
 				DE2681C7293BE66400F1B5FC /* Resources */,
 				DE2681C1293BDA7000F1B5FC /* Info.plist */,
@@ -146,6 +150,24 @@
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
+		DE4090CA2941107900C66086 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				DEF19E20293E3F810080EA00 /* Main */,
+				DE4090CB2941108B00C66086 /* Detail */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		DE4090CB2941108B00C66086 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				DE4090CC294110AC00C66086 /* DetailViewModel.swift */,
+				DE4090CE2941139A00C66086 /* DetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		DEC854B1293C943300A8660E /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,22 +188,14 @@
 			path = Product;
 			sourceTree = "<group>";
 		};
-		DEF19E20293E3F810080EA00 /* MainModule */ = {
-			isa = PBXGroup;
-			children = (
-				DEF19E2A293E4D180080EA00 /* Views */,
-			);
-			path = MainModule;
-			sourceTree = "<group>";
-		};
-		DEF19E2A293E4D180080EA00 /* Views */ = {
+		DEF19E20293E3F810080EA00 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				DE4090C72940E8C700C66086 /* MainViewModel.swift */,
 				DEF19E1C293E29910080EA00 /* MainViewController.swift */,
 				DEF19E2B293E4D590080EA00 /* Cells */,
 			);
-			path = Views;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		DEF19E2B293E4D590080EA00 /* Cells */ = {
@@ -267,8 +281,10 @@
 				DE4090C02940E2EE00C66086 /* CoordinatorProtocol.swift in Sources */,
 				DEF19E15293C9A7D0080EA00 /* AppCoordinator.swift in Sources */,
 				DEF19E25293E49560080EA00 /* BestSellerProductCollectionViewCell.swift in Sources */,
+				DE4090CD294110AC00C66086 /* DetailViewModel.swift in Sources */,
 				DEC854BF293CFCBE00A8660E /* BestSellerProduct.swift in Sources */,
 				DEF19E27293E4A3E0080EA00 /* HotSalesCollectionViewCell.swift in Sources */,
+				DE4090CF2941139A00C66086 /* DetailViewController.swift in Sources */,
 				DE4090C42940E34200C66086 /* MainFlowCoordinator.swift in Sources */,
 				DEF19E29293E4AFD0080EA00 /* CategoryCollectionViewCell.swift in Sources */,
 				DEF19E17293C9A8A0080EA00 /* FlowFactory.swift in Sources */,

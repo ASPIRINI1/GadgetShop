@@ -31,7 +31,7 @@ class MainViewController: UIViewController {
         let view = UIStackView()
         return view
     }()
-    private let viewModel: MainViewModelProtocol
+    private var viewModel: MainViewModelProtocol
     
     init(viewModel: MainViewModelProtocol) {
         self.viewModel = viewModel
@@ -46,6 +46,9 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         viewModel.viewLoaded()
+        viewModel.updateData = { [unowned self] in
+            
+        }
     }
     
     private func setupView() {
