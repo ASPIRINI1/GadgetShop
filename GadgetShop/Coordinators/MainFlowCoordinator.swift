@@ -10,7 +10,7 @@ import UIKit
 protocol MainFlowCoordinatorProtocol: CoordinatorProtocol {
     func pushToProductList()
     func presentCart()
-    func pushToDetail()
+    func pushToDetail(productID: Int)
 }
 
 class MainFlowCoordinator: MainFlowCoordinatorProtocol {
@@ -29,14 +29,14 @@ class MainFlowCoordinator: MainFlowCoordinatorProtocol {
     }
     
     func pushToProductList() {
-        navigationController.viewControllers = [flowFactory.makeProductList(self)]
+        navigationController.pushViewController(flowFactory.makeProductList(self), animated: false)
     }
     
     func presentCart() {
-        navigationController.viewControllers = [flowFactory.makeCart( self)]
+        navigationController.pushViewController(flowFactory.makeCart(self), animated: false)
     }
     
-    func pushToDetail() {
-        navigationController.viewControllers = [flowFactory.makeDetail(self)]
+    func pushToDetail(productID: Int) {
+        navigationController.pushViewController(flowFactory.makeDetail(self), animated: false)
     }
 }

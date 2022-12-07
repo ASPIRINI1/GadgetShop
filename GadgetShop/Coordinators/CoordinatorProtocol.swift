@@ -42,7 +42,3 @@ extension CoordinatorProtocol {
         }
     }
 }
-
-protocol Routable {
-    var coordinator: CoordinatorProtocol? { get set }
-}
