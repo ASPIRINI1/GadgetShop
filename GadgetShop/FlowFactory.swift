@@ -8,24 +8,25 @@
 import UIKit
 
 protocol MainFlowFactoryProtocol {
-    func makeProductList(_ coordinator: CoordinatorProtocol) -> UIViewController
-    func makeCart(_ coordinator: CoordinatorProtocol) -> UIViewController
-    func makeDetail(_ coordinator: CoordinatorProtocol) -> UIViewController
+    func makeProductList(_ coordinator: MainFlowCoordinatorProtocol) -> UIViewController
+    func makeCart(_ coordinator: MainFlowCoordinatorProtocol) -> UIViewController
+    func makeDetail(_ coordinator: MainFlowCoordinatorProtocol) -> UIViewController
 }
 
 final class MainFlowFactory: MainFlowFactoryProtocol {
     
     let netwokrService = NetwokrService.shared
     
-    func makeProductList(_ coordinator: CoordinatorProtocol) -> UIViewController {
-        return MainViewController()
+    func makeProductList(_ coordinator: MainFlowCoordinatorProtocol) -> UIViewController {
+        let viewModel = MainViewModel(networkService: netwokrService, coordinator: coordinator)
+        return MainViewController(viewModel: viewModel)
     }
     
-    func makeCart(_ coordinator: CoordinatorProtocol) -> UIViewController {
+    func makeCart(_ coordinator: MainFlowCoordinatorProtocol) -> UIViewController {
         return UIViewController()
     }
     
-    func makeDetail(_ coordinator: CoordinatorProtocol) -> UIViewController {
+    func makeDetail(_ coordinator: MainFlowCoordinatorProtocol) -> UIViewController {
         return UIViewController()
     }
 }
