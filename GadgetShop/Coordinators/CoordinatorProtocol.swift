@@ -1,14 +1,15 @@
 //
-//  Coordinator.swift
+//  CoordinatorProtocol.swift
 //  GadgetShop
 //
-//  Created by Станислав Зверьков on 04.12.2022.
+//  Created by Станислав Зверьков on 07.12.2022.
 //
 
 import UIKit
 
 protocol CoordinatorProtocol: AnyObject {
-    var navigationController: UINavigationController { get }
+    var navigationController: UINavigationController { get set }
+    var parentCoordinator: CoordinatorProtocol? { get set }
     var childCoordinators: [CoordinatorProtocol] { get set }
     func start()
 }
@@ -29,18 +30,19 @@ extension CoordinatorProtocol {
     func dismiss(animated: Bool, completion: (() -> ())?) {
         navigationController.dismiss(animated: animated, completion: completion)
     }
+    
+    func addChild(_ coordinator: CoordinatorProtocol) {
+        guard childCoordinators.contains(where: { $0 === coordinator }) else { return }
+        childCoordinators.append(coordinator)
+    }
+    
+    func removeChild(_ coordinator: CoordinatorProtocol) {
+        if let index = childCoordinators.firstIndex(where: { $0 === coordinator}) {
+            childCoordinators.remove(at: index)
+        }
+    }
 }
 
-class AppCoordinator: CoordinatorProtocol {
-    
-    var childCoordinators = [CoordinatorProtocol]()
-    var navigationController: UINavigationController
-
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
-    }
-    
-    func start() {
-        
-    }
+protocol Routable {
+    var coordinator: CoordinatorProtocol? { get set }
 }
