@@ -9,30 +9,27 @@ import UIKit
 
 class MainView: UIView {
     
-    private lazy var categoriesCollectionView = {
+    lazy var categoriesCollectionView = {
         let layout = UICollectionViewFlowLayout()
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        view.delegate = self.delegate
-        view.dataSource = self.dataSource
-        view.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: CategoryCollectionViewCell.self))
+        view.tag = CollectionType.categories.rawValue
+        view.register(CategoryCollectionViewCell.self)
         view.backgroundColor = .green
         return view
     }()
-    private lazy var hotSalesCollectionView = {
+    lazy var hotSalesCollectionView = {
         let layout = UICollectionViewFlowLayout()
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        view.delegate = self.delegate
-        view.dataSource = self.dataSource
-        view.register(HotSalesCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: HotSalesCollectionViewCell.self))
+        view.tag = CollectionType.hotSales.rawValue
+        view.register(HotSalesCollectionViewCell.self)
         view.backgroundColor = .yellow
         return view
     }()
-    private lazy var bestSellerCollectionView = {
+    lazy var bestSellerCollectionView = {
         let layout = UICollectionViewFlowLayout()
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        view.delegate = self.delegate
-        view.dataSource = self.dataSource
-        view.register(BestSellerProductCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: BestSellerProductCollectionViewCell.self))
+        view.tag = CollectionType.bestSeller.rawValue
+        view.register(BestSellerProductCollectionViewCell.self)
         view.backgroundColor = .brown
         return view
     }()
@@ -62,30 +59,35 @@ class MainView: UIView {
         return view
     }()
     
-    weak var delegate: UICollectionViewDelegate?
-    weak var dataSource: UICollectionViewDataSource?
+    weak var delegate: UICollectionViewDelegate? {
+        didSet {
+            categoriesCollectionView.delegate = delegate
+            bestSellerCollectionView.delegate = delegate
+            hotSalesCollectionView.delegate = delegate
+        }
+    }
+    weak var dataSource: UICollectionViewDataSource? {
+        didSet {
+            categoriesCollectionView.dataSource = dataSource
+            bestSellerCollectionView.dataSource = dataSource
+            hotSalesCollectionView.dataSource = dataSource
+        }
+    }
     
-    enum CollectionTypes {
-        case categories, bestSeller, hotSales
+    enum CollectionType: Int, CaseIterable {
+        case categories = 0
+        case bestSeller = 1
+        case hotSales = 2
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
+        backgroundColor = .white
+        addSubview(mainStackView)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setupView() {
-        addSubview(mainStackView)
-        backgroundColor = .white
-        setNeedsUpdateConstraints()
-    }
-    
-    func fill() {
-        
     }
     
     override func updateConstraints() {

@@ -12,6 +12,7 @@ protocol MainViewModelProtocol {
     var productList: ProductList? { get set }
     init(networkService: NetwokrServiceProtocol, coordinator: MainFlowCoordinatorProtocol)
     func viewLoaded()
+    func selectCategoryWith(id: Int)
     func cartSelected()
     func productSelected(productIndex: Int)
 }
@@ -29,6 +30,10 @@ final class MainViewModel: MainViewModelProtocol {
     }
     
     func viewLoaded() {
+        
+    }
+    
+    func selectCategoryWith(id: Int) {
         
     }
     
