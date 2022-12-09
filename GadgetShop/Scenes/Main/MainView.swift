@@ -11,6 +11,11 @@ class MainView: UIView {
     
     lazy var categoriesCollectionView = {
         let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 75, height: 100)
+        layout.scrollDirection = .horizontal
+        layout.sectionInset.top = 10
+        layout.sectionInset.left = 20
+        layout.minimumLineSpacing = 25
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.tag = CollectionType.categories.rawValue
         view.register(CategoryCollectionViewCell.self)
@@ -96,7 +101,7 @@ class MainView: UIView {
         mainStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
         mainStackView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor).isActive = true
         mainStackView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor).isActive = true
-        categoriesCollectionView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        categoriesCollectionView.heightAnchor.constraint(equalToConstant: 130).isActive = true
         searchStackView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         hotSalesCollectionView.heightAnchor.constraint(equalToConstant: 150).isActive = true
     }

@@ -12,10 +12,11 @@ class MainViewController: UIViewController {
     private var viewModel: MainViewModelProtocol
     lazy var customView = MainView(frame: .zero)
     var categories: [(image: UIImage, title: String)] = [
-        (image: UIImage(), title: "String"),
-        (image: UIImage(), title: "String"),
-        (image: UIImage(), title: "String"),
-        (image: UIImage(), title: "String")]
+        (image: UIImage(), title: "Phones"),
+        (image: UIImage(), title: "Computer"),
+        (image: UIImage(), title: "Health"),
+        (image: UIImage(), title: "Books"),
+        (image: UIImage(), title: "Else")]
     
     init(viewModel: MainViewModelProtocol) {
         self.viewModel = viewModel
