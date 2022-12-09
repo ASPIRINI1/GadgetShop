@@ -15,6 +15,7 @@ class MainViewController: UIViewController {
         (image: UIImage(), title: "String"),
         (image: UIImage(), title: "String"),
         (image: UIImage(), title: "String"),
+        (image: UIImage(), title: "String"),
         (image: UIImage(), title: "String")]
     
     init(viewModel: MainViewModelProtocol) {
