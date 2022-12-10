@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		DE0511642944AF9C004B7DB3 /* UIFont+fontName.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0511632944AF9C004B7DB3 /* UIFont+fontName.swift */; };
+		DE0511652944EE02004B7DB3 /* MARKPRO-HEAVY.OTF in Resources */ = {isa = PBXBuildFile; fileRef = DE2681CA293BEB2100F1B5FC /* MARKPRO-HEAVY.OTF */; };
+		DE0511662944EE02004B7DB3 /* Mark Pro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DE2681CE293BEB2D00F1B5FC /* Mark Pro.ttf */; };
+		DE0511672944EE02004B7DB3 /* MARKPRO-BLACK.OTF in Resources */ = {isa = PBXBuildFile; fileRef = DE2681CC293BEB2100F1B5FC /* MARKPRO-BLACK.OTF */; };
+		DE0511682944EE02004B7DB3 /* MARKPRO-MEDIUM.OTF in Resources */ = {isa = PBXBuildFile; fileRef = DE2681CD293BEB2100F1B5FC /* MARKPRO-MEDIUM.OTF */; };
+		DE0511692944EE02004B7DB3 /* MARKPRO-BOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = DE2681CB293BEB2100F1B5FC /* MARKPRO-BOLD.OTF */; };
 		DE2681B4293BDA6D00F1B5FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2681B3293BDA6D00F1B5FC /* AppDelegate.swift */; };
 		DE2681B6293BDA6D00F1B5FC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2681B5293BDA6D00F1B5FC /* SceneDelegate.swift */; };
 		DE2681BD293BDA7000F1B5FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE2681BC293BDA7000F1B5FC /* Assets.xcassets */; };
@@ -225,8 +230,8 @@
 			isa = PBXGroup;
 			children = (
 				DEF19E28293E4AFD0080EA00 /* CategoryCollectionViewCell.swift */,
-				DEF19E24293E49560080EA00 /* BestSellerProductCollectionViewCell.swift */,
 				DEF19E26293E4A3E0080EA00 /* HotSalesCollectionViewCell.swift */,
+				DEF19E24293E49560080EA00 /* BestSellerProductCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -289,8 +294,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE0511662944EE02004B7DB3 /* Mark Pro.ttf in Resources */,
+				DE0511672944EE02004B7DB3 /* MARKPRO-BLACK.OTF in Resources */,
 				DE2681C0293BDA7000F1B5FC /* LaunchScreen.storyboard in Resources */,
 				DE2681BD293BDA7000F1B5FC /* Assets.xcassets in Resources */,
+				DE0511652944EE02004B7DB3 /* MARKPRO-HEAVY.OTF in Resources */,
+				DE0511692944EE02004B7DB3 /* MARKPRO-BOLD.OTF in Resources */,
+				DE0511682944EE02004B7DB3 /* MARKPRO-MEDIUM.OTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

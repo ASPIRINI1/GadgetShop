@@ -24,8 +24,14 @@ class MainView: UIView {
     }()
     lazy var hotSalesCollectionView = {
         let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 350, height: 200)
+        layout.scrollDirection = .horizontal
+        layout.sectionInset.left = 20
+        layout.sectionInset.right = 20
+        layout.minimumLineSpacing = 40
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.tag = CollectionType.hotSales.rawValue
+        view.isPagingEnabled = true
         view.register(HotSalesCollectionViewCell.self)
         view.backgroundColor = .yellow
         return view
@@ -108,6 +114,6 @@ class MainView: UIView {
         mainStackView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor).isActive = true
         categoriesCollectionView.heightAnchor.constraint(equalToConstant: 130).isActive = true
         searchStackView.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        hotSalesCollectionView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        hotSalesCollectionView.heightAnchor.constraint(equalToConstant: 230).isActive = true
     }
 }
