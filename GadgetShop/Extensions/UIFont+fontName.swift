@@ -8,38 +8,27 @@
 import UIKit
 
 extension UIFont {
-    enum FontName {
-        case markPro, markProBlack, markProMedium, markProBold, markProHeavy
-        
-        var stringName: String {
-            switch self {
-            case .markPro:
-                return "Mark Pro"
-            case .markProBlack:
-                return "MARKPRO-BLACK"
-            case .markProMedium:
-                return "MARKPRO-MEDIUM"
-            case .markProBold:
-                return "MARKPRO-BOLD"
-            case .markProHeavy:
-                return "MARKPRO-HEAVY"
-            }
-        }
+    enum FontName: String {
+        case markPro = "Mark Pro"
+        case markProBlack = "MARKPRO-BLACK"
+        case markProMedium = "MARKPRO-MEDIUM"
+        case markProBold = "MARKPRO-BOLD"
+        case markProHeavy = "MARKPRO-HEAVY"
     }
     
     convenience init?(name: FontName, size: Int) {
         var fontname: String
         switch name {
         case .markPro:
-            fontname = FontName.markPro.stringName
+            fontname = FontName.markPro.rawValue
         case .markProBlack:
-            fontname = FontName.markPro.stringName
+            fontname = FontName.markPro.rawValue
         case .markProMedium:
-            fontname = FontName.markPro.stringName
+            fontname = FontName.markPro.rawValue
         case .markProBold:
-            fontname = FontName.markPro.stringName
+            fontname = FontName.markPro.rawValue
         case .markProHeavy:
-            fontname = FontName.markPro.stringName
+            fontname = FontName.markPro.rawValue
         }
         self.init(name: fontname, size: 3)
     }
