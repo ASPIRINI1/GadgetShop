@@ -38,6 +38,9 @@ class MainView: UIView {
     }()
     lazy var bestSellerCollectionView = {
         let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 160, height: 200)
+        layout.sectionInset.left = 20
+        layout.sectionInset.right = 20
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.tag = CollectionType.bestSeller.rawValue
         view.register(BestSellerProductCollectionViewCell.self)
