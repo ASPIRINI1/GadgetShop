@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE0511642944AF9C004B7DB3 /* UIFont+fontName.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0511632944AF9C004B7DB3 /* UIFont+fontName.swift */; };
 		DE2681B4293BDA6D00F1B5FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2681B3293BDA6D00F1B5FC /* AppDelegate.swift */; };
 		DE2681B6293BDA6D00F1B5FC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2681B5293BDA6D00F1B5FC /* SceneDelegate.swift */; };
 		DE2681BD293BDA7000F1B5FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE2681BC293BDA7000F1B5FC /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DE0511632944AF9C004B7DB3 /* UIFont+fontName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+fontName.swift"; sourceTree = "<group>"; };
 		DE2681B0293BDA6D00F1B5FC /* GadgetShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GadgetShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE2681B3293BDA6D00F1B5FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE2681B5293BDA6D00F1B5FC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				DECB242829423BE9000A389D /* UIColor+Hex.swift */,
 				DE944336294346900095338F /* UICollectioViewCell+Identefier.swift */,
 				DE9443342943463F0095338F /* UICollectionView+cellManagment.swift */,
+				DE0511632944AF9C004B7DB3 /* UIFont+fontName.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -222,8 +225,8 @@
 			isa = PBXGroup;
 			children = (
 				DEF19E28293E4AFD0080EA00 /* CategoryCollectionViewCell.swift */,
-				DEF19E26293E4A3E0080EA00 /* HotSalesCollectionViewCell.swift */,
 				DEF19E24293E49560080EA00 /* BestSellerProductCollectionViewCell.swift */,
+				DEF19E26293E4A3E0080EA00 /* HotSalesCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				DEC854C4293CFCFF00A8660E /* Cart.swift in Sources */,
 				DE3930402941F17F0054409D /* MainView.swift in Sources */,
 				DEC854C6293CFD1400A8660E /* ProductList.swift in Sources */,
+				DE0511642944AF9C004B7DB3 /* UIFont+fontName.swift in Sources */,
 				DEC854C1293CFCCF00A8660E /* DetailProduct.swift in Sources */,
 				DE2681B6293BDA6D00F1B5FC /* SceneDelegate.swift in Sources */,
 				DE9443352943463F0095338F /* UICollectionView+cellManagment.swift in Sources */,

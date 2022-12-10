@@ -16,7 +16,7 @@ class BestSellerProductCollectionViewCell: UICollectionViewCell {
     }
     private var brandLabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Mark Pro", size: 17)
+        label.font = UIFont(name: .markPro, size: 17)
         return label
     }
     private var addToFavoritesButton = UIButton()

@@ -11,6 +11,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     
     private lazy var titleLabel = {
         let label = UILabel()
+        label.font = UIFont(name: .markPro, size: 23)
         label.textAlignment = .center
         return label
     }()
