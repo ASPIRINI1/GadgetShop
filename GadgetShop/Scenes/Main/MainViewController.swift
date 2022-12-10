@@ -39,7 +39,9 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         viewModel.viewLoaded()
         viewModel.updateData = { [unowned self] in
-            
+            DispatchQueue.main.async {
+                self.customView.updateProducts()
+            }
         }
     }
 }

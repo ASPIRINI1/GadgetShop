@@ -20,7 +20,11 @@ protocol MainViewModelProtocol {
 final class MainViewModel: MainViewModelProtocol {
     
     var updateData: (() -> ())?
-    var productList: ProductList?
+    var productList: ProductList? {
+        didSet {
+            updateData?()
+        }
+    }
     var networkService: NetwokrServiceProtocol
     unowned var coordinator: MainFlowCoordinatorProtocol
     
@@ -30,7 +34,21 @@ final class MainViewModel: MainViewModelProtocol {
     }
     
     func viewLoaded() {
-        
+        networkService.getProductList { productList, errors in
+            if let errors = errors {
+                switch errors {
+                case .noResponseFromServer:
+                    break
+                case .nilData:
+                    break
+                case .dataParsingError(let error):
+                    break
+                case .connectingError(let error):
+                    break
+                }
+            }
+            self.productList = productList
+        }
     }
     
     func selectCategoryWith(id: Int) {

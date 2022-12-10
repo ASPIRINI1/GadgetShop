@@ -95,6 +95,11 @@ class MainView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func updateProducts() {
+        bestSellerCollectionView.reloadData()
+        hotSalesCollectionView.reloadData()
+    }
+    
     override func updateConstraints() {
         super.updateConstraints()
         mainStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
