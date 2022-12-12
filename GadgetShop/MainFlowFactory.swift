@@ -19,7 +19,7 @@ final class MainFlowFactory: MainFlowFactoryProtocol {
     
     func makeProductList(_ coordinator: MainFlowCoordinatorProtocol) -> UIViewController {
         let viewModel = MainViewModel(networkService: netwokrService, coordinator: coordinator)
-        return MainViewController(viewModel: viewModel)
+        return MainCollectionViewController(viewModel: viewModel)
     }
     
     func makeCart(_ coordinator: MainFlowCoordinatorProtocol) -> UIViewController {
