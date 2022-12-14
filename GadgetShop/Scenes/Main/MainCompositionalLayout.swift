@@ -55,7 +55,7 @@ class MainCompositionalLayout: UICollectionViewLayout {
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
         section.boundarySupplementaryItems = [header]
-        section.contentInsets.bottom = 20
+        section.contentInsets = .init(top: 0, leading: 10, bottom: 20, trailing: 10)
         return section
     }
     
@@ -65,6 +65,7 @@ class MainCompositionalLayout: UICollectionViewLayout {
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = .init(top: 10, leading: 20, bottom: 10, trailing: 20)
         return section
     }
     

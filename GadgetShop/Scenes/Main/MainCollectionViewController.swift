@@ -97,17 +97,14 @@ extension MainCollectionViewController {
             return cell
         case .searching:
             let cell = collectionView.dequeue(SearchCollectionViewCell.self, indexPath)
-            cell.backgroundColor = .red
             return cell
         case .hotSales:
             let cell = collectionView.dequeue(HotSalesCollectionViewCell.self, indexPath)
             cell.fill(product: (viewModel.productList?.homeStore[indexPath.item])!)
-            cell.backgroundColor = .green
             return cell
         case .bestSeller:
             let cell = collectionView.dequeue(BestSellerProductCollectionViewCell.self, indexPath)
             cell.fill(product: (viewModel.productList?.bestSeller[indexPath.item])!)
-            cell.backgroundColor = .blue
             return cell
         }
     }
