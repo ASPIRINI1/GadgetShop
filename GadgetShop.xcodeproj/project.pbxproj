@@ -25,6 +25,7 @@
 		DE4A4D6E29467A1C005FD701 /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4A4D6D29467A1C005FD701 /* MainCollectionViewController.swift */; };
 		DE4A4D7029468052005FD701 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4A4D6F29468052005FD701 /* SearchCollectionViewCell.swift */; };
 		DE4A4D7229468188005FD701 /* HeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4A4D7129468188005FD701 /* HeaderCollectionViewCell.swift */; };
+		DE8B13802949EC510004CDBB /* UIImage+CustomImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8B137F2949EC510004CDBB /* UIImage+CustomImages.swift */; };
 		DE9443352943463F0095338F /* UICollectionView+cellManagment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9443342943463F0095338F /* UICollectionView+cellManagment.swift */; };
 		DE944337294346900095338F /* UICollectioViewCell+Identefier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE944336294346900095338F /* UICollectioViewCell+Identefier.swift */; };
 		DEC854B3293C944900A8660E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC854B2293C944900A8660E /* NetworkService.swift */; };
@@ -65,6 +66,7 @@
 		DE4A4D6D29467A1C005FD701 /* MainCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
 		DE4A4D6F29468052005FD701 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		DE4A4D7129468188005FD701 /* HeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionViewCell.swift; sourceTree = "<group>"; };
+		DE8B137F2949EC510004CDBB /* UIImage+CustomImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+CustomImages.swift"; sourceTree = "<group>"; };
 		DE9443342943463F0095338F /* UICollectionView+cellManagment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+cellManagment.swift"; sourceTree = "<group>"; };
 		DE944336294346900095338F /* UICollectioViewCell+Identefier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectioViewCell+Identefier.swift"; sourceTree = "<group>"; };
 		DEC854B2293C944900A8660E /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				DE944336294346900095338F /* UICollectioViewCell+Identefier.swift */,
 				DE9443342943463F0095338F /* UICollectionView+cellManagment.swift */,
 				DE0511632944AF9C004B7DB3 /* UIFont+fontName.swift */,
+				DE8B137F2949EC510004CDBB /* UIImage+CustomImages.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				DECB242929423BE9000A389D /* UIColor+Hex.swift in Sources */,
 				DEF19E25293E49560080EA00 /* BestSellerProductCollectionViewCell.swift in Sources */,
 				DE4A4D6E29467A1C005FD701 /* MainCollectionViewController.swift in Sources */,
+				DE8B13802949EC510004CDBB /* UIImage+CustomImages.swift in Sources */,
 				DE4090CD294110AC00C66086 /* DetailViewModel.swift in Sources */,
 				DEC854BF293CFCBE00A8660E /* BestSellerProduct.swift in Sources */,
 				DE944337294346900095338F /* UICollectioViewCell+Identefier.swift in Sources */,
