@@ -12,12 +12,13 @@ private let reuseIdentifier = "Cell"
 class MainCollectionViewController: UICollectionViewController {
     
     var viewModel: MainViewModelProtocol
-    var categories: [(image: UIImage, title: String)] = [
-        (image: UIImage(), title: "Phones"),
-        (image: UIImage(), title: "Computer"),
-        (image: UIImage(), title: "Health"),
-        (image: UIImage(), title: "Books"),
-        (image: UIImage(), title: "Else")]
+    var categories: [(image: UIImage?, title: String)] = [
+        (image: UIImage(.phone), title: "Phones"),
+        (image: UIImage(.monitor), title: "Computer"),
+        (image: UIImage(.heart), title: "Health"),
+        (image: UIImage(.book), title: "Books"),
+        (image: UIImage(.accessories), title: "Else")]
+    private var selectedCategoryIndex: IndexPath?
 
     enum Sections: CaseIterable {
         case header
@@ -37,6 +38,8 @@ class MainCollectionViewController: UICollectionViewController {
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        collectionView.backgroundColor = .systemGray6
         collectionView.register(CategoryCollectionViewCell.self)
         collectionView.register(BestSellerProductCollectionViewCell.self)
         collectionView.register(HotSalesCollectionViewCell.self)
@@ -85,8 +88,12 @@ extension MainCollectionViewController {
             return cell
         case .categories:
             let cell = collectionView.dequeue(CategoryCollectionViewCell.self, indexPath)
-            cell.fill(image: UIImage(), title: "\(indexPath)")
-            cell.backgroundColor = .black
+            let category = categories[indexPath.item]
+            cell.fill(image:category.image , title: category.title)
+            cell.set(selected: false)
+            if indexPath == selectedCategoryIndex {
+                cell.set(selected: true)
+            }
             return cell
         case .searching:
             let cell = collectionView.dequeue(SearchCollectionViewCell.self, indexPath)
@@ -124,9 +131,32 @@ extension MainCollectionViewController {
             case .bestSeller:
                 cell.fill(title: "Best Seller", buttonTitle: "see more")
             }
-            
             return cell
         }
         return UICollectionReusableView()
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let sectionType = Sections.allCases[indexPath.section]
+        switch sectionType {
+        case .header, .searching:
+            break
+        case .categories:
+            if let selectedCategoryIndex = selectedCategoryIndex {
+                guard let cell = collectionView.cellForItem(at: selectedCategoryIndex) as? CategoryCollectionViewCell else { break }
+                cell.set(selected: false)
+            }
+            guard indexPath != selectedCategoryIndex else {
+                selectedCategoryIndex = nil
+                break
+            }
+            selectedCategoryIndex = indexPath
+            guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell else { break }
+            cell.set(selected: true)
+        case .hotSales:
+            break
+        case .bestSeller:
+            break
+        }
     }
 }
