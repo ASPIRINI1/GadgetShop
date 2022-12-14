@@ -23,18 +23,9 @@ extension UIImage {
                 return "orangeCircle"
             }
         }
-        
-        var image: UIImage? {
-            switch self {
-            case .mapPoint:
-                return UIImage(named: CustomAssets.mapPoint.stringName)
-            case .filler:
-                return UIImage(named: CustomAssets.filler.stringName)
-            case .newMark:
-                return UIImage(named: CustomAssets.newMark.stringName)
-            case .orangeCircle:
-                return UIImage(named: CustomAssets.orangeCircle.stringName)
-            }
-        }
+    }
+    
+    convenience init?(_ customImage: CustomAssets) {
+        self.init(named: customImage.stringName)
     }
 }

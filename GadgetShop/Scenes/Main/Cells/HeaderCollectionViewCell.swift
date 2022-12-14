@@ -32,7 +32,7 @@ class HeaderCollectionViewCell: UICollectionViewCell {
     private lazy var filterButtonnButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage.CustomAssets.filler.image, for: .normal)
+        button.setImage(UIImage(.filler), for: .normal)
         button.addAction(UIAction(handler: { _ in
             self.delegate?.headerCollectionViewCelldidSelectFilterButton(self)
         }), for: .touchUpInside)
@@ -41,7 +41,7 @@ class HeaderCollectionViewCell: UICollectionViewCell {
     private lazy var mapLlocatorImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage.CustomAssets.mapPoint.image
+        imageView.image = UIImage(.mapPoint)
         imageView.tintColor = UIColor.CustomColor.orange.uiColor
         return imageView
     }()
