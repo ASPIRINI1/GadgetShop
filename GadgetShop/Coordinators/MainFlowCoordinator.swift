@@ -22,6 +22,7 @@ class MainFlowCoordinator: MainFlowCoordinatorProtocol {
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        navigationController.setNavigationBarHidden(true, animated: false)
     }
     
     func start() {

@@ -80,8 +80,7 @@ extension MainCollectionViewController {
         switch sectionType {
         case .header:
             let cell = collectionView.dequeue(HeaderCollectionViewCell.self, indexPath)
-            cell.fill("geo")
-            cell.backgroundColor = .lightGray
+            cell.fill("Zihuatanejo, Gro")
             return cell
         case .categories:
             let cell = collectionView.dequeue(CategoryCollectionViewCell.self, indexPath)
