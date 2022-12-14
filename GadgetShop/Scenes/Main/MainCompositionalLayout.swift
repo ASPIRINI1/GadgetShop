@@ -9,6 +9,15 @@ import UIKit
 
 class MainCompositionalLayout: UICollectionViewLayout {
     
+    private lazy var header = {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                              heightDimension: .absolute(50))
+        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: itemSize,
+                                                                 elementKind: UICollectionView.elementKindSectionHeader,
+                                                                 alignment: .top)
+        return header
+    }()
+    
     func setup() -> UICollectionViewCompositionalLayout {
         UICollectionViewCompositionalLayout { (sectionIndex, environment) -> NSCollectionLayoutSection? in
             let section = MainCollectionViewController.Sections.allCases[sectionIndex]
@@ -45,6 +54,7 @@ class MainCompositionalLayout: UICollectionViewLayout {
         group.contentInsets = .init(top: 0, leading: 20, bottom: 0, trailing: 20)
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
+        section.boundarySupplementaryItems = [header]
         return section
     }
     
@@ -65,6 +75,7 @@ class MainCompositionalLayout: UICollectionViewLayout {
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
+        section.boundarySupplementaryItems = [header]
         return section
     }
     
@@ -76,6 +87,7 @@ class MainCompositionalLayout: UICollectionViewLayout {
         group.contentInsets = .init(top: 0, leading: 10, bottom: 10, trailing: 10)
         group.interItemSpacing = .fixed(10)
         let section = NSCollectionLayoutSection(group: group)
+        section.boundarySupplementaryItems = [header]
         return section
     }
 }

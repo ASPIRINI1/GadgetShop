@@ -42,6 +42,7 @@ class MainCollectionViewController: UICollectionViewController {
         collectionView.register(HotSalesCollectionViewCell.self)
         collectionView.register(SearchCollectionViewCell.self)
         collectionView.register(HeaderCollectionViewCell.self)
+        collectionView.register(CustomCollectionViewHeader.self, forSupplementaryViewOfKind: .header)
         viewModel.viewLoaded()
         
         viewModel.updateData = {
@@ -108,5 +109,24 @@ extension MainCollectionViewController {
 //  MARK: - UICollectionViewDelegate
 
 extension MainCollectionViewController {
-    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.ReuseViewKind.header.stringValue {
+            let sectionType = Sections.allCases[indexPath.section]
+            let cell = collectionView.dequeue(CustomCollectionViewHeader.self, ofKind: .header, indexPath: indexPath)
+            
+            switch sectionType {
+            case .header, .searching:
+                break
+            case .categories:
+                cell.fill(title: "Select Category", buttonTitle: "view all")
+            case .hotSales:
+                cell.fill(title: "Hot sales", buttonTitle: "see more")
+            case .bestSeller:
+                cell.fill(title: "Best Seller", buttonTitle: "see more")
+            }
+            
+            return cell
+        }
+        return UICollectionReusableView()
+    }
 }
