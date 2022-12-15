@@ -13,14 +13,15 @@ protocol BestSellerProductCollectionViewCellDelegate: AnyObject {
 
 class BestSellerProductCollectionViewCell: UICollectionViewCell {
     
-    private var imageView = {
+    private lazy var imageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = .red
+        imageView.contentMode = .scaleToFill
+        imageView.backgroundColor = .white
+        imageView.layer.cornerRadius = layer.cornerRadius
         return imageView
     }()
-    private var titleLabel = {
+    private lazy var titleLabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
 //        label.font = UIFont(name: .markPro, size: 17)
@@ -32,35 +33,37 @@ class BestSellerProductCollectionViewCell: UICollectionViewCell {
 //        label.font = UIFont(name: .markPro, size: 17)
         return label
     }()
-    private var discountPriceLabel = {
+    private lazy var discountPriceLabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
 //        label.font = UIFont(name: .markPro, size: 17)
         return label
     }()
-    private var addToFavoritesButton = {
+    private lazy var addToFavoritesButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = button.frame.width / 2
-        button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        button.layer.shadowOpacity = 0.1
+        button.layer.shadowOffset = CGSize.zero
+        button.layer.shadowRadius = 10
+        let image = UIImage(.orangeCircle)?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        button.setBackgroundImage(image, for: .normal)
+        button.setImage(UIImage(systemName: "heart"), for: .normal)
         button.setImage(UIImage(systemName: "heart.fill"), for: .selected)
         button.setTitleColor(.CustomColor.orange.uiColor, for: .selected)
+        button.addTarget(self, action: #selector(addToFavorietsAction), for: .touchUpInside)
         return button
     }()
-    
     var productID: Int = 0
     weak var delegate: BestSellerProductCollectionViewCellDelegate?
     
-    func fill(product: BestSellerProduct) {
-        productID = product.id
-        titleLabel.text = product.title
-        priceWithoutDiscountLabel.text = String(product.priceWithoutDiscount)
-        discountPriceLabel.text = String(product.discountPrice)
-        setup()
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
-    private func setup() {
-        backgroundColor = .lightGray
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = .white
         layer.cornerRadius = 10
         addSubview(imageView)
         addSubview(addToFavoritesButton)
@@ -70,32 +73,43 @@ class BestSellerProductCollectionViewCell: UICollectionViewCell {
         setNeedsUpdateConstraints()
     }
     
-    @objc private func addToFavorietsButtonAction(_ sender: UIButton) {
+    // MARK: - Actions
+    
+    @objc private func addToFavorietsAction(_ sender: UIButton) {
+        self.addToFavoritesButton.isSelected = !addToFavoritesButton.isSelected
         delegate?.bestSellerProductCollectionViewCell(self, didTapAddToFavorietsForProductWith: productID)
     }
     
+    func fill(product: BestSellerProduct) {
+        productID = product.id
+        titleLabel.text = product.title
+        priceWithoutDiscountLabel.text = String(product.priceWithoutDiscount)
+        discountPriceLabel.text = String(product.discountPrice)
+        addToFavoritesButton.isSelected = product.isFavorites
+    }
+    
+    //  MARK: - Layout
+    
     override func updateConstraints() {
         super.updateConstraints()
-        
         imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         imageView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         imageView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: frame.height*0.75).isActive = true
+        imageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.75).isActive = true
         
-        addToFavoritesButton.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
-        addToFavoritesButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
-        addToFavoritesButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        addToFavoritesButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        addToFavoritesButton.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
+        addToFavoritesButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
+        addToFavoritesButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        addToFavoritesButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
         
-        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: 5).isActive = true
+        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
+        titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
+        titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
         
         priceWithoutDiscountLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
         priceWithoutDiscountLabel.bottomAnchor.constraint(equalTo: titleLabel.topAnchor).isActive = true
 
         discountPriceLabel.bottomAnchor.constraint(equalTo: titleLabel.topAnchor).isActive = true
-        discountPriceLabel.leftAnchor.constraint(equalTo: priceWithoutDiscountLabel.rightAnchor).isActive = true
-        discountPriceLabel.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        discountPriceLabel.leftAnchor.constraint(equalTo: priceWithoutDiscountLabel.rightAnchor, constant: 10).isActive = true
     }
 }
