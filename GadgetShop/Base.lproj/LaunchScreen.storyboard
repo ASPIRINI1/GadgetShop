@@ -51,13 +51,6 @@
                                     <constraint firstAttribute="trailing" secondItem="e44-h1-LWz" secondAttribute="trailing" id="jv2-Ls-UKO"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dBJ-Aa-lcJ">
-                                <rect key="frame" x="173" y="121" width="125" height="106"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Button" image="square.and.arrow.up.circle" catalog="system"/>
-                                <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up.circle" catalog="system"/>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.0039215686274509803" green="0.0" blue="0.20784313725490194" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -74,6 +67,5 @@
     </scenes>
     <resources>
         <image name="orangeCircle" width="512" height="512"/>
-        <image name="square.and.arrow.up.circle" catalog="system" width="128" height="123"/>
     </resources>
 </document>

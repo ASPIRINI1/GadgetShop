@@ -16,30 +16,32 @@ class HotSalesCollectionViewCell: UICollectionViewCell {
     private lazy var imageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.contentMode = .right
+        view.contentMode = .scaleToFill
         return view
     }()
     private lazy var newMark = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.image = UIImage(named: "newMark")
+        view.image = UIImage(.newMark)
         return view
     }()
     private lazy var brandLabel = {
         let label = UILabel()
 //        label.font = UIFont(name: .markPro, size: 20)
+        label.textColor = .white
         return label
     }()
     private lazy var descriptionLabel = {
         let label = UILabel()
 //        label.font = UIFont(name: .markPro, size: 10)
-        label.font = .systemFont(ofSize: 20)
+        label.textColor = .white
         return label
     }()
     private lazy var buyButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .red
+        button.backgroundColor = .white
+        button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 10
         button.setTitle("Buy now!", for: .normal)
         button.addTarget(self, action: #selector(buyButtonTapAction), for: .touchUpInside)
@@ -56,14 +58,12 @@ class HotSalesCollectionViewCell: UICollectionViewCell {
     private var productID: Int = 0
     weak var delegate: HotSalesCollectionViewCellDelegate?
     
-    func fill(product: HomeStoreProduct) {
-        productID = product.id
-        brandLabel.text = product.title
-        descriptionLabel.text = product.subtitle
-        setup()
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
-    private func setup() {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         layer.cornerRadius = 10
         addSubview(imageView)
         addSubview(labelStackView)
@@ -73,13 +73,22 @@ class HotSalesCollectionViewCell: UICollectionViewCell {
         setNeedsUpdateConstraints()
     }
     
+    //  MARK: - Actions
+    
     @objc private func buyButtonTapAction(_ sender: UIButton) {
         delegate?.hotSalesCollectionViewCell(self, didTapBuyButtonForProductWith: productID)
     }
     
+    func fill(product: HomeStoreProduct) {
+        productID = product.id
+        brandLabel.text = product.title
+        descriptionLabel.text = product.subtitle
+    }
+    
+    //  MARK: - Layout
+    
     override func updateConstraints() {
         super.updateConstraints()
-        
         newMark.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
         newMark.leftAnchor.constraint(equalTo: buyButton.leftAnchor).isActive = true
         newMark.widthAnchor.constraint(equalToConstant: 25).isActive = true
