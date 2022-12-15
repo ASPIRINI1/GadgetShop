@@ -19,9 +19,7 @@ class CustomCollectionViewHeader: UICollectionReusableView {
         let button = UIButton()
 //        button.titleLabel?.font = UIFont(name: .markPro, size: 17)
         button.setTitleColor(UIColor.CustomColor.orange.uiColor, for: .normal)
-        button.addAction(UIAction(handler: { _ in
-            
-        }), for: .touchUpInside)
+        button.addAction(buttonAction, for: .touchUpInside)
         return button
     }()
     private lazy var stackView = {
@@ -29,9 +27,10 @@ class CustomCollectionViewHeader: UICollectionReusableView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addArrangedSubview(titleLabel)
         view.addArrangedSubview(button)
-        
         return view
     }()
+    
+    // MARK: - Cell setup
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,10 +41,20 @@ class CustomCollectionViewHeader: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Cell setup
+    
     func fill(title: String, buttonTitle: String) {
         self.titleLabel.text = title
         self.button.setTitle(buttonTitle, for: .normal)
     }
+    
+    // MARK: - Actions
+    
+    private lazy var buttonAction = UIAction { _ in
+        
+    }
+    
+    // MARK: - Layout
     
     override func updateConstraints() {
         super.updateConstraints()

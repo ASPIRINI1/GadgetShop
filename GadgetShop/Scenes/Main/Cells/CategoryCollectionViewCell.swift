@@ -30,18 +30,18 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
+    // MARK: - Cell setup
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(subView)
         subView.addSubview(imageView)
         addSubview(titleLabel)
     }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
-    // MARK: - Cell setup
     
     func fill(image: UIImage?, title: String) {
         imageView.image = image

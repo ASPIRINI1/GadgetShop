@@ -28,8 +28,11 @@ class SearchCollectionViewCell: UICollectionViewCell {
         button.tintColor = .white
         button.backgroundColor = UIColor.CustomColor.orange.uiColor
         button.contentEdgeInsets = .init(top: 10, left: 10, bottom: 10, right: 10)
+        button.addAction(filterButtonAction, for: .touchUpInside)
         return button
     }()
+    
+    // MARK: - Cell setup
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -40,6 +43,12 @@ class SearchCollectionViewCell: UICollectionViewCell {
         addSubview(searchBar)
         addSubview(filterButton)
         setNeedsUpdateConstraints()
+    }
+    
+    // MARK: - Actions
+    
+    private lazy var filterButtonAction = UIAction { _ in
+        
     }
     
     // MARK: - Layout

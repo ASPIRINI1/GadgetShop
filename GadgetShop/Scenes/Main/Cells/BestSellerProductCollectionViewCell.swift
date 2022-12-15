@@ -57,6 +57,8 @@ class BestSellerProductCollectionViewCell: UICollectionViewCell {
     var productID: Int = 0
     weak var delegate: BestSellerProductCollectionViewCellDelegate?
     
+    // MARK: - Cell setup
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -73,19 +75,19 @@ class BestSellerProductCollectionViewCell: UICollectionViewCell {
         setNeedsUpdateConstraints()
     }
     
-    // MARK: - Actions
-    
-    @objc private func addToFavorietsAction(_ sender: UIButton) {
-        self.addToFavoritesButton.isSelected = !addToFavoritesButton.isSelected
-        delegate?.bestSellerProductCollectionViewCell(self, didTapAddToFavorietsForProductWith: productID)
-    }
-    
     func fill(product: BestSellerProduct) {
         productID = product.id
         titleLabel.text = product.title
         priceWithoutDiscountLabel.text = String(product.priceWithoutDiscount)
         discountPriceLabel.text = String(product.discountPrice)
         addToFavoritesButton.isSelected = product.isFavorites
+    }
+    
+    // MARK: - Actions
+    
+    @objc private func addToFavorietsAction(_ sender: UIButton) {
+        self.addToFavoritesButton.isSelected = !addToFavoritesButton.isSelected
+        delegate?.bestSellerProductCollectionViewCell(self, didTapAddToFavorietsForProductWith: productID)
     }
     
     //  MARK: - Layout

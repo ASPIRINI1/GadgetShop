@@ -11,8 +11,8 @@ private let reuseIdentifier = "Cell"
 
 class MainCollectionViewController: UICollectionViewController {
     
-    var viewModel: MainViewModelProtocol
-    var categories: [(image: UIImage?, title: String)] = [
+    private var viewModel: MainViewModelProtocol
+    private var categories: [(image: UIImage?, title: String)] = [
         (image: UIImage(.phone), title: "Phones"),
         (image: UIImage(.monitor), title: "Computer"),
         (image: UIImage(.heart), title: "Health"),
@@ -24,7 +24,7 @@ class MainCollectionViewController: UICollectionViewController {
         case header
         case categories
         case searching
-        case hotSales
+        case homeStore
         case bestSeller
     }
     
@@ -41,20 +41,37 @@ class MainCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.backgroundColor = .systemGray6
-        collectionView.register(CategoryCollectionViewCell.self)
-        collectionView.register(BestSellerProductCollectionViewCell.self)
-        collectionView.register(HotSalesCollectionViewCell.self)
-        collectionView.register(SearchCollectionViewCell.self)
-        collectionView.register(HeaderCollectionViewCell.self)
-        collectionView.register(CustomCollectionViewHeader.self, forSupplementaryViewOfKind: .header)
+        configureCollectionView()
         viewModel.viewLoaded()
-        
         viewModel.updateData = {
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
         }
+    }
+    
+    private func configureCollectionView() {
+        collectionView.backgroundColor = .systemGray6
+        collectionView.register(CustomCollectionViewHeader.self, forSupplementaryViewOfKind: .header)
+        collectionView.register(CategoryCollectionViewCell.self)
+        collectionView.register(BestSellerProductCollectionViewCell.self)
+        collectionView.register(HomeStoreCollectionViewCell.self)
+        collectionView.register(SearchCollectionViewCell.self)
+        collectionView.register(HeaderCollectionViewCell.self)
+    }
+    
+    private func handleCategorySelection(_ collectionView: UICollectionView, _ indexPath: IndexPath) {
+        if let selectedCategoryIndex = selectedCategoryIndex {
+            guard let cell = collectionView.cellForItem(at: selectedCategoryIndex) as? CategoryCollectionViewCell else { return }
+            cell.set(selected: false)
+        }
+        guard indexPath != selectedCategoryIndex else {
+            selectedCategoryIndex = nil
+            return
+        }
+        selectedCategoryIndex = indexPath
+        guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell else { return }
+        cell.set(selected: true)
     }
 }
 
@@ -74,7 +91,7 @@ extension MainCollectionViewController {
             return categories.count
         case .searching:
             return 1
-        case .hotSales:
+        case .homeStore:
             return viewModel.productList?.homeStore.count ?? 0
         case .bestSeller:
             return viewModel.productList?.bestSeller.count ?? 0
@@ -92,16 +109,13 @@ extension MainCollectionViewController {
             let cell = collectionView.dequeue(CategoryCollectionViewCell.self, indexPath)
             let category = categories[indexPath.item]
             cell.fill(image:category.image , title: category.title)
-            cell.set(selected: false)
-            if indexPath == selectedCategoryIndex {
-                cell.set(selected: true)
-            }
+            cell.set(selected: indexPath == selectedCategoryIndex)
             return cell
         case .searching:
             let cell = collectionView.dequeue(SearchCollectionViewCell.self, indexPath)
             return cell
-        case .hotSales:
-            let cell = collectionView.dequeue(HotSalesCollectionViewCell.self, indexPath)
+        case .homeStore:
+            let cell = collectionView.dequeue(HomeStoreCollectionViewCell.self, indexPath)
             cell.fill(product: (viewModel.productList?.homeStore[indexPath.item])!)
             return cell
         case .bestSeller:
@@ -125,7 +139,7 @@ extension MainCollectionViewController {
                 break
             case .categories:
                 cell.fill(title: "Select Category", buttonTitle: "view all")
-            case .hotSales:
+            case .homeStore:
                 cell.fill(title: "Hot sales", buttonTitle: "see more")
             case .bestSeller:
                 cell.fill(title: "Best Seller", buttonTitle: "see more")
@@ -141,21 +155,12 @@ extension MainCollectionViewController {
         case .header, .searching:
             break
         case .categories:
-            if let selectedCategoryIndex = selectedCategoryIndex {
-                guard let cell = collectionView.cellForItem(at: selectedCategoryIndex) as? CategoryCollectionViewCell else { break }
-                cell.set(selected: false)
-            }
-            guard indexPath != selectedCategoryIndex else {
-                selectedCategoryIndex = nil
-                break
-            }
-            selectedCategoryIndex = indexPath
-            guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell else { break }
-            cell.set(selected: true)
-        case .hotSales:
-            break
+            handleCategorySelection(collectionView, indexPath)
+            viewModel.selectCategoryWith(id: indexPath.item)
+        case .homeStore:
+            viewModel.homeStoreProductSelected(indexPath.item)
         case .bestSeller:
-            break
+            viewModel.bestSellerProductSelected(indexPath.item)
         }
     }
 }

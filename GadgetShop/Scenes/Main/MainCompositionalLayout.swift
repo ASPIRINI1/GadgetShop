@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainCompositionalLayout: UICollectionViewLayout {
+final class MainCompositionalLayout: UICollectionViewLayout {
     
     private lazy var header = {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
@@ -28,9 +28,8 @@ class MainCompositionalLayout: UICollectionViewLayout {
                 return self.setupCategories()
             case .searching:
                 return self.setupSearching()
-            case .hotSales:
-                let l = self.setupHotSales()
-                return l
+            case .homeStore:
+                return self.setupHomeStore()
             case .bestSeller:
                 return self.setupBestSeller()
             }
@@ -69,7 +68,7 @@ class MainCompositionalLayout: UICollectionViewLayout {
         return section
     }
     
-    private func setupHotSales() -> NSCollectionLayoutSection {
+    private func setupHomeStore() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = .init(top: 5, leading: 10, bottom: 5, trailing: 10)

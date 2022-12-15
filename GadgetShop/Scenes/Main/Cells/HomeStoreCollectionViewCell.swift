@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol HotSalesCollectionViewCellDelegate: AnyObject {
-    func hotSalesCollectionViewCell(_ cell: HotSalesCollectionViewCell, didTapBuyButtonForProductWith id: Int)
+protocol HomeStoreCollectionViewCellDelegate: AnyObject {
+    func homeStoreCollectionViewCell(_ cell: HomeStoreCollectionViewCell, didTapBuyButtonForProductWith id: Int)
 }
 
-class HotSalesCollectionViewCell: UICollectionViewCell {
+class HomeStoreCollectionViewCell: UICollectionViewCell {
     
     private lazy var imageView = {
         let view = UIImageView()
@@ -44,7 +44,7 @@ class HotSalesCollectionViewCell: UICollectionViewCell {
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 10
         button.setTitle("Buy now!", for: .normal)
-        button.addTarget(self, action: #selector(buyButtonTapAction), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buyButtonAction), for: .touchUpInside)
         return button
     }()
     private lazy var labelStackView = {
@@ -56,7 +56,9 @@ class HotSalesCollectionViewCell: UICollectionViewCell {
         return view
     }()
     private var productID: Int = 0
-    weak var delegate: HotSalesCollectionViewCellDelegate?
+    weak var delegate: HomeStoreCollectionViewCellDelegate?
+    
+    // MARK: - Cell setup
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -73,16 +75,16 @@ class HotSalesCollectionViewCell: UICollectionViewCell {
         setNeedsUpdateConstraints()
     }
     
-    //  MARK: - Actions
-    
-    @objc private func buyButtonTapAction(_ sender: UIButton) {
-        delegate?.hotSalesCollectionViewCell(self, didTapBuyButtonForProductWith: productID)
-    }
-    
     func fill(product: HomeStoreProduct) {
         productID = product.id
         brandLabel.text = product.title
         descriptionLabel.text = product.subtitle
+    }
+    
+    //  MARK: - Actions
+    
+    @objc private func buyButtonAction(_ sender: UIButton) {
+        delegate?.homeStoreCollectionViewCell(self, didTapBuyButtonForProductWith: productID)
     }
     
     //  MARK: - Layout

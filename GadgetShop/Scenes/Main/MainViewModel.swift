@@ -14,7 +14,8 @@ protocol MainViewModelProtocol {
     func viewLoaded()
     func selectCategoryWith(id: Int)
     func cartSelected()
-    func productSelected(productIndex: Int)
+    func homeStoreProductSelected(_ productIndex: Int)
+    func bestSellerProductSelected(_ productIndex: Int)
 }
 
 final class MainViewModel: MainViewModelProtocol {
@@ -59,7 +60,13 @@ final class MainViewModel: MainViewModelProtocol {
         coordinator.presentCart()
     }
     
-    func productSelected(productIndex: Int) {
-        
+    func homeStoreProductSelected(_ productIndex: Int) {
+        guard let productID = productList?.homeStore[productIndex].id else { return }
+        coordinator.pushToDetail(productID: productID)
+    }
+    
+    func bestSellerProductSelected(_ productIndex: Int) {
+        guard let productID = productList?.bestSeller[productIndex].id else { return }
+        coordinator.pushToDetail(productID: productID)
     }
 }

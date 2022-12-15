@@ -9,7 +9,7 @@ import UIKit
 
 protocol HeaderCollectionViewCellDelegate: AnyObject {
     func headerCollectionViewCelldidSelectGeoButton(_ cell: HeaderCollectionViewCell)
-    func headerCollectionViewCelldidSelectFilterButton(_ cell: HeaderCollectionViewCell)
+    func headerCollectionViewCelldidSelectFllerButton(_ cell: HeaderCollectionViewCell)
 }
 
 class HeaderCollectionViewCell: UICollectionViewCell {
@@ -24,18 +24,14 @@ class HeaderCollectionViewCell: UICollectionViewCell {
         button.setImage(UIImage(systemName: "chevron.up"), for: .selected)
         button.setTitleColor(.black, for: .normal)
         button.tintColor = .lightGray
-        button.addAction(UIAction(handler: { _ in
-            self.delegate?.headerCollectionViewCelldidSelectGeoButton(self)
-        }), for: .touchUpInside)
+        button.addAction(geoButtonAction, for: .touchUpInside)
         return button
     }()
-    private lazy var filterButtonnButton = {
+    private lazy var fllerButtonnButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(.filler), for: .normal)
-        button.addAction(UIAction(handler: { _ in
-            self.delegate?.headerCollectionViewCelldidSelectFilterButton(self)
-        }), for: .touchUpInside)
+        button.addAction(fillterButtonAction, for: .touchUpInside)
         return button
     }()
     private lazy var mapLlocatorImageView = {
@@ -47,6 +43,8 @@ class HeaderCollectionViewCell: UICollectionViewCell {
     }()
     weak var delegate: HeaderCollectionViewCellDelegate?
     
+    // MARK: - Cell setup
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
@@ -55,13 +53,25 @@ class HeaderCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         addSubview(mapLlocatorImageView)
         addSubview(geoButton)
-        addSubview(filterButtonnButton)
+        addSubview(fllerButtonnButton)
         setNeedsUpdateConstraints()
     }
     
     func fill(_ geoButtonTitle: String) {
         geoButton.setTitle(geoButtonTitle, for: .normal)
     }
+    
+    // MARK: - Actions
+    
+    private lazy var fillterButtonAction = UIAction { _ in
+        self.delegate?.headerCollectionViewCelldidSelectFllerButton(self)
+    }
+    
+    private lazy var geoButtonAction = UIAction { _ in
+        self.delegate?.headerCollectionViewCelldidSelectGeoButton(self)
+    }
+    
+    //  MARK: - Layout
     
     override func updateConstraints() {
         super.updateConstraints()
@@ -77,9 +87,9 @@ class HeaderCollectionViewCell: UICollectionViewCell {
         mapLlocatorImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
         mapLlocatorImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
-        filterButtonnButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
-        filterButtonnButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        filterButtonnButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        filterButtonnButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        fllerButtonnButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
+        fllerButtonnButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        fllerButtonnButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        fllerButtonnButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
 }
