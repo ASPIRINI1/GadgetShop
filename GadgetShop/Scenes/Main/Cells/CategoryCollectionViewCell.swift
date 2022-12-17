@@ -20,6 +20,9 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
+        view.layer.shadowOpacity = 0.1
+        view.layer.shadowRadius = 10
+        view.layer.shadowOffset = CGSize.zero
         return view
     }()
     private lazy var imageView = {
