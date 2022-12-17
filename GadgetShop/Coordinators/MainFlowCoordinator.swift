@@ -11,7 +11,7 @@ protocol MainFlowCoordinatorProtocol: CoordinatorProtocol {
     func pushToProductList()
     func presentCart()
     func pushToDetail(productID: Int)
-    func presentFilter()
+    func presentFilter(delegate: FilterViewModelDelegate?)
 }
 
 class MainFlowCoordinator: MainFlowCoordinatorProtocol {
@@ -42,7 +42,7 @@ class MainFlowCoordinator: MainFlowCoordinatorProtocol {
         navigationController.pushViewController(flowFactory.makeDetail(self), animated: true)
     }
     
-    func presentFilter() {
-        navigationController.present(flowFactory.makeFilter(self), animated: true)
+    func presentFilter(delegate: FilterViewModelDelegate?) {
+        navigationController.present(flowFactory.makeFilter(self, delegate: delegate), animated: true)
     }
 }

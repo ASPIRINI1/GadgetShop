@@ -60,6 +60,8 @@ class FilterView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //  MARK: - Actions
+    
     private lazy var doneButtonAction = UIAction { _ in
         self.doneButtonPressed?()
     }
@@ -67,6 +69,8 @@ class FilterView: UIView {
     private lazy var closeButtonAction = UIAction { _ in
         self.closeButtonPressed?()
     }
+    
+    //  MARK: - Public funcs
     
     func getIndexPath(for cell: UITableViewCell) -> IndexPath? {
         return tableView.indexPath(for: cell)

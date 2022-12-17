@@ -50,6 +50,7 @@ class FilterViewController: UIViewController {
     private func subscribeViewActions() {
         customView.doneButtonPressed = { [unowned self] in
             self.dismiss(animated: true)
+            viewModel.doneButtonPressrd()
         }
         
         customView.closeButtonPressed = { [unowned self] in

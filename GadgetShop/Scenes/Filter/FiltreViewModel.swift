@@ -9,29 +9,23 @@ import Foundation
 
 protocol FilterViewModelProtocol {
     var filterOptions: FilterOptions { get set }
-    var filter: (from: String, to: String)? { get set }
-    func cancelButtonPressed()
-    func doneButtonPressed(from: String, to: String)
+    func doneButtonPressrd()
     func setFilterForBrand(brand: String?)
     func setFilterForPrice(from: Int?, to: Int?)
     func setFilterForSize(from: Double?, to: Double?)
 }
 
+protocol FilterViewModelDelegate: AnyObject {
+    func filterViewModel(_ viewModel: FilterViewModel, didSetFilter options: FilterOptions)
+}
+
 final class FilterViewModel: FilterViewModelProtocol {
     
-    var filter: (from: String, to: String)?
     var filterOptions = FilterOptions()
-    
-    func viewLoaded() {
-        
-    }
-    
-    func cancelButtonPressed() {
-        
-    }
-    
-    func doneButtonPressed(from: String, to: String) {
-        filter = (from, to)
+    weak var delegate: FilterViewModelDelegate?
+
+    func doneButtonPressrd() {
+        delegate?.filterViewModel(self, didSetFilter: filterOptions)
     }
     
     func setFilterForBrand(brand: String?) {
