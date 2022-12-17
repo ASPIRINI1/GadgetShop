@@ -11,6 +11,7 @@ protocol MainFlowCoordinatorProtocol: CoordinatorProtocol {
     func pushToProductList()
     func presentCart()
     func pushToDetail(productID: Int)
+    func presentFilter()
 }
 
 class MainFlowCoordinator: MainFlowCoordinatorProtocol {
@@ -34,10 +35,14 @@ class MainFlowCoordinator: MainFlowCoordinatorProtocol {
     }
     
     func presentCart() {
-        navigationController.pushViewController(flowFactory.makeCart(self), animated: false)
+        navigationController.pushViewController(flowFactory.makeCart(self), animated: true)
     }
     
     func pushToDetail(productID: Int) {
-        navigationController.pushViewController(flowFactory.makeDetail(self), animated: false)
+        navigationController.pushViewController(flowFactory.makeDetail(self), animated: true)
+    }
+    
+    func presentFilter() {
+        navigationController.present(flowFactory.makeFilter(self), animated: true)
     }
 }

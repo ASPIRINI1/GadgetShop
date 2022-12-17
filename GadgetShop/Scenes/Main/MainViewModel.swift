@@ -13,6 +13,7 @@ protocol MainViewModelProtocol {
     init(networkService: NetwokrServiceProtocol, coordinator: MainFlowCoordinatorProtocol)
     func viewLoaded()
     func selectCategoryWith(id: Int)
+    func filterButtonSeleced()
     func cartSelected()
     func homeStoreProductSelected(_ productIndex: Int)
     func bestSellerProductSelected(_ productIndex: Int)
@@ -27,7 +28,7 @@ final class MainViewModel: MainViewModelProtocol {
         }
     }
     var networkService: NetwokrServiceProtocol
-    unowned var coordinator: MainFlowCoordinatorProtocol
+    var coordinator: MainFlowCoordinatorProtocol
     
     init(networkService: NetwokrServiceProtocol, coordinator: MainFlowCoordinatorProtocol) {
         self.networkService = networkService
@@ -54,6 +55,10 @@ final class MainViewModel: MainViewModelProtocol {
     
     func selectCategoryWith(id: Int) {
         
+    }
+    
+    func filterButtonSeleced() {
+        coordinator.presentFilter()
     }
     
     func cartSelected() {

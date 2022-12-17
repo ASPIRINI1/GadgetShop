@@ -11,6 +11,7 @@ protocol MainFlowFactoryProtocol {
     func makeProductList(_ coordinator: MainFlowCoordinatorProtocol) -> UIViewController
     func makeCart(_ coordinator: MainFlowCoordinatorProtocol) -> UIViewController
     func makeDetail(_ coordinator: MainFlowCoordinatorProtocol) -> UIViewController
+    func makeFilter(_ coordinator: MainFlowCoordinatorProtocol)  -> UIViewController
 }
 
 final class MainFlowFactory: MainFlowFactoryProtocol {
@@ -28,5 +29,10 @@ final class MainFlowFactory: MainFlowFactoryProtocol {
     
     func makeDetail(_ coordinator: MainFlowCoordinatorProtocol) -> UIViewController {
         return UIViewController()
+    }
+    
+    func makeFilter(_ coordinator: MainFlowCoordinatorProtocol)  -> UIViewController {
+        let viewModel = FilterViewModel()
+        return FilterViewController(viewModel: viewModel)
     }
 }

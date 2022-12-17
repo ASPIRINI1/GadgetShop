@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SearchCollectionViewCellDelegate: AnyObject {
+    func searchCollectionViewCellDidTapFilterButton(_ cell: SearchCollectionViewCell)
+}
+
 class SearchCollectionViewCell: UICollectionViewCell {
     
     private lazy var searchBar = {
@@ -31,6 +35,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
         button.addAction(filterButtonAction, for: .touchUpInside)
         return button
     }()
+    weak var delegate: SearchCollectionViewCellDelegate?
     
     // MARK: - Cell setup
     
@@ -47,8 +52,9 @@ class SearchCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Actions
     
-    private lazy var filterButtonAction = UIAction { _ in
-        
+    private lazy var filterButtonAction = UIAction { [weak self] _ in
+        guard let self = self else { return }
+        self.delegate?.searchCollectionViewCellDidTapFilterButton(self)
     }
     
     // MARK: - Layout

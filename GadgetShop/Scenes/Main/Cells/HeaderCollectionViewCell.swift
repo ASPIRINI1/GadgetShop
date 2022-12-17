@@ -30,6 +30,7 @@ class HeaderCollectionViewCell: UICollectionViewCell {
     private lazy var fllerButtonnButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.tintColor = .black
         button.setImage(UIImage(.filler), for: .normal)
         button.addAction(fillterButtonAction, for: .touchUpInside)
         return button
@@ -87,9 +88,9 @@ class HeaderCollectionViewCell: UICollectionViewCell {
         mapLlocatorImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
         mapLlocatorImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
-        fllerButtonnButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
+        fllerButtonnButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -25).isActive = true
         fllerButtonnButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        fllerButtonnButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        fllerButtonnButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        fllerButtonnButton.widthAnchor.constraint(equalToConstant: 15).isActive = true
+        fllerButtonnButton.heightAnchor.constraint(equalToConstant: 15).isActive = true
     }
 }

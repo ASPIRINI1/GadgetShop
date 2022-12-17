@@ -7,8 +7,6 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
 class MainCollectionViewController: UICollectionViewController {
     
     private var viewModel: MainViewModelProtocol
@@ -103,6 +101,7 @@ extension MainCollectionViewController {
         switch sectionType {
         case .header:
             let cell = collectionView.dequeue(HeaderCollectionViewCell.self, indexPath)
+            cell.delegate = self
             cell.fill("Zihuatanejo, Gro")
             return cell
         case .categories:
@@ -162,5 +161,17 @@ extension MainCollectionViewController {
         case .bestSeller:
             viewModel.bestSellerProductSelected(indexPath.item)
         }
+    }
+}
+
+//  MARK: - HeaderCollectionViewCellDelegate
+
+extension MainCollectionViewController: HeaderCollectionViewCellDelegate {
+    func headerCollectionViewCelldidSelectGeoButton(_ cell: HeaderCollectionViewCell) {
+        
+    }
+    
+    func headerCollectionViewCelldidSelectFllerButton(_ cell: HeaderCollectionViewCell) {
+        viewModel.filterButtonSeleced()
     }
 }
