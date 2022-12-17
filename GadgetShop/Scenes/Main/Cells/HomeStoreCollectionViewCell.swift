@@ -27,19 +27,21 @@ class HomeStoreCollectionViewCell: UICollectionViewCell {
     }()
     private lazy var brandLabel = {
         let label = UILabel()
-//        label.font = UIFont(name: .markPro, size: 20)
+        label.font = UIFont(name: .markProBold, size: 23)
+        label.numberOfLines = 2
         label.textColor = .white
         return label
     }()
     private lazy var descriptionLabel = {
         let label = UILabel()
-//        label.font = UIFont(name: .markPro, size: 10)
+        label.font = UIFont(name: .markPro, size: 10)
         label.textColor = .white
         return label
     }()
     private lazy var buyButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.font = UIFont(name: .markProHeavy, size: 13)
         button.backgroundColor = .white
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 10

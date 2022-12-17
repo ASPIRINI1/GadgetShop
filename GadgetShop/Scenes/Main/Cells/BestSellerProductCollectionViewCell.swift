@@ -24,19 +24,20 @@ class BestSellerProductCollectionViewCell: UICollectionViewCell {
     private lazy var titleLabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-//        label.font = UIFont(name: .markPro, size: 17)
+        label.font = UIFont(name: .markPro, size: 12)
+        label.tintColor = .systemGray6
         return label
     }()
     private lazy var priceWithoutDiscountLabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-//        label.font = UIFont(name: .markPro, size: 17)
+        label.font = UIFont(name: .markProBold, size: 17)
         return label
     }()
     private lazy var discountPriceLabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-//        label.font = UIFont(name: .markPro, size: 17)
+        label.font = UIFont(name: .markProBold, size: 15)
         return label
     }()
     private lazy var addToFavoritesButton = {
@@ -78,9 +79,14 @@ class BestSellerProductCollectionViewCell: UICollectionViewCell {
     func fill(product: BestSellerProduct) {
         productID = product.id
         titleLabel.text = product.title
-        priceWithoutDiscountLabel.text = String(product.priceWithoutDiscount)
-        discountPriceLabel.text = String(product.discountPrice)
+        priceWithoutDiscountLabel.text = "$\(product.priceWithoutDiscount)"
         addToFavoritesButton.isSelected = product.isFavorites
+        guard let font = UIFont(name: .markProBold, size: 17) else { return }
+        let title = NSAttributedString(string: "$\(product.discountPrice)",
+                                       attributes: [NSAttributedString.Key.font : font,
+                                                    NSAttributedString.Key.strikethroughStyle : NSUnderlineStyle.single.rawValue,
+                                                    NSAttributedString.Key.foregroundColor : UIColor.systemGray3])
+        discountPriceLabel.attributedText = title
     }
     
     // MARK: - Actions

@@ -18,6 +18,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.searchBarStyle = .minimal
         searchBar.placeholder = "Search"
+        searchBar.searchTextField.font = UIFont(name: .markPro, size: 13)
         if let color = UIColor.CustomColor.orange.uiColor {
             var image = UIImage(systemName: "magnifyingglass")
             image = image?.withTintColor(color, renderingMode: .alwaysOriginal)

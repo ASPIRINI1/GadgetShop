@@ -20,10 +20,11 @@ class HeaderCollectionViewCell: UICollectionViewCell {
         config.imagePlacement = .trailing
         let button = UIButton(configuration: config)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.imageView?.tintColor = .green
         button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
         button.setImage(UIImage(systemName: "chevron.up"), for: .selected)
         button.setTitleColor(.black, for: .normal)
-        button.tintColor = .lightGray
+        button.tintColor = .systemGray2
         button.addAction(geoButtonAction, for: .touchUpInside)
         return button
     }()
@@ -59,7 +60,10 @@ class HeaderCollectionViewCell: UICollectionViewCell {
     }
     
     func fill(_ geoButtonTitle: String) {
-        geoButton.setTitle(geoButtonTitle, for: .normal)
+        guard let font = UIFont(name: .markProBold, size: 17) else { return }
+        let title = NSAttributedString(string: geoButtonTitle, attributes: [NSAttributedString.Key.font : font,
+                                                                            NSAttributedString.Key.foregroundColor : UIColor.black])
+        geoButton.setAttributedTitle(title, for: .normal)
     }
     
     // MARK: - Actions

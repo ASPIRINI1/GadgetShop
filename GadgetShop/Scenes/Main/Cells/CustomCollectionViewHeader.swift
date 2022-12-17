@@ -11,13 +11,12 @@ class CustomCollectionViewHeader: UICollectionReusableView {
     
     private lazy var titleLabel = {
         let label = UILabel()
-//        label.font = UIFont(name: .markProBold, size: 30)
+        label.font = UIFont(name: .markProBold, size: 23)
         return label
     }()
     private lazy var button = {
-        let config = UIButton.Configuration.plain()
         let button = UIButton()
-//        button.titleLabel?.font = UIFont(name: .markPro, size: 17)
+        button.titleLabel?.font = UIFont(name: .markPro, size: 17)
         button.setTitleColor(UIColor.CustomColor.orange.uiColor, for: .normal)
         button.addAction(buttonAction, for: .touchUpInside)
         return button

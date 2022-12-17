@@ -12,7 +12,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     private lazy var titleLabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-//        label.font = UIFont(name: .markPro, size: 230)
+        label.font = UIFont(name: .markProBold, size: 13)
         label.textAlignment = .center
         return label
     }()
@@ -80,7 +80,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         imageView.centerXAnchor.constraint(equalTo: subView.centerXAnchor).isActive = true
         imageView.centerYAnchor.constraint(equalTo: subView.centerYAnchor).isActive = true
         
-        titleLabel.topAnchor.constraint(equalTo: subView.bottomAnchor).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: subView.bottomAnchor, constant: 5).isActive = true
         titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         titleLabel.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         titleLabel.rightAnchor.constraint(equalTo: rightAnchor).isActive = true

@@ -16,20 +16,20 @@ extension UIFont {
         case markProHeavy = "MARKPRO-HEAVY"
     }
     
-    convenience init?(name: FontName, size: Int) {
+    convenience init?(name: FontName, size: CGFloat) {
         var fontname: String
         switch name {
         case .markPro:
             fontname = FontName.markPro.rawValue
         case .markProBlack:
-            fontname = FontName.markPro.rawValue
+            fontname = FontName.markProBlack.rawValue
         case .markProMedium:
-            fontname = FontName.markPro.rawValue
+            fontname = FontName.markProMedium.rawValue
         case .markProBold:
-            fontname = FontName.markPro.rawValue
+            fontname = FontName.markProBold.rawValue
         case .markProHeavy:
-            fontname = FontName.markPro.rawValue
+            fontname = FontName.markProHeavy.rawValue
         }
-        self.init(name: fontname, size: 3)
+        self.init(name: fontname, size: size)
     }
 }
