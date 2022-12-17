@@ -27,7 +27,6 @@
 		DE4565E4294BB2A600717351 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4565E3294BB2A600717351 /* FilterView.swift */; };
 		DE4565E7294BB6DE00717351 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4565E6294BB6DE00717351 /* HeaderView.swift */; };
 		DE4565E9294BB81300717351 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4565E8294BB81300717351 /* RoundedButton.swift */; };
-		DE46C03A294DF709000C1406 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE46C039294DF709000C1406 /* View.xib */; };
 		DE4A4D6E29467A1C005FD701 /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4A4D6D29467A1C005FD701 /* MainCollectionViewController.swift */; };
 		DE4A4D7029468052005FD701 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4A4D6F29468052005FD701 /* SearchCollectionViewCell.swift */; };
 		DE4A4D7229468188005FD701 /* HeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4A4D7129468188005FD701 /* HeaderCollectionViewCell.swift */; };
@@ -79,7 +78,6 @@
 		DE4565E3294BB2A600717351 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		DE4565E6294BB6DE00717351 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		DE4565E8294BB81300717351 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
-		DE46C039294DF709000C1406 /* View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 		DE4A4D6D29467A1C005FD701 /* MainCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
 		DE4A4D6F29468052005FD701 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		DE4A4D7129468188005FD701 /* HeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -231,7 +229,6 @@
 				DE4565DF294BA25300717351 /* FilterViewController.swift */,
 				DE4565E3294BB2A600717351 /* FilterView.swift */,
 				DE7B353E294B62E100DA61D8 /* FilterTableViewCell.swift */,
-				DE46C039294DF709000C1406 /* View.xib */,
 			);
 			path = Filter;
 			sourceTree = "<group>";
@@ -356,7 +353,6 @@
 				DE0511672944EE02004B7DB3 /* MARKPRO-BLACK.OTF in Resources */,
 				DE2681C0293BDA7000F1B5FC /* LaunchScreen.storyboard in Resources */,
 				DE2681BD293BDA7000F1B5FC /* Assets.xcassets in Resources */,
-				DE46C03A294DF709000C1406 /* View.xib in Resources */,
 				DE0511652944EE02004B7DB3 /* MARKPRO-HEAVY.OTF in Resources */,
 				DE0511692944EE02004B7DB3 /* MARKPRO-BOLD.OTF in Resources */,
 				DE0511682944EE02004B7DB3 /* MARKPRO-MEDIUM.OTF in Resources */,
