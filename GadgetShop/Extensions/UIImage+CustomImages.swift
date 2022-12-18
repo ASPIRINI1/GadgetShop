@@ -9,7 +9,7 @@ import UIKit
 
 extension UIImage {
     enum CustomAssets {
-        case mapPoint, filler, newMark, orangeCircle, book, heart, monitor, phone, accessories, filter
+        case mapPoint, filler, newMark, book, heart, monitor, phone, accessories, filter
         
         var stringName: String {
             switch self {
@@ -19,8 +19,6 @@ extension UIImage {
                 return "filler"
             case .newMark:
                 return "newMark"
-            case .orangeCircle:
-                return "orangeCircle"
             case .book:
                 return "book"
             case .heart:

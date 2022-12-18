@@ -38,7 +38,6 @@
 		DE8B1382294A05900004CDBB /* CustomCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8B1381294A05900004CDBB /* CustomCollectionViewHeader.swift */; };
 		DE9443352943463F0095338F /* UICollectionView+cellManagment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9443342943463F0095338F /* UICollectionView+cellManagment.swift */; };
 		DE944337294346900095338F /* UICollectioViewCell+Identefier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE944336294346900095338F /* UICollectioViewCell+Identefier.swift */; };
-		DEBAA92D294E1E0000B64646 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEBAA92C294E1E0000B64646 /* View.xib */; };
 		DEC854B3293C944900A8660E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC854B2293C944900A8660E /* NetworkService.swift */; };
 		DEC854B9293CFC4700A8660E /* ProductProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC854B8293CFC4700A8660E /* ProductProtocol.swift */; };
 		DEC854BB293CFC8100A8660E /* CartProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC854BA293CFC8100A8660E /* CartProduct.swift */; };
@@ -90,7 +89,6 @@
 		DE8B1381294A05900004CDBB /* CustomCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewHeader.swift; sourceTree = "<group>"; };
 		DE9443342943463F0095338F /* UICollectionView+cellManagment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+cellManagment.swift"; sourceTree = "<group>"; };
 		DE944336294346900095338F /* UICollectioViewCell+Identefier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectioViewCell+Identefier.swift"; sourceTree = "<group>"; };
-		DEBAA92C294E1E0000B64646 /* View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 		DEC854B2293C944900A8660E /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		DEC854B8293CFC4700A8660E /* ProductProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductProtocol.swift; sourceTree = "<group>"; };
 		DEC854BA293CFC8100A8660E /* CartProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartProduct.swift; sourceTree = "<group>"; };
@@ -140,8 +138,8 @@
 			children = (
 				DE2681B3293BDA6D00F1B5FC /* AppDelegate.swift */,
 				DE2681B5293BDA6D00F1B5FC /* SceneDelegate.swift */,
-				DECB242729423BC5000A389D /* Extensions */,
 				DEC854B1293C943300A8660E /* Services */,
+				DECB242729423BC5000A389D /* Extensions */,
 				DE4090C62940E3FF00C66086 /* Coordinators */,
 				DE2681D9293BF9C600F1B5FC /* Model */,
 				DEF19E16293C9A890080EA00 /* MainFlowFactory.swift */,
@@ -276,7 +274,6 @@
 				DE4A4D6D29467A1C005FD701 /* MainCollectionViewController.swift */,
 				DED556AC2947B81A00C940BD /* MainCompositionalLayout.swift */,
 				DEF19E2B293E4D590080EA00 /* Cells */,
-				DEBAA92C294E1E0000B64646 /* View.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -356,7 +353,6 @@
 				DE0511672944EE02004B7DB3 /* MARKPRO-BLACK.OTF in Resources */,
 				DE2681C0293BDA7000F1B5FC /* LaunchScreen.storyboard in Resources */,
 				DE2681BD293BDA7000F1B5FC /* Assets.xcassets in Resources */,
-				DEBAA92D294E1E0000B64646 /* View.xib in Resources */,
 				DE0511652944EE02004B7DB3 /* MARKPRO-HEAVY.OTF in Resources */,
 				DE0511692944EE02004B7DB3 /* MARKPRO-BOLD.OTF in Resources */,
 				DE0511682944EE02004B7DB3 /* MARKPRO-MEDIUM.OTF in Resources */,
