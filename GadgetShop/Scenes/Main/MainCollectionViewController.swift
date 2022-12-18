@@ -18,12 +18,12 @@ class MainCollectionViewController: UICollectionViewController {
         (image: UIImage(.accessories), title: "Else")]
     private var selectedCategoryIndex: IndexPath?
 
-    enum Sections: CaseIterable {
-        case header
-        case categories
-        case searching
-        case homeStore
-        case bestSeller
+    enum Sections: Int, CaseIterable {
+        case header = 0
+        case categories = 1
+        case searching = 2
+        case homeStore = 3
+        case bestSeller = 4
     }
     
     init(viewModel: MainViewModelProtocol) {
@@ -41,10 +41,18 @@ class MainCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         configureCollectionView()
         viewModel.viewLoaded()
-        viewModel.updateData = {
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
+        subscribeForViewModelUpdating()
+    }
+    
+    private func subscribeForViewModelUpdating() {
+        viewModel.updateData = { [unowned self] in
+            self.collectionView.reloadData()
+        }
+        viewModel.updateHomeStoreForIndex = { [unowned self] index in
+            self.collectionView.reloadItems(at: [IndexPath(item: index, section: Sections.homeStore.rawValue)])
+        }
+        viewModel.updateBestSellerForIndex = { [unowned self] index in
+            self.collectionView.reloadItems(at: [IndexPath(item: index, section: Sections.bestSeller.rawValue)])
         }
     }
     

@@ -81,6 +81,8 @@ class HomeStoreCollectionViewCell: UICollectionViewCell {
         productID = product.id
         brandLabel.text = product.title
         descriptionLabel.text = product.subtitle
+        guard let imageData = product.imageData else { return }
+        imageView.image = UIImage(data: imageData)
     }
     
     //  MARK: - Actions

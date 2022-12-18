@@ -9,6 +9,8 @@ import Foundation
 
 protocol MainViewModelProtocol {
     var updateData: (() -> ())? { get set }
+    var updateHomeStoreForIndex: ((Int) -> ())? { get set }
+    var updateBestSellerForIndex: ((Int) -> ())? { get set }
     var productList: ProductList? { get set }
     init(networkService: NetwokrServiceProtocol, coordinator: MainFlowCoordinatorProtocol)
     func viewLoaded()
@@ -22,6 +24,8 @@ protocol MainViewModelProtocol {
 final class MainViewModel: MainViewModelProtocol {
     
     var updateData: (() -> ())?
+    var updateHomeStoreForIndex: ((Int) -> ())?
+    var updateBestSellerForIndex: ((Int) -> ())?
     var productList: ProductList? {
         didSet {
             updateData?()
@@ -29,6 +33,7 @@ final class MainViewModel: MainViewModelProtocol {
     }
     var networkService: NetwokrServiceProtocol
     var coordinator: MainFlowCoordinatorProtocol
+    var productCache: NSCache<AnyObject, AnyObject>?
     
     init(networkService: NetwokrServiceProtocol, coordinator: MainFlowCoordinatorProtocol) {
         self.networkService = networkService
@@ -36,6 +41,10 @@ final class MainViewModel: MainViewModelProtocol {
     }
     
     func viewLoaded() {
+        loadProducts()
+    }
+    
+    private func loadProducts() {
         networkService.getProductList { productList, errors in
             if let errors = errors {
                 switch errors {
@@ -50,6 +59,24 @@ final class MainViewModel: MainViewModelProtocol {
                 }
             }
             self.productList = productList
+            self.loadImagesForProducts()
+        }
+    }
+    
+    private func loadImagesForProducts() {
+        guard let homeStore = productList?.homeStore else { return }
+        for (index, product) in homeStore.enumerated() {
+            networkService.getImageFor(urlString: product.picture) { imageData, errors in
+                product.imageData = imageData
+                self.updateHomeStoreForIndex?(index)
+            }
+        }
+        guard let bestSellers = productList?.bestSeller else { return }
+        for (index, product) in bestSellers.enumerated() {
+            networkService.getImageFor(urlString: product.picture) { imageData, errors in
+                product.imageData = imageData
+                self.updateBestSellerForIndex?(index)
+            }
         }
     }
     

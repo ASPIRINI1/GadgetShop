@@ -11,6 +11,7 @@ protocol NetwokrServiceProtocol: AnyObject {
     func getProductList(completion: @escaping(ProductList?, NetworkErrors?) -> ())
     func getProductDetail(completion: @escaping(DetailProduct?, NetworkErrors?) -> ())
     func getCart(completion: @escaping(Cart?, NetworkErrors?) -> ())
+    func getImageFor(urlString: String, completion: @escaping (Data?, NetworkErrors?) -> ())
 }
 
 enum NetworkErrors: Error {
@@ -23,7 +24,6 @@ enum NetworkErrors: Error {
 final class NetwokrService: NetwokrServiceProtocol {
     
     static let shared = NetwokrService()
-    
     private enum Paths: String {
         case productList = "https://run.mocky.io/v3/654bd15e-b121-49ba-a588-960956b15175"
         case productDetail = "https://run.mocky.io/v3/6c14c560-15c6-4248-b9d2-b4508df7d4f5"
@@ -57,16 +57,22 @@ final class NetwokrService: NetwokrServiceProtocol {
         guard let url = Paths.productList.url else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = self.connectionHandle(response: response, error: error) {
-                completion(nil, error)
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
                 return
             }
             guard let data = data else { return }
             do {
                 let result = try JSONDecoder().decode(ProductList.self, from: data)
-                completion(result, nil)
+                DispatchQueue.main.async {
+                    completion(result, nil)
+                }
             } catch {
                 print(error)
-                completion(nil, NetworkErrors.dataParsingError(error: error))
+                DispatchQueue.main.async {
+                    completion(nil, NetworkErrors.dataParsingError(error: error))
+                }
             }
         }.resume()
     }
@@ -75,16 +81,22 @@ final class NetwokrService: NetwokrServiceProtocol {
         guard let url = Paths.productDetail.url else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = self.connectionHandle(response: response, error: error) {
-                completion(nil, error)
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
                 return
             }
             guard let data = data else { return }
             do {
                 let result = try JSONDecoder().decode(DetailProduct.self, from: data)
-                completion(result, nil)
+                DispatchQueue.main.async {
+                    completion(result, nil)
+                }
             } catch {
                 print(error)
-                completion(nil, NetworkErrors.dataParsingError(error: error))
+                DispatchQueue.main.async {
+                    completion(nil, NetworkErrors.dataParsingError(error: error))
+                }
             }
         }.resume()
     }
@@ -103,6 +115,21 @@ final class NetwokrService: NetwokrServiceProtocol {
             } catch {
                 print(error)
                 completion(nil, NetworkErrors.dataParsingError(error: error))
+            }
+        }.resume()
+    }
+    
+    func getImageFor(urlString: String, completion: @escaping (Data?, NetworkErrors?) -> ()) {
+        guard let url = URL(string: urlString) else { return }
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = self.connectionHandle(response: response, error: error) {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            DispatchQueue.main.async {
+                completion(data, nil)
             }
         }.resume()
     }

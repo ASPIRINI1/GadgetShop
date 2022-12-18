@@ -47,11 +47,11 @@ class BestSellerProductCollectionViewCell: UICollectionViewCell {
         button.layer.shadowOpacity = 0.1
         button.layer.shadowOffset = CGSize.zero
         button.layer.shadowRadius = 10
-        let image = UIImage(.orangeCircle)?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        let image = UIImage(systemName: "circle.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal)
         button.setBackgroundImage(image, for: .normal)
         button.setImage(UIImage(systemName: "heart"), for: .normal)
         button.setImage(UIImage(systemName: "heart.fill"), for: .selected)
-        button.setTitleColor(.CustomColor.orange.uiColor, for: .selected)
+        button.tintColor = UIColor.CustomColor.orange.uiColor
         button.addTarget(self, action: #selector(addToFavorietsAction), for: .touchUpInside)
         return button
     }()
@@ -87,6 +87,8 @@ class BestSellerProductCollectionViewCell: UICollectionViewCell {
                                                     NSAttributedString.Key.strikethroughStyle : NSUnderlineStyle.single.rawValue,
                                                     NSAttributedString.Key.foregroundColor : UIColor.systemGray3])
         discountPriceLabel.attributedText = title
+        guard let imageData = product.imageData else { return }
+        imageView.image = UIImage(data: imageData)
     }
     
     // MARK: - Actions

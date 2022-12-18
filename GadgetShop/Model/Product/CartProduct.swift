@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CartProduct: ProductProtocol {
+class CartProduct: ProductProtocol {
     let id: Int
     var title: String
     var price: Int

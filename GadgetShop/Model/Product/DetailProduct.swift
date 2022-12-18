@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DetailProduct: ProductProtocol {
+class DetailProduct: ProductProtocol {
     let id: Int
     var title: String
     var price: Int
@@ -29,7 +29,7 @@ struct DetailProduct: ProductProtocol {
         case id, title, price, CPU, camera, capacity, color, images, rating, sd, ssd, isFavorites
     }
     
-    init(from decoder: Decoder) throws {
+    required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self) 
         guard let id = Int(try container.decode(String.self, forKey: .id)) else { throw Errors.idParsingError }
         self.id = id
