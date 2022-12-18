@@ -69,6 +69,7 @@ class HomeStoreCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         layer.cornerRadius = 10
+        clipsToBounds = true
         addSubview(imageView)
         addSubview(labelStackView)
         addSubview(buyButton)
@@ -104,10 +105,10 @@ class HomeStoreCollectionViewCell: UICollectionViewCell {
         labelStackView.leftAnchor.constraint(equalTo: buyButton.leftAnchor).isActive = true
         labelStackView.widthAnchor.constraint(equalTo: buyButton.widthAnchor).isActive = true
             
-        buyButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
+        buyButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -25).isActive = true
         buyButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
         buyButton.heightAnchor.constraint(equalToConstant: 31).isActive = true
-        buyButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        buyButton.widthAnchor.constraint(equalTo: labelStackView.widthAnchor).isActive = true
         
         imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         imageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true

@@ -42,6 +42,7 @@ class BestSellerProductCollectionViewCell: UICollectionViewCell {
     }()
     private lazy var addToFavoritesButton = {
         let button = UIButton()
+        button.setPreferredSymbolConfiguration(.init(scale: .small), forImageIn: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = button.frame.width / 2
         button.layer.shadowOpacity = 0.1
@@ -68,6 +69,7 @@ class BestSellerProductCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         backgroundColor = .white
         layer.cornerRadius = 10
+        clipsToBounds = true
         addSubview(imageView)
         addSubview(addToFavoritesButton)
         addSubview(priceWithoutDiscountLabel)
