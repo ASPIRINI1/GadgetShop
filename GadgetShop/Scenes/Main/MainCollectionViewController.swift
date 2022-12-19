@@ -28,7 +28,7 @@ class MainCollectionViewController: UICollectionViewController {
     
     init(viewModel: MainViewModelProtocol) {
         self.viewModel = viewModel
-        super.init(collectionViewLayout: MainCompositionalLayout().setup())
+        super.init(collectionViewLayout: MainCompositionalLayout())
     }
     
     required init?(coder: NSCoder) {
