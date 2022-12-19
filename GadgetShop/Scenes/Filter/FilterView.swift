@@ -22,7 +22,6 @@ class FilterView: UIView {
         right.addAction(doneButtonAction, for: .touchUpInside)
         let view = HeaderView(leftButton: left, title: "Filter options", rightButton: right)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .clear
         return view
     }()
     private lazy var tableView = {

@@ -21,7 +21,7 @@ class FilterViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         if let presentationController = self.presentationController as? UISheetPresentationController {
-            presentationController.detents = [.medium()] /// change to [.medium(), .large()] for a half *and* full screen sheet
+            presentationController.detents = [.medium()]
         }
     }
     
