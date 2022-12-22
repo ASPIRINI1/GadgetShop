@@ -10,6 +10,8 @@ import UIKit
 class DetailViewController: UIViewController {
     
     private var viewModel: DetailViewModelProtocol
+    private var customView = DetailView()
+    private lazy var presentingController = DetailPresentingController()
     
     init(viewModel: DetailViewModelProtocol) {
         self.viewModel = viewModel
@@ -18,6 +20,13 @@ class DetailViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func loadView() {
+        super.loadView()
+        present(presentingController, animated: false)
+        customView.backgroundColor = .systemBackground
+        view = customView
     }
     
     override func viewDidLoad() {

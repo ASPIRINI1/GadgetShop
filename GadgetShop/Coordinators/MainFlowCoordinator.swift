@@ -39,7 +39,7 @@ class MainFlowCoordinator: MainFlowCoordinatorProtocol {
     }
     
     func pushToDetail(productID: Int) {
-        navigationController.pushViewController(flowFactory.makeDetail(self), animated: true)
+        navigationController.pushViewController(flowFactory.makeDetail(self, productID: productID), animated: true)
     }
     
     func presentFilter(delegate: FilterViewModelDelegate?) {

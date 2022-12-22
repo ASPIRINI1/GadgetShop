@@ -10,7 +10,7 @@ import UIKit
 protocol MainFlowFactoryProtocol {
     func makeProductList(_ coordinator: MainFlowCoordinatorProtocol) -> UIViewController
     func makeCart(_ coordinator: MainFlowCoordinatorProtocol) -> UIViewController
-    func makeDetail(_ coordinator: MainFlowCoordinatorProtocol) -> UIViewController
+    func makeDetail(_ coordinator: MainFlowCoordinatorProtocol, productID: Int) -> UIViewController
     func makeFilter(_ coordinator: MainFlowCoordinatorProtocol, delegate: FilterViewModelDelegate?)  -> UIViewController
 }
 
@@ -27,8 +27,9 @@ final class MainFlowFactory: MainFlowFactoryProtocol {
         return UIViewController()
     }
     
-    func makeDetail(_ coordinator: MainFlowCoordinatorProtocol) -> UIViewController {
-        return UIViewController()
+    func makeDetail(_ coordinator: MainFlowCoordinatorProtocol, productID: Int) -> UIViewController {
+        let viewModel = DetailViewModel(networkService: netwokrService, coordinator: coordinator, productID: productID)
+        return DetailViewController(viewModel: viewModel)
     }
     
     func makeFilter(_ coordinator: MainFlowCoordinatorProtocol, delegate: FilterViewModelDelegate?)  -> UIViewController {

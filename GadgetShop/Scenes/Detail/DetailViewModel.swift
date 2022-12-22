@@ -28,6 +28,11 @@ final class DetailViewModel: DetailViewModelProtocol {
     init(networkService: NetwokrServiceProtocol, coordinator: MainFlowCoordinatorProtocol, productID: Int) {
         self.networkService = networkService
         self.coordinator = coordinator
+        loadProductWith(productID)
+    }
+    
+    private func loadProductWith(_ id: Int) {
+        
     }
     
     func viewLoaded() {

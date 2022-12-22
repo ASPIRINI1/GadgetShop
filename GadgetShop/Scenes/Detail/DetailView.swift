@@ -27,9 +27,4 @@ class DetailView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    private lazy var presentingView = {
-        let view = DetailPresentingView()
-        return view
-    }
-    
 }
