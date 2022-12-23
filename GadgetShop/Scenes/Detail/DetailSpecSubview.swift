@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailPresentingView: UIView {
+class DetailSpecSubview: UIView {
     
     private lazy var productNameLabel = {
         let label = UILabel()
@@ -44,8 +44,9 @@ class DetailPresentingView: UIView {
         layout.scrollDirection = .horizontal
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.register(SpecsCollectionViewCell.self)
         view.backgroundColor = .clear
+        view.register(SpecsCollectionViewCell.self)
+        view.tag = DetailViewController.CollectionViews.detail.rawValue
         return view
     }()
     private lazy var buyButton = {
