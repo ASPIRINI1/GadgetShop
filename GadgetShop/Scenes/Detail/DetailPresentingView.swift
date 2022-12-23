@@ -12,15 +12,16 @@ class DetailPresentingView: UIView {
     private lazy var productNameLabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: .markPro, size: 20)
         return label
     }()
     private lazy var raitingStackView = {
-        let imageView = UIImageView(image:UIImage(systemName: "star"))
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
-        for i in 0...5 {
-            view.addArrangedSubview(imageView)
+        view.tintColor = .systemYellow
+        for i in 0...4 {
+            view.addArrangedSubview(UIImageView(image:UIImage(systemName: "star")))
         }
         return view
     }()
@@ -35,6 +36,7 @@ class DetailPresentingView: UIView {
         let control = UISegmentedControl(items: ["Shop", "Details", "Features"])
         control.translatesAutoresizingMaskIntoConstraints = false
         control.selectedSegmentIndex = 0
+        control.selectedSegmentTintColor = UIColor.CustomColor.orange.uiColor
         return control
     }()
     private lazy var specsCollection = {
@@ -43,13 +45,15 @@ class DetailPresentingView: UIView {
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.register(SpecsCollectionViewCell.self)
+        view.backgroundColor = .clear
         return view
     }()
     private lazy var buyButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .blue
+        button.backgroundColor = UIColor.CustomColor.orange.uiColor
         button.layer.cornerRadius = 10
+        button.setTitleColor(.white, for: .normal)
         return button
     }()
     weak var dataSource: UICollectionViewDataSource? {
@@ -63,9 +67,17 @@ class DetailPresentingView: UIView {
         }
     }
     
+    private enum RaitingStars: String {
+        case star = "star"
+        case halfFilledStar = "star.leadinghalf.filled"
+        case filledStar = "star.fill"
+    }
+    
+    //  MARK: - View setup
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        productNameLabel.text = "text sample"
+        layer.cornerRadius = 20
         addSubview(productNameLabel)
         addSubview(raitingStackView)
         addSubview(addToFavorietsButton)
@@ -77,6 +89,33 @@ class DetailPresentingView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //  MARK: - Public funcs
+    
+    func fill(product: DetailProduct) {
+        productNameLabel.text = product.title
+        addToFavorietsButton.isSelected = product.isFavorites
+    }
+    
+    func fill(title: String, isFavoriets: Bool, raiting: Float, price: Int) {
+        productNameLabel.text = title
+        addToFavorietsButton.isSelected = isFavoriets
+        buyButton.setTitle(String(price), for: .normal)
+        for (index, item) in raitingStackView.arrangedSubviews.enumerated() {
+            guard let item = item as? UIImageView else { break }
+            if Float(index + 1) > raiting {
+                if Float(index + 1) - raiting < 0.7 {
+                    item.image = UIImage(systemName: RaitingStars.halfFilledStar.rawValue)
+                } else {
+                    item.image = UIImage(systemName: RaitingStars.star.rawValue)
+                }
+                continue
+            }
+            item.image = UIImage(systemName: RaitingStars.filledStar.rawValue)
+        }
+    }
+    
+    //  MARK: - Layout
     
     override func updateConstraints() {
         super.updateConstraints()

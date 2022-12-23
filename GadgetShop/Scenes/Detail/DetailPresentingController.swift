@@ -37,7 +37,7 @@ class DetailPresentingController: UIViewController {
         super.loadView()
         customView.dataSource = self
         customView.delegate = self
-        customView.backgroundColor = .orange
+        customView.fill(title: "title", isFavoriets: false, raiting: 4.5, price: 3000)
         self.view = customView
     }
     
