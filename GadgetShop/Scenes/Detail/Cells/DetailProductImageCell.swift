@@ -12,6 +12,9 @@ class DetailProductImageCell: UICollectionViewCell {
     private lazy var imageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
+        view.backgroundColor = .clear
+        view.layer.cornerRadius = 20
         return view
     }()
     
@@ -19,6 +22,10 @@ class DetailProductImageCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .lightGray
+        layer.cornerRadius = 20
+        layer.shadowRadius = 10
+        layer.shadowOpacity = 0.1
         addSubview(imageView)
     }
     

@@ -26,7 +26,8 @@ class DetailView: UIView {
     private lazy var imageCollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.sectionInset = .init(top: 20, left: 20, bottom: 20, right: 20)
+        layout.sectionInset = .init(top: 0, left: 40, bottom: 0, right: 40)
+        layout.minimumLineSpacing = 30
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.isPagingEnabled = true
@@ -84,8 +85,8 @@ class DetailView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         let imageCollectionViewLayout = imageCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
-        imageCollectionViewLayout?.itemSize = CGSize(width: imageCollectionView.frame.width * 0.8,
-                             height: imageCollectionView.frame.height * 0.8)
+        imageCollectionViewLayout?.itemSize = CGSize(width: imageCollectionView.frame.width * 0.75,
+                             height: imageCollectionView.frame.height * 0.9)
     }
     
     override func updateConstraints() {
