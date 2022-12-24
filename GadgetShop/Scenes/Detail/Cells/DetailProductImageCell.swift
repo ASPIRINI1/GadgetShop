@@ -8,12 +8,14 @@
 import UIKit
 
 class DetailProductImageCell: UICollectionViewCell {
+    
     private lazy var imageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
-//        view.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin, .flexibleHeight, .flexibleWidth]
         return view
     }()
+    
+    //  MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,10 +26,16 @@ class DetailProductImageCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func fill(image: UIImage?) {
+    //  MARK: - Public funcs
+    
+    func fill(_ imageData: Data?) {
+        guard let imageData = imageData else { return }
+        guard let image = UIImage(data: imageData) else { return }
         imageView.image = image
         setNeedsUpdateConstraints()
     }
+    
+    //  MARK: - Layout
     
     override func updateConstraints() {
         super.updateConstraints()

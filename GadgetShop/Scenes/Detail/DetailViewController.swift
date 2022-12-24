@@ -30,6 +30,8 @@ class DetailViewController: UIViewController {
         }
     }
     
+    //  MARK: - Init
+    
     init(viewModel: DetailViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -38,6 +40,8 @@ class DetailViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Lifecycle
     
     override func loadView() {
         super.loadView()
@@ -56,22 +60,32 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         viewModel.viewLoaded()
         viewModel.updateData = { [unowned self] in
-            
+            customView.reloadData()
         }
     }
 }
 
-// MARK: UICollectionViewDataSource
+// MARK: - UICollectionViewDataSource
 
 extension DetailViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         let collectionType = CollectionViews.allCases[collectionView.tag]
-        print(collectionType.sections.count)
         return collectionType.sections.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        let collectionType = CollectionViews.allCases[collectionView.tag]
+        let section = collectionType.sections[section]
+        switch section {
+        case .image:
+            return viewModel.product?.images.count ?? 0
+        case .specs:
+            return 4
+        case .color:
+            return viewModel.product?.color.count ?? 0
+        case .capasity:
+            return viewModel.product?.capacity.count ?? 0
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -80,8 +94,7 @@ extension DetailViewController: UICollectionViewDataSource {
         switch section {
         case .image:
             let cell = collectionView.dequeue(DetailProductImageCell.self, indexPath)
-            cell.fill(image: UIImage(systemName: "star"))
-            cell.backgroundColor = .orange
+            cell.fill(viewModel.product?.imagesData?[indexPath.item])
             return cell
         case .specs:
             let cell = collectionView.dequeue(SpecsCollectionViewCell.self, indexPath)
@@ -96,11 +109,10 @@ extension DetailViewController: UICollectionViewDataSource {
             cell.backgroundColor = .blue
             return cell
         }
-//        return UICollectionViewCell()
     }
 }
 
-// MARK: UICollectionViewDelegate
+// MARK: - UICollectionViewDelegate
 
 extension DetailViewController: UICollectionViewDelegate {
     

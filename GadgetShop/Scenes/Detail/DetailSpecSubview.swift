@@ -74,7 +74,7 @@ class DetailSpecSubview: UIView {
         case filledStar = "star.fill"
     }
     
-    //  MARK: - View setup
+    //  MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -114,6 +114,10 @@ class DetailSpecSubview: UIView {
             }
             item.image = UIImage(systemName: RaitingStars.filledStar.rawValue)
         }
+    }
+    
+    func reloadData() {
+        specsCollection.reloadData()
     }
     
     //  MARK: - Layout

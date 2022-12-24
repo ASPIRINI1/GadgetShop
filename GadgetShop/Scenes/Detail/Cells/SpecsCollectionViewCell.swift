@@ -23,6 +23,8 @@ class SpecsCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
+    //  MARK: - Init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(stackView)
@@ -32,10 +34,14 @@ class SpecsCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //  MARK: - Public funcs
+    
     func fill(image: UIImage?, title: String) {
         imageView.image = image
         titleLabel.text = title
     }
+    
+    //  MARK: - Layout
     
     override func updateConstraints() {
         super.updateConstraints()
