@@ -78,7 +78,10 @@ class DetailSpecSubview: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .systemBackground
         layer.cornerRadius = 20
+        layer.shadowRadius = 20
+        layer.shadowOpacity = 0.1
         addSubview(productNameLabel)
         addSubview(raitingStackView)
         addSubview(addToFavorietsButton)

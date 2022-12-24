@@ -26,6 +26,7 @@ class DetailProductImageCell: UICollectionViewCell {
         layer.cornerRadius = 20
         layer.shadowRadius = 10
         layer.shadowOpacity = 0.1
+        layer.shadowOffset = CGSize(width: 0, height: 10)
         addSubview(imageView)
     }
     

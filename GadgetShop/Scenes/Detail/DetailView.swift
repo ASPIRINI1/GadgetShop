@@ -32,6 +32,7 @@ class DetailView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.isPagingEnabled = true
         view.showsHorizontalScrollIndicator = false
+        view.backgroundColor = .clear
         view.register(DetailProductImageCell.self)
         view.tag = DetailViewController.CollectionViews.image.rawValue
         return view
@@ -59,7 +60,7 @@ class DetailView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .systemBackground
+        backgroundColor = .systemBackground.withAlphaComponent(0.98)
         addSubview(headerView)
         addSubview(imageCollectionView)
         addSubview(specsSubview)
