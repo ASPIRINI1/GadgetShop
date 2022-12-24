@@ -11,7 +11,11 @@ class HeaderView: UIStackView {
 
     private var leftButton = UIButton()
     private var rightButton = UIButton()
-    private var titleLabel = UILabel()
+    private var titleLabel = {
+        let label = UILabel()
+        label.font = UIFont(name: .markProMedium, size: 17)
+        return label
+    }()
     
     init(leftButton: UIButton?, title: String?, rightButton: UIButton?) {
         super.init(frame: .zero)

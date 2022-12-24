@@ -11,14 +11,15 @@ class DetailView: UIView {
 
     private lazy var headerView = {
         let leftButton = RoundedButton(frame: .box,
-                                       image: UIImage(systemName: ""),
+                                       image: UIImage(systemName: "chevron.left"),
                                        title: nil,
                                        color: UIColor.CustomColor.pink.uiColor)
         let rightButton = RoundedButton(frame: .box,
-                                        image: UIImage(systemName: ""),
+                                        image: UIImage(systemName: "bag"),
                                         title: nil,
                                         color: UIColor.CustomColor.orange.uiColor)
         let view = HeaderView(leftButton: leftButton, title: "Product Details", rightButton: rightButton)
+        
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -90,8 +91,8 @@ class DetailView: UIView {
     override func updateConstraints() {
         super.updateConstraints()
         headerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
-        headerView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        headerView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        headerView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
+        headerView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
         
         imageCollectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor).isActive = true
         imageCollectionView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
