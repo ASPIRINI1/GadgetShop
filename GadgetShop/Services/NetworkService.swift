@@ -9,9 +9,10 @@ import Foundation
 
 protocol NetwokrServiceProtocol: AnyObject {
     func getProductList(completion: @escaping(ProductList?, NetworkErrors?) -> ())
-    func getProductDetail(completion: @escaping(DetailProduct?, NetworkErrors?) -> ())
+    func getProductDetailFor(id: Int, completion: @escaping(DetailProduct?, NetworkErrors?) -> ())
     func getCart(completion: @escaping(Cart?, NetworkErrors?) -> ())
     func getImageFor(urlString: String, completion: @escaping (Data?, NetworkErrors?) -> ())
+    func getImageFor(urlString: [String], completion: @escaping ([Data?]?, NetworkErrors?) -> ())
 }
 
 enum NetworkErrors: Error {
@@ -77,7 +78,7 @@ final class NetwokrService: NetwokrServiceProtocol {
         }.resume()
     }
 
-    func getProductDetail(completion: @escaping(DetailProduct?, NetworkErrors?) -> ()) {
+    func getProductDetailFor(id: Int, completion: @escaping(DetailProduct?, NetworkErrors?) -> ()) {
         guard let url = Paths.productDetail.url else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = self.connectionHandle(response: response, error: error) {
@@ -132,5 +133,26 @@ final class NetwokrService: NetwokrServiceProtocol {
                 completion(data, nil)
             }
         }.resume()
+    }
+    
+    func getImageFor(urlString: [String], completion: @escaping ([Data?]?, NetworkErrors?) -> ()) {
+        let loadingGroup = DispatchGroup()
+        var images: [Data?]? = []
+        var errorr: NetworkErrors?
+        for urlPath in urlString {
+            guard let url = URL(string: urlPath) else { return }
+            loadingGroup.enter()
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                if let error = self.connectionHandle(response: response, error: error) {
+                    errorr = error
+                    loadingGroup.leave()
+                }
+                images?.append(data)
+                loadingGroup.leave()
+            }.resume()
+        }
+        loadingGroup.notify(queue: .main) {
+            completion(images, errorr)
+        }
     }
 }
