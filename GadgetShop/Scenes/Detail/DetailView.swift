@@ -25,8 +25,11 @@ class DetailView: UIView {
     private lazy var imageCollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
+        layout.sectionInset = .init(top: 20, left: 20, bottom: 20, right: 20)
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.isPagingEnabled = true
+        view.showsHorizontalScrollIndicator = false
         view.register(DetailProductImageCell.self)
         view.tag = DetailViewController.CollectionViews.image.rawValue
         return view
@@ -64,6 +67,18 @@ class DetailView: UIView {
     
     func fill(title: String, isFavoriets: Bool, raiting: Float, price: Int) {
         specsSubview.fill(title: title, isFavoriets: isFavoriets, raiting: raiting, price: price)
+    }
+    
+    func reloadData() {
+        imageCollectionView.reloadData()
+        specsSubview.reloadData()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let imageCollectionViewLayout = imageCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
+        imageCollectionViewLayout?.itemSize = CGSize(width: imageCollectionView.frame.width * 0.8,
+                             height: imageCollectionView.frame.height * 0.8)
     }
     
     override func updateConstraints() {

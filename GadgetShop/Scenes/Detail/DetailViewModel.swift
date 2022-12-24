@@ -32,7 +32,18 @@ final class DetailViewModel: DetailViewModelProtocol {
     }
     
     private func loadProductWith(_ id: Int) {
-        
+        networkService.getProductDetailFor(id: id) { product, error in
+            self.product = product
+            self.loadProductImage()
+        }
+    }
+    
+    private func loadProductImage() {
+        guard let product = product else { return }
+        networkService.getImageFor(urlString: product.images) { data, error in
+            self.product?.imagesData = data
+            self.updateData?()
+        }
     }
     
     func viewLoaded() {

@@ -116,6 +116,10 @@ class DetailSpecSubview: UIView {
         }
     }
     
+    func reloadData() {
+        specsCollection.reloadData()
+    }
+    
     //  MARK: - Layout
     
     override func updateConstraints() {

@@ -24,7 +24,9 @@ class DetailProductImageCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func fill(image: UIImage?) {
+    func fill(_ imageData: Data?) {
+        guard let imageData = imageData else { return }
+        guard let image = UIImage(data: imageData) else { return }
         imageView.image = image
         setNeedsUpdateConstraints()
     }

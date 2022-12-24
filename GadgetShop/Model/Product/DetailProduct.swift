@@ -20,6 +20,7 @@ class DetailProduct: ProductProtocol {
     var sd: String
     var ssd: String
     var isFavorites: Bool
+    var imagesData: [Data?]?
     
     private enum Errors: Error {
         case idParsingError
