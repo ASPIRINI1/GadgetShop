@@ -46,6 +46,7 @@ class DetailSpecSubview: UIView {
         view.backgroundColor = .clear
         view.register(SpecsCollectionViewCell.self)
         view.register(DetailColorCell.self)
+        view.register(CapasityCollectionViewCell.self)
         view.register(DetailCollectionHeaderView.self, forSupplementaryViewOfKind: .header)
         view.tag = DetailViewController.CollectionViews.detail.rawValue
         return view

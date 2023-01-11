@@ -118,8 +118,8 @@ extension DetailViewController: UICollectionViewDataSource {
             cell.fill(hexColor: viewModel.product?.color[indexPath.row])
             return cell
         case .capasity:
-            let cell = collectionView.dequeue(SpecsCollectionViewCell.self, indexPath)
-            cell.backgroundColor = .blue
+            let cell = collectionView.dequeue(CapasityCollectionViewCell.self, indexPath)
+            cell.fill(title: viewModel.product?.capacity[indexPath.item])
             return cell
         }
     }
