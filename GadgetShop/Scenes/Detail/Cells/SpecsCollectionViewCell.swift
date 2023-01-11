@@ -11,15 +11,22 @@ class SpecsCollectionViewCell: UICollectionViewCell {
     
     private lazy var imageView = {
         let view = UIImageView()
+        view.tintColor = .systemGray4
+        view.contentMode = .scaleAspectFit
         return view
     }()
     private lazy var titleLabel = {
         let label = UILabel()
+        label.font = UIFont(name: .markPro, size: 12)
+        label.textColor = .systemGray4
+        label.textAlignment = .center
         return label
     }()
     private lazy var stackView = {
         let view = UIStackView(arrangedSubviews: [imageView, titleLabel])
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .vertical
+        view.distribution = .fillEqually
         return view
     }()
     
@@ -45,5 +52,9 @@ class SpecsCollectionViewCell: UICollectionViewCell {
     
     override func updateConstraints() {
         super.updateConstraints()
+        stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        stackView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        stackView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
     }
 }

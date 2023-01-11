@@ -31,21 +31,15 @@ class DetailViewController: UIViewController {
             }
         }
     }
-    
-    enum Specs: CaseIterable {
-        case cpu
-        case camera
-        case ram
-        case rom
+
+    // hardcode
+    var specs: [(image: UIImage?, title: String)]? {
+        guard let product = viewModel.product else { return nil }
+        return [(UIImage(.cpu), product.CPU),
+                (UIImage(.camera), product.camera),
+                (UIImage(.ram), product.sd),
+                (UIImage(.rom), product.ssd)]
     }
-//
-//    lazy var specs: [(image: UIImage?, title: String)]? = {
-//        guard let product = viewModel.product else { return nil }
-//        return [(UIImage(systemName: "star"), product.CPU),
-//        (UIImage(systemName: "star"), product.camera),
-//        (UIImage(systemName: "star"), product.sd),
-//        (UIImage(systemName: "star"), product.ssd)]
-//    }()
     
     //  MARK: - Init
     
@@ -97,7 +91,7 @@ extension DetailViewController: UICollectionViewDataSource {
         case .image:
             return viewModel.product?.images.count ?? 0
         case .specs:
-            return Specs.allCases.count
+            return specs?.count ?? 0
         case .color:
             return viewModel.product?.color.count ?? 0
         case .capasity:
@@ -115,7 +109,9 @@ extension DetailViewController: UICollectionViewDataSource {
             return cell
         case .specs:
             let cell = collectionView.dequeue(SpecsCollectionViewCell.self, indexPath)
-            cell.backgroundColor = .red
+            if let spec = specs?[indexPath.item] {
+                cell.fill(image: spec.image, title: spec.title)
+            }
             return cell
         case .color:
             let cell = collectionView.dequeue(DetailColorCell.self, indexPath)
@@ -160,7 +156,7 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
         case .image:
             return CGSize(width: collectionView.frame.width * 0.75, height: collectionView.frame.height * 0.9)
         case .specs:
-            return CGSize(width: 80, height: 100)
+            return CGSize(width: 80, height: 80)
         case .color:
             return CGSize(width: 50, height: 50)
         case .capasity:
