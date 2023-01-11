@@ -8,7 +8,8 @@
 import UIKit
 
 extension UIImage {
-    enum CustomAssets {
+    
+    enum CustomInterfaceAssets {
         case mapPoint, filler, newMark, book, heart, monitor, phone, accessories, filter
         
         var stringName: String {
@@ -33,9 +34,31 @@ extension UIImage {
                 return "filter"
             }
         }
+
     }
     
-    convenience init?(_ customImage: CustomAssets) {
+    enum CustomCategoriesAssets {
+        case cpu, camera, ram, rom
+        
+        var stringName: String {
+            switch self {
+            case .cpu:
+                return "cpu"
+            case .camera:
+                return "camera"
+            case .ram:
+                return "ram"
+            case .rom:
+                return "memory-card"
+            }
+        }
+    }
+    
+    convenience init?(_ customImage: CustomInterfaceAssets) {
+        self.init(named: customImage.stringName)
+    }
+    
+    convenience init?(_ customImage: CustomCategoriesAssets) {
         self.init(named: customImage.stringName)
     }
 }
