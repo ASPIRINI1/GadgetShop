@@ -19,6 +19,8 @@
 		DE2681B6293BDA6D00F1B5FC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2681B5293BDA6D00F1B5FC /* SceneDelegate.swift */; };
 		DE2681BD293BDA7000F1B5FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE2681BC293BDA7000F1B5FC /* Assets.xcassets */; };
 		DE2681C0293BDA7000F1B5FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE2681BE293BDA7000F1B5FC /* LaunchScreen.storyboard */; };
+		DE335DB529576CCE002B2EAB /* DetailColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE335DB429576CCE002B2EAB /* DetailColorCell.swift */; };
+		DE335DB929577666002B2EAB /* DetailCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE335DB829577666002B2EAB /* DetailCollectionHeaderView.swift */; };
 		DE4007A9294D258A00D5D9E0 /* FilterOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4007A8294D258A00D5D9E0 /* FilterOptions.swift */; };
 		DE4090C02940E2EE00C66086 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4090BF2940E2EE00C66086 /* CoordinatorProtocol.swift */; };
 		DE4090C42940E34200C66086 /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4090C32940E34200C66086 /* MainFlowCoordinator.swift */; };
@@ -74,6 +76,8 @@
 		DE2681CC293BEB2100F1B5FC /* MARKPRO-BLACK.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MARKPRO-BLACK.OTF"; sourceTree = "<group>"; };
 		DE2681CD293BEB2100F1B5FC /* MARKPRO-MEDIUM.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MARKPRO-MEDIUM.OTF"; sourceTree = "<group>"; };
 		DE2681CE293BEB2D00F1B5FC /* Mark Pro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mark Pro.ttf"; sourceTree = "<group>"; };
+		DE335DB429576CCE002B2EAB /* DetailColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailColorCell.swift; sourceTree = "<group>"; };
+		DE335DB829577666002B2EAB /* DetailCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionHeaderView.swift; sourceTree = "<group>"; };
 		DE4007A8294D258A00D5D9E0 /* FilterOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOptions.swift; sourceTree = "<group>"; };
 		DE4090BF2940E2EE00C66086 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		DE4090C32940E34200C66086 /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
@@ -219,6 +223,7 @@
 				DE4090CE2941139A00C66086 /* DetailViewController.swift */,
 				DE1F0C9C2951ED2D00884A6E /* DetailView.swift */,
 				DE1F0C9E2951EEB500884A6E /* DetailSpecSubview.swift */,
+				DE335DB829577666002B2EAB /* DetailCollectionHeaderView.swift */,
 				DECFA4EE2954D2D500380B20 /* Cells */,
 			);
 			path = Detail;
@@ -283,6 +288,7 @@
 			children = (
 				DE4797AA2956254200178EC8 /* DetailProductImageCell.swift */,
 				DECFA4EF2954D30100380B20 /* SpecsCollectionViewCell.swift */,
+				DE335DB429576CCE002B2EAB /* DetailColorCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -388,6 +394,7 @@
 			files = (
 				DE4090C02940E2EE00C66086 /* CoordinatorProtocol.swift in Sources */,
 				DEF19E15293C9A7D0080EA00 /* AppCoordinator.swift in Sources */,
+				DE335DB529576CCE002B2EAB /* DetailColorCell.swift in Sources */,
 				DE7B353B294B624600DA61D8 /* FiltreViewModel.swift in Sources */,
 				DE4565E9294BB81300717351 /* RoundedButton.swift in Sources */,
 				DECB242929423BE9000A389D /* UIColor+Hex.swift in Sources */,
@@ -418,6 +425,7 @@
 				DEC854C6293CFD1400A8660E /* ProductList.swift in Sources */,
 				DE4007A9294D258A00D5D9E0 /* FilterOptions.swift in Sources */,
 				DE7B3541294B757500DA61D8 /* UITableViewCell+Identefier.swift in Sources */,
+				DE335DB929577666002B2EAB /* DetailCollectionHeaderView.swift in Sources */,
 				DE0511642944AF9C004B7DB3 /* UIFont+fontName.swift in Sources */,
 				DEC854C1293CFCCF00A8660E /* DetailProduct.swift in Sources */,
 				DE8B1382294A05900004CDBB /* CustomCollectionViewHeader.swift in Sources */,

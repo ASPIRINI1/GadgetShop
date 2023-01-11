@@ -82,14 +82,7 @@ class DetailView: UIView {
     }
     
     //  MARK: - Layout
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        let imageCollectionViewLayout = imageCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
-        imageCollectionViewLayout?.itemSize = CGSize(width: imageCollectionView.frame.width * 0.75,
-                             height: imageCollectionView.frame.height * 0.9)
-    }
-    
+
     override func updateConstraints() {
         super.updateConstraints()
         headerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true

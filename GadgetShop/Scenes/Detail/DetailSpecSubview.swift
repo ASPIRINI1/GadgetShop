@@ -41,11 +41,12 @@ class DetailSpecSubview: UIView {
     }()
     private lazy var specsCollection = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
         view.register(SpecsCollectionViewCell.self)
+        view.register(DetailColorCell.self)
+        view.register(DetailCollectionHeaderView.self, forSupplementaryViewOfKind: .header)
         view.tag = DetailViewController.CollectionViews.detail.rawValue
         return view
     }()
