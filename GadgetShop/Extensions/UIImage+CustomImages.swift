@@ -8,7 +8,6 @@
 import UIKit
 
 extension UIImage {
-    
     enum CustomInterfaceAssets {
         case mapPoint, filler, newMark, book, heart, monitor, phone, accessories, filter
         
@@ -34,7 +33,6 @@ extension UIImage {
                 return "filter"
             }
         }
-
     }
     
     enum CustomCategoriesAssets {

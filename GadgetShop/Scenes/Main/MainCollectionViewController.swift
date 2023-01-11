@@ -44,6 +44,16 @@ class MainCollectionViewController: UICollectionViewController {
         subscribeForViewModelUpdating()
     }
     
+    private func configureCollectionView() {
+        collectionView.backgroundColor = .systemGray6
+        collectionView.register(CustomCollectionViewHeader.self, forSupplementaryViewOfKind: .header)
+        collectionView.register(CategoryCollectionViewCell.self)
+        collectionView.register(BestSellerProductCollectionViewCell.self)
+        collectionView.register(HomeStoreCollectionViewCell.self)
+        collectionView.register(SearchCollectionViewCell.self)
+        collectionView.register(HeaderCollectionViewCell.self)
+    }
+    
     private func subscribeForViewModelUpdating() {
         viewModel.updateData = { [unowned self] in
             self.collectionView.reloadData()
@@ -54,16 +64,6 @@ class MainCollectionViewController: UICollectionViewController {
         viewModel.updateBestSellerForIndex = { [unowned self] index in
             self.collectionView.reloadItems(at: [IndexPath(item: index, section: Sections.bestSeller.rawValue)])
         }
-    }
-    
-    private func configureCollectionView() {
-        collectionView.backgroundColor = .systemGray6
-        collectionView.register(CustomCollectionViewHeader.self, forSupplementaryViewOfKind: .header)
-        collectionView.register(CategoryCollectionViewCell.self)
-        collectionView.register(BestSellerProductCollectionViewCell.self)
-        collectionView.register(HomeStoreCollectionViewCell.self)
-        collectionView.register(SearchCollectionViewCell.self)
-        collectionView.register(HeaderCollectionViewCell.self)
     }
     
     private func handleCategorySelection(_ collectionView: UICollectionView, _ indexPath: IndexPath) {

@@ -59,7 +59,7 @@ class FilterViewController: UIViewController {
     }
 }
 
-//  MARK: - UITableViewDelegate
+//  MARK: - UITableViewDataSource
 
 extension FilterViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
