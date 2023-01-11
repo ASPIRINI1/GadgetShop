@@ -109,9 +109,8 @@ extension DetailViewController: UICollectionViewDataSource {
             return cell
         case .specs:
             let cell = collectionView.dequeue(SpecsCollectionViewCell.self, indexPath)
-            if let spec = specs?[indexPath.item] {
-                cell.fill(image: spec.image, title: spec.title)
-            }
+            let spec = specs?[indexPath.item]
+            cell.fill(image: spec?.image, title: spec?.title)
             return cell
         case .color:
             let cell = collectionView.dequeue(DetailColorCell.self, indexPath)

@@ -43,7 +43,7 @@ class SpecsCollectionViewCell: UICollectionViewCell {
     
     //  MARK: - Public funcs
     
-    func fill(image: UIImage?, title: String) {
+    func fill(image: UIImage?, title: String?) {
         imageView.image = image
         titleLabel.text = title
     }
