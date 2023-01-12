@@ -9,6 +9,17 @@ import UIKit
 
 class DetailColorCell: UICollectionViewCell {
     
+    private lazy var imageView = {
+        let view = UIImageView()
+        let image = UIImage(systemName: "checkmark")?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        view.image = image
+        view.contentMode = .center
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isHidden = true
+        addSubview(view)
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         layer.cornerRadius = frame.width / 2
@@ -22,5 +33,17 @@ class DetailColorCell: UICollectionViewCell {
         guard let hexColor = hexColor else { return }
         backgroundColor = UIColor(hexColor)
         setNeedsLayout()
+    }
+    
+    func set(selected: Bool) {
+        imageView.isHidden = !selected
+    }
+    
+    override func updateConstraints() {
+        super.updateConstraints()
+        imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        imageView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        imageView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
     }
 }

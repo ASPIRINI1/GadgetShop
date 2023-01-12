@@ -15,7 +15,7 @@ class CapasityCollectionViewCell: UICollectionViewCell {
         label.layer.cornerRadius = 10
         label.clipsToBounds = true
         label.font = UIFont(name: .markProBold, size: 12)
-        label.textColor = .systemGray5
+        label.textColor = .systemGray
         label.textAlignment = .center
         addSubview(label)
         return label
@@ -24,7 +24,6 @@ class CapasityCollectionViewCell: UICollectionViewCell {
     func fill(title: String?) {
         titleLabel.text = title?.appending(" GB")
         setNeedsUpdateConstraints()
-        set(selected: true)
     }
     
     func set(selected: Bool) {
@@ -33,7 +32,7 @@ class CapasityCollectionViewCell: UICollectionViewCell {
             titleLabel.textColor = .white
         } else {
             titleLabel.backgroundColor = .clear
-            titleLabel.textColor = .systemGray5
+            titleLabel.textColor = .systemGray
         }
     }
     

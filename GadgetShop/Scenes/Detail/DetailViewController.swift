@@ -11,6 +11,8 @@ class DetailViewController: UIViewController {
     
     private var viewModel: DetailViewModelProtocol
     private var customView = DetailView()
+    private var selectedColor: IndexPath?
+    private var selectedCapasity: IndexPath?
     
     enum Sections: String, CaseIterable {
         case image, specs
@@ -64,7 +66,11 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        subscribeForViewModelUpdating()
         viewModel.viewLoaded()
+    }
+    
+    private func subscribeForViewModelUpdating() {
         viewModel.updateData = { [unowned self] in
             customView.reloadData()
         }
@@ -110,10 +116,18 @@ extension DetailViewController: UICollectionViewDataSource {
         case .color:
             let cell = collectionView.dequeue(DetailColorCell.self, indexPath)
             cell.fill(hexColor: viewModel.product?.color[indexPath.row])
+            if selectedColor == nil {
+                selectedColor = indexPath
+            }
+            cell.set(selected: selectedColor == indexPath)
             return cell
         case .capasity:
             let cell = collectionView.dequeue(CapasityCollectionViewCell.self, indexPath)
             cell.fill(title: viewModel.product?.capacity[indexPath.item])
+            if selectedCapasity == nil {
+                selectedCapasity = indexPath
+            }
+            cell.set(selected: selectedCapasity == indexPath)
             return cell
         }
     }
@@ -137,14 +151,42 @@ extension DetailViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 
 extension DetailViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let collectionType = CollectionViews.allCases[collectionView.tag]
+        let section = collectionType.sections[indexPath.section]
+        switch section {
+        case .image, .specs:
+            break
+        case .color:
+            if let selectedColor = selectedColor,
+               let cell = collectionView.cellForItem(at: selectedColor) as? DetailColorCell {
+                cell.set(selected: false)
+            }
+            if let cell = collectionView.cellForItem(at: indexPath) as? DetailColorCell {
+                cell.set(selected: true)
+            }
+            selectedColor = indexPath
+            viewModel.colorSelected(colorNumber: indexPath.row)
+        case .capasity:
+            if let selectedCapasity = selectedCapasity,
+               let cell = collectionView.cellForItem(at: selectedCapasity) as? CapasityCollectionViewCell {
+                cell.set(selected: false)
+            }
+            if let cell = collectionView.cellForItem(at: indexPath) as? CapasityCollectionViewCell {
+                cell.set(selected: true)
+            }
+            selectedCapasity = indexPath
+            viewModel.capacitySelected(capacityNumber: indexPath.row)
+        }
+    }
 }
+
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension DetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let collectionType = CollectionViews.allCases[collectionView.tag]
+        let collectionType = DetailViewController.CollectionViews.allCases[collectionView.tag]
         let section = collectionType.sections[indexPath.section]
         switch section {
         case .image:
@@ -159,7 +201,7 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        let collectionType = CollectionViews.allCases[collectionView.tag]
+        let collectionType = DetailViewController.CollectionViews.allCases[collectionView.tag]
         switch collectionType {
         case .image:
             break
@@ -169,3 +211,4 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
         return .zero
     }
 }
+
