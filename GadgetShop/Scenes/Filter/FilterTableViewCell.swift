@@ -16,7 +16,7 @@ class FilterTableViewCell: UITableViewCell {
     private lazy var titleLabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-//        label.font = UIFont(name: .markProMedium, size: 17)
+        label.font = UIFont(name: .markProMedium, size: 17)
         addSubview(label)
         return label
     }()
@@ -26,7 +26,7 @@ class FilterTableViewCell: UITableViewCell {
         view.inputView = pickerView
         view.inputAccessoryView = toolBar
         view.borderStyle = .roundedRect
-//        view.font = UIFont(name: .markPro, size: 14)
+        view.font = UIFont(name: .markPro, size: 14)
         view.addSubview(textFiledImage)
         addSubview(view)
         return view
