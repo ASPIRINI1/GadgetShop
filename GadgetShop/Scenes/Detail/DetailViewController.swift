@@ -58,12 +58,7 @@ class DetailViewController: UIViewController {
         super.loadView()
         customView.dataSource = self
         customView.delegate = self
-        if let product = viewModel.product {
-            customView.fill(title: product.title,
-                            isFavoriets: product.isFavorites,
-                            raiting: product.rating,
-                            price: product.price)
-        }
+        customView.fill(product: viewModel.product)
         view = customView
     }
     

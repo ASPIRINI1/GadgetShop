@@ -98,19 +98,15 @@ class DetailSpecSubview: UIView {
     
     //  MARK: - Public funcs
     
-    func fill(product: DetailProduct) {
+    func fill(product: DetailProduct?) {
+        guard let product = product else { return }
         productNameLabel.text = product.title
         addToFavorietsButton.isSelected = product.isFavorites
-    }
-    
-    func fill(title: String, isFavoriets: Bool, raiting: Float, price: Int) {
-        productNameLabel.text = title
-        addToFavorietsButton.isSelected = isFavoriets
-        buyButton.setTitle(String(price), for: .normal)
+        buyButton.setTitle(String(product.price), for: .normal)
         for (index, item) in raitingStackView.arrangedSubviews.enumerated() {
             guard let item = item as? UIImageView else { break }
-            if Float(index + 1) > raiting {
-                if Float(index + 1) - raiting < 0.7 {
+            if Float(index + 1) > product.rating {
+                if Float(index + 1) - product.rating < 0.7 {
                     item.image = UIImage(systemName: RaitingStars.halfFilledStar.rawValue)
                 } else {
                     item.image = UIImage(systemName: RaitingStars.star.rawValue)

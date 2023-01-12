@@ -72,8 +72,8 @@ class DetailView: UIView {
     
     //  MARK: - Public funcs
     
-    func fill(title: String, isFavoriets: Bool, raiting: Float, price: Int) {
-        specsSubview.fill(title: title, isFavoriets: isFavoriets, raiting: raiting, price: price)
+    func fill(product: DetailProduct?) {
+        specsSubview.fill(product: product)
     }
     
     func reloadData() {
