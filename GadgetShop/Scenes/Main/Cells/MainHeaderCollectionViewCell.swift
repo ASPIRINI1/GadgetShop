@@ -45,7 +45,7 @@ class MainHeaderCollectionViewCell: UICollectionViewCell {
     }()
     weak var delegate: MainHeaderCollectionViewCellDelegate?
     
-    // MARK: - Cell setup
+    // MARK: - Init
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -58,6 +58,8 @@ class MainHeaderCollectionViewCell: UICollectionViewCell {
         addSubview(fllerButtonnButton)
         setNeedsUpdateConstraints()
     }
+    
+    // MARK: - Cell setup
     
     func fill(_ geoButtonTitle: String) {
         guard let font = UIFont(name: .markProBold, size: 17) else { return }
@@ -76,7 +78,7 @@ class MainHeaderCollectionViewCell: UICollectionViewCell {
         self.delegate?.headerCollectionViewCelldidSelectGeoButton(self)
     }
     
-    //  MARK: - Layout
+    // MARK: - Layout
     
     override func updateConstraints() {
         super.updateConstraints()

@@ -17,6 +17,8 @@ class FilterViewController: UIViewController {
         case brand, price, size
     }
     
+    // MARK: - Init
+    
     init(viewModel: FilterViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -29,7 +31,7 @@ class FilterViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //  MARK: - Lyfecycle
+    // MARK: - Lyfecycle
     
     override func loadView() {
         super.loadView()
@@ -39,13 +41,13 @@ class FilterViewController: UIViewController {
         subscribeViewActions()
     }
     
-    //  MARK: - Actions
+    // MARK: - Actions
     
     @objc private func tapGesture(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
     
-    //  MARK: - CustomView actions handling
+    // MARK: - CustomView actions handling
     
     private func subscribeViewActions() {
         customView.doneButtonPressed = { [unowned self] in
@@ -59,7 +61,7 @@ class FilterViewController: UIViewController {
     }
 }
 
-//  MARK: - UITableViewDataSource
+// MARK: - UITableViewDataSource
 
 extension FilterViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -85,7 +87,7 @@ extension FilterViewController: UITableViewDataSource {
     }
 }
 
-//  MARK: - FilterTableViewCellDelegate
+// MARK: - FilterTableViewCellDelegate
 
 extension FilterViewController: FilterTableViewCellDelegate {
     func filterTableViewCell(_ cell: FilterTableViewCell, didSelectFilterOptionsWith lhs: Any?, _ rhs: Any?) {

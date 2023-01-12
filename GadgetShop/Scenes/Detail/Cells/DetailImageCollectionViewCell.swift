@@ -18,7 +18,7 @@ class DetailImageCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    //  MARK: - Init
+    // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,7 +34,7 @@ class DetailImageCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //  MARK: - Public funcs
+    // MARK: - Cell setup
     
     func fill(_ imageData: Data?) {
         guard let imageData = imageData else { return }
@@ -43,7 +43,7 @@ class DetailImageCollectionViewCell: UICollectionViewCell {
         setNeedsUpdateConstraints()
     }
     
-    //  MARK: - Layout
+    // MARK: - Layout
     
     override func updateConstraints() {
         super.updateConstraints()

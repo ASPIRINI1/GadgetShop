@@ -18,6 +18,8 @@ final class MainCompositionalLayout: UICollectionViewCompositionalLayout {
         return header
     }()
     
+    // MARK: - Init
+    
     init() {
         super.init { (sectionIndex, environment) -> NSCollectionLayoutSection? in
             let section = MainCollectionViewController.Sections.allCases[sectionIndex]
@@ -39,6 +41,8 @@ final class MainCompositionalLayout: UICollectionViewCompositionalLayout {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Section setup
     
     static private func setupHeader() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))

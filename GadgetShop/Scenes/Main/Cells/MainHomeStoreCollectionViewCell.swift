@@ -60,7 +60,7 @@ class MainHomeStoreCollectionViewCell: UICollectionViewCell {
     private var productID: Int = 0
     weak var delegate: MainHomeStoreCollectionViewCellDelegate?
     
-    // MARK: - Cell setup
+    // MARK: - Init
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -78,6 +78,8 @@ class MainHomeStoreCollectionViewCell: UICollectionViewCell {
         setNeedsUpdateConstraints()
     }
     
+    // MARK: - Cell setup
+    
     func fill(product: HomeStoreProduct) {
         productID = product.id
         brandLabel.text = product.title
@@ -86,13 +88,13 @@ class MainHomeStoreCollectionViewCell: UICollectionViewCell {
         imageView.image = UIImage(data: imageData)
     }
     
-    //  MARK: - Actions
+    // MARK: - Actions
     
     @objc private func buyButtonAction(_ sender: UIButton) {
         delegate?.homeStoreCollectionViewCell(self, didTapBuyButtonForProductWith: productID)
     }
     
-    //  MARK: - Layout
+    // MARK: - Layout
     
     override func updateConstraints() {
         super.updateConstraints()

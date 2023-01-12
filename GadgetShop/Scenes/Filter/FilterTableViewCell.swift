@@ -71,8 +71,7 @@ class FilterTableViewCell: UITableViewCell {
         case double = 2
     }
 
-
-    //  MARK: - Cell setup
+    // MARK: - Init
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -83,6 +82,8 @@ class FilterTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Cell setup
     
     func fill(title: String,_ data: [Any], _ cellStyle: FilterCellStyle) {
         titleLabel.text = title

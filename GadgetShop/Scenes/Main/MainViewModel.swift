@@ -35,14 +35,14 @@ final class MainViewModel: MainViewModelProtocol {
     var coordinator: MainFlowCoordinatorProtocol
     var productCache: NSCache<AnyObject, AnyObject>?
     
+    //  MARK: - Init
+    
     init(networkService: NetwokrServiceProtocol, coordinator: MainFlowCoordinatorProtocol) {
         self.networkService = networkService
         self.coordinator = coordinator
     }
     
-    func viewLoaded() {
-        loadProducts()
-    }
+    //  MARK: - Private funcs
     
     private func loadProducts() {
         networkService.getProductList { productList, errors in
@@ -78,6 +78,12 @@ final class MainViewModel: MainViewModelProtocol {
                 self.updateBestSellerForIndex?(index)
             }
         }
+    }
+    
+    //  MARK: - Public funcs
+    
+    func viewLoaded() {
+        loadProducts()
     }
     
     func selectCategoryWith(id: Int) {

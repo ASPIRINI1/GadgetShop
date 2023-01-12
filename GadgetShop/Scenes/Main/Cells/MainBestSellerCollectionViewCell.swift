@@ -59,7 +59,7 @@ class MainBestSellerCollectionViewCell: UICollectionViewCell {
     var productID: Int = 0
     weak var delegate: MainBestSellerCollectionViewCellDelegate?
     
-    // MARK: - Cell setup
+    // MARK: - Init
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -77,6 +77,8 @@ class MainBestSellerCollectionViewCell: UICollectionViewCell {
         addSubview(titleLabel)
         setNeedsUpdateConstraints()
     }
+    
+    // MARK: - Cell setup
     
     func fill(product: BestSellerProduct) {
         productID = product.id
@@ -100,7 +102,7 @@ class MainBestSellerCollectionViewCell: UICollectionViewCell {
         delegate?.bestSellerProductCollectionViewCell(self, didTapAddToFavorietsForProductWith: productID)
     }
     
-    //  MARK: - Layout
+    // MARK: - Layout
     
     override func updateConstraints() {
         super.updateConstraints()

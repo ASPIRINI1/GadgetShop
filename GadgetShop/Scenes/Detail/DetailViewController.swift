@@ -43,7 +43,7 @@ class DetailViewController: UIViewController {
                 (UIImage(.rom), product.ssd)]
     }
     
-    //  MARK: - Init
+    // MARK: - Init
     
     init(viewModel: DetailViewModelProtocol) {
         self.viewModel = viewModel
@@ -68,6 +68,8 @@ class DetailViewController: UIViewController {
         subscribeForViewModelUpdating()
         viewModel.viewLoaded()
     }
+    
+    // MARK: - Private funcs
     
     private func subscribeForViewModelUpdating() {
         viewModel.updateData = { [unowned self] in

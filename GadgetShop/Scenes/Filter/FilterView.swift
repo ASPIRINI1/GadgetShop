@@ -45,7 +45,7 @@ class FilterView: UIView {
     lazy var doneButtonPressed: (() -> ())? = nil
     lazy var closeButtonPressed: (() -> ())? = nil
     
-    //  MARK: - Cell setup
+    // MARK: - Cell setup
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -59,7 +59,7 @@ class FilterView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //  MARK: - Actions
+    // MARK: - Actions
     
     private lazy var doneButtonAction = UIAction { _ in
         self.doneButtonPressed?()
@@ -69,13 +69,13 @@ class FilterView: UIView {
         self.closeButtonPressed?()
     }
     
-    //  MARK: - Public funcs
+    // MARK: - Public funcs
     
     func getIndexPath(for cell: UITableViewCell) -> IndexPath? {
         return tableView.indexPath(for: cell)
     }
     
-    //  MARK: - Layout
+    // MARK: - Layout
     
     override func updateConstraints() {
         super.updateConstraints()

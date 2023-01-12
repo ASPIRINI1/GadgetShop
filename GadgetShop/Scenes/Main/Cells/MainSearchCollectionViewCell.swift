@@ -38,7 +38,7 @@ class MainSearchCollectionViewCell: UICollectionViewCell {
     }()
     weak var delegate: MainSearchCollectionViewCellDelegate?
     
-    // MARK: - Cell setup
+    // MARK: - Init
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)

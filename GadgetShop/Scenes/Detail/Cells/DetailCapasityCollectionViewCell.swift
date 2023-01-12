@@ -21,6 +21,8 @@ class DetailCapasityCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    // MARK: - Cell setup
+    
     func fill(title: String?) {
         titleLabel.text = title?.appending(" GB")
         setNeedsUpdateConstraints()
@@ -35,6 +37,8 @@ class DetailCapasityCollectionViewCell: UICollectionViewCell {
             titleLabel.textColor = .systemGray
         }
     }
+    
+    // MARK: - Layout
     
     override func updateConstraints() {
         super.updateConstraints()

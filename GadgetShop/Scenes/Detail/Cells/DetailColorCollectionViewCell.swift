@@ -20,6 +20,8 @@ class DetailColorCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
+    // MARK: - Init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         layer.cornerRadius = frame.width / 2
@@ -28,6 +30,8 @@ class DetailColorCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Cell setup
     
     func fill(hexColor: String?) {
         guard let hexColor = hexColor else { return }
@@ -38,6 +42,8 @@ class DetailColorCollectionViewCell: UICollectionViewCell {
     func set(selected: Bool) {
         imageView.isHidden = !selected
     }
+    
+    // MARK: - Layout
     
     override func updateConstraints() {
         super.updateConstraints()

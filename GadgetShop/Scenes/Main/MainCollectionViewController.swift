@@ -26,6 +26,8 @@ class MainCollectionViewController: UICollectionViewController {
         case bestSeller = 4
     }
     
+    // MARK: - Init
+    
     init(viewModel: MainViewModelProtocol) {
         self.viewModel = viewModel
         super.init(collectionViewLayout: MainCompositionalLayout())
@@ -35,7 +37,7 @@ class MainCollectionViewController: UICollectionViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //  MARK: - Lifecycle
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +45,8 @@ class MainCollectionViewController: UICollectionViewController {
         viewModel.viewLoaded()
         subscribeForViewModelUpdating()
     }
+    
+    // MARK: - Private funcs
     
     private func configureCollectionView() {
         collectionView.backgroundColor = .systemGray6
@@ -81,7 +85,7 @@ class MainCollectionViewController: UICollectionViewController {
     }
 }
 
-//  MARK: - UICollectionViewDataSource
+// MARK: - UICollectionViewDataSource
 
 extension MainCollectionViewController {
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -133,7 +137,7 @@ extension MainCollectionViewController {
     }
 }
 
-//  MARK: - UICollectionViewDelegate
+// MARK: - UICollectionViewDelegate
 
 extension MainCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -172,7 +176,7 @@ extension MainCollectionViewController {
     }
 }
 
-//  MARK: - HeaderCollectionViewCellDelegate
+// MARK: - HeaderCollectionViewCellDelegate
 
 extension MainCollectionViewController: MainHeaderCollectionViewCellDelegate {
     func headerCollectionViewCelldidSelectGeoButton(_ cell: MainHeaderCollectionViewCell) {

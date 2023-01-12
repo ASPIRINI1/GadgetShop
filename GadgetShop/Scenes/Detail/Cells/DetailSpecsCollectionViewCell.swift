@@ -30,7 +30,7 @@ class DetailSpecsCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    //  MARK: - Init
+    // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,14 +41,14 @@ class DetailSpecsCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //  MARK: - Public funcs
+    // MARK: - Cell Setup
     
     func fill(image: UIImage?, title: String?) {
         imageView.image = image
         titleLabel.text = title
     }
     
-    //  MARK: - Layout
+    // MARK: - Layout
     
     override func updateConstraints() {
         super.updateConstraints()

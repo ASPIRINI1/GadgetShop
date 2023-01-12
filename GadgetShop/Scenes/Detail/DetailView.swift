@@ -57,7 +57,7 @@ class DetailView: UIView {
     }
     lazy var buyButtonPresseed: (() -> ())? = nil
     
-    //  MARK: - Init
+    // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -71,7 +71,7 @@ class DetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //  MARK: - Public funcs
+    // MARK: - View setup
     
     func fill(product: DetailProduct?) {
         specsSubview.fill(product: product)
@@ -79,7 +79,7 @@ class DetailView: UIView {
         specsSubview.reloadData()
     }
     
-    //  MARK: - Layout
+    // MARK: - Layout
 
     override func updateConstraints() {
         super.updateConstraints()

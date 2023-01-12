@@ -16,6 +16,8 @@ class DetailCollectionHeaderView: UICollectionReusableView {
         return label
     }()
     
+    // MARK: - View setup
+    
     func fill(title: String) {
         titleLalel.text = title
     }

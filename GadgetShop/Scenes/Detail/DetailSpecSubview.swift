@@ -78,7 +78,7 @@ class DetailSpecSubview: UIView {
         case filledStar = "star.fill"
     }
     
-    //  MARK: - Init
+    // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -98,7 +98,7 @@ class DetailSpecSubview: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //  MARK: - Public funcs
+    // MARK: - View setup
     
     func fill(product: DetailProduct?) {
         guard let product = product else { return }
@@ -129,7 +129,7 @@ class DetailSpecSubview: UIView {
         self.buyButtonPressed?()
     }
     
-    //  MARK: - Layout
+    // MARK: - Layout
     
     override func updateConstraints() {
         super.updateConstraints()

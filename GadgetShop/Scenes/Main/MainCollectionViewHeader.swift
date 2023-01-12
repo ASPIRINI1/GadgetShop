@@ -29,7 +29,7 @@ class MainCollectionViewHeader: UICollectionReusableView {
         return view
     }()
     
-    // MARK: - Cell setup
+    // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)

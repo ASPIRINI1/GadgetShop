@@ -33,7 +33,7 @@ class MainCategoryCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    // MARK: - Cell setup
+    // MARK: - Init
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -45,6 +45,8 @@ class MainCategoryCollectionViewCell: UICollectionViewCell {
         subView.addSubview(imageView)
         addSubview(titleLabel)
     }
+    
+    // MARK: - Cell setup
     
     func fill(image: UIImage?, title: String) {
         imageView.image = image
