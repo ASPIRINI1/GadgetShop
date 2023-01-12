@@ -1,5 +1,5 @@
 //
-//  CategoryCollectionViewCell.swift
+//  MainCategoryCollectionViewCell.swift
 //  GadgetShop
 //
 //  Created by Станислав Зверьков on 05.12.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryCollectionViewCell: UICollectionViewCell {
+class MainCategoryCollectionViewCell: UICollectionViewCell {
     
     private lazy var titleLabel = {
         let label = UILabel()

@@ -1,5 +1,5 @@
 //
-//  HotSalesCollectionViewCell.swift
+//  MainHomeStoreCollectionViewCell.swift
 //  GadgetShop
 //
 //  Created by Станислав Зверьков on 05.12.2022.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol HomeStoreCollectionViewCellDelegate: AnyObject {
-    func homeStoreCollectionViewCell(_ cell: HomeStoreCollectionViewCell, didTapBuyButtonForProductWith id: Int)
+protocol MainHomeStoreCollectionViewCellDelegate: AnyObject {
+    func homeStoreCollectionViewCell(_ cell: MainHomeStoreCollectionViewCell, didTapBuyButtonForProductWith id: Int)
 }
 
-class HomeStoreCollectionViewCell: UICollectionViewCell {
+class MainHomeStoreCollectionViewCell: UICollectionViewCell {
     
     private lazy var imageView = {
         let view = UIImageView()
@@ -58,7 +58,7 @@ class HomeStoreCollectionViewCell: UICollectionViewCell {
         return view
     }()
     private var productID: Int = 0
-    weak var delegate: HomeStoreCollectionViewCellDelegate?
+    weak var delegate: MainHomeStoreCollectionViewCellDelegate?
     
     // MARK: - Cell setup
     

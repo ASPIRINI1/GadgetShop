@@ -1,5 +1,5 @@
 //
-//  BestSellerProductCollectionViewCell.swift
+//  MainBestSellerCollectionViewCell.swift
 //  GadgetShop
 //
 //  Created by Станислав Зверьков on 05.12.2022.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol BestSellerProductCollectionViewCellDelegate: AnyObject {
-    func bestSellerProductCollectionViewCell(_ cell: BestSellerProductCollectionViewCell, didTapAddToFavorietsForProductWith id: Int)
+protocol MainBestSellerCollectionViewCellDelegate: AnyObject {
+    func bestSellerProductCollectionViewCell(_ cell: MainBestSellerCollectionViewCell, didTapAddToFavorietsForProductWith id: Int)
 }
 
-class BestSellerProductCollectionViewCell: UICollectionViewCell {
+class MainBestSellerCollectionViewCell: UICollectionViewCell {
     
     private lazy var imageView = {
         let imageView = UIImageView(frame: .zero)
@@ -57,7 +57,7 @@ class BestSellerProductCollectionViewCell: UICollectionViewCell {
         return button
     }()
     var productID: Int = 0
-    weak var delegate: BestSellerProductCollectionViewCellDelegate?
+    weak var delegate: MainBestSellerCollectionViewCellDelegate?
     
     // MARK: - Cell setup
     

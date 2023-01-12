@@ -1,5 +1,5 @@
 //
-//  SearchCollectionViewCell.swift
+//  MainSearchCollectionViewCell.swift
 //  GadgetShop
 //
 //  Created by Станислав Зверьков on 12.12.2022.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol SearchCollectionViewCellDelegate: AnyObject {
-    func searchCollectionViewCellDidTapFilterButton(_ cell: SearchCollectionViewCell)
+protocol MainSearchCollectionViewCellDelegate: AnyObject {
+    func searchCollectionViewCellDidTapFilterButton(_ cell: MainSearchCollectionViewCell)
 }
 
-class SearchCollectionViewCell: UICollectionViewCell {
+class MainSearchCollectionViewCell: UICollectionViewCell {
     
     private lazy var searchBar = {
         let searchBar = UISearchBar()
@@ -36,7 +36,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
         button.addAction(filterButtonAction, for: .touchUpInside)
         return button
     }()
-    weak var delegate: SearchCollectionViewCellDelegate?
+    weak var delegate: MainSearchCollectionViewCellDelegate?
     
     // MARK: - Cell setup
     

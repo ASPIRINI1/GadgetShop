@@ -1,5 +1,5 @@
 //
-//  CustomCollectionViewHeader.swift
+//  MainCollectionViewHeader.swift
 //  GadgetShop
 //
 //  Created by Станислав Зверьков on 14.12.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomCollectionViewHeader: UICollectionReusableView {
+class MainCollectionViewHeader: UICollectionReusableView {
     
     private lazy var titleLabel = {
         let label = UILabel()

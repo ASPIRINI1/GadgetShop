@@ -1,5 +1,5 @@
 //
-//  HeaderCollectionViewCell.swift
+//  MainHeaderCollectionViewCell.swift
 //  GadgetShop
 //
 //  Created by Станислав Зверьков on 12.12.2022.
@@ -7,12 +7,12 @@
 
 import UIKit
 
-protocol HeaderCollectionViewCellDelegate: AnyObject {
-    func headerCollectionViewCelldidSelectGeoButton(_ cell: HeaderCollectionViewCell)
-    func headerCollectionViewCelldidSelectFllerButton(_ cell: HeaderCollectionViewCell)
+protocol MainHeaderCollectionViewCellDelegate: AnyObject {
+    func headerCollectionViewCelldidSelectGeoButton(_ cell: MainHeaderCollectionViewCell)
+    func headerCollectionViewCelldidSelectFllerButton(_ cell: MainHeaderCollectionViewCell)
 }
 
-class HeaderCollectionViewCell: UICollectionViewCell {
+class MainHeaderCollectionViewCell: UICollectionViewCell {
     
     private lazy var geoButton = {
         var config = UIButton.Configuration.plain()
@@ -43,7 +43,7 @@ class HeaderCollectionViewCell: UICollectionViewCell {
         imageView.tintColor = UIColor.CustomColor.orange.uiColor
         return imageView
     }()
-    weak var delegate: HeaderCollectionViewCellDelegate?
+    weak var delegate: MainHeaderCollectionViewCellDelegate?
     
     // MARK: - Cell setup
     
