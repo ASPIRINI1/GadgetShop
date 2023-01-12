@@ -33,7 +33,7 @@ class DetailView: UIView {
         view.isPagingEnabled = true
         view.showsHorizontalScrollIndicator = false
         view.backgroundColor = .clear
-        view.register(DetailProductImageCell.self)
+        view.register(DetailImageCollectionViewCell.self)
         view.tag = DetailViewController.CollectionViews.image.rawValue
         return view
     }()

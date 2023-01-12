@@ -1,5 +1,5 @@
 //
-//  DetailColorCell.swift
+//  DetailColorCollectionViewCell.swift
 //  GadgetShop
 //
 //  Created by Станислав Зверьков on 24.12.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailColorCell: UICollectionViewCell {
+class DetailColorCollectionViewCell: UICollectionViewCell {
     
     private lazy var imageView = {
         let view = UIImageView()

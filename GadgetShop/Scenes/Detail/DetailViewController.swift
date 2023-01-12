@@ -104,16 +104,16 @@ extension DetailViewController: UICollectionViewDataSource {
         let section = collectionType.sections[indexPath.section]
         switch section {
         case .image:
-            let cell = collectionView.dequeue(DetailProductImageCell.self, indexPath)
+            let cell = collectionView.dequeue(DetailImageCollectionViewCell.self, indexPath)
             cell.fill(viewModel.product?.imagesData?[indexPath.item])
             return cell
         case .specs:
-            let cell = collectionView.dequeue(SpecsCollectionViewCell.self, indexPath)
+            let cell = collectionView.dequeue(DetailSpecsCollectionViewCell.self, indexPath)
             let spec = specs?[indexPath.item]
             cell.fill(image: spec?.image, title: spec?.title)
             return cell
         case .color:
-            let cell = collectionView.dequeue(DetailColorCell.self, indexPath)
+            let cell = collectionView.dequeue(DetailColorCollectionViewCell.self, indexPath)
             cell.fill(hexColor: viewModel.product?.color[indexPath.row])
             if selectedColor == nil {
                 selectedColor = indexPath
@@ -121,7 +121,7 @@ extension DetailViewController: UICollectionViewDataSource {
             cell.set(selected: selectedColor == indexPath)
             return cell
         case .capasity:
-            let cell = collectionView.dequeue(CapasityCollectionViewCell.self, indexPath)
+            let cell = collectionView.dequeue(DetailCapasityCollectionViewCell.self, indexPath)
             cell.fill(title: viewModel.product?.capacity[indexPath.item])
             if selectedCapasity == nil {
                 selectedCapasity = indexPath
@@ -158,20 +158,20 @@ extension DetailViewController: UICollectionViewDelegate {
             break
         case .color:
             if let selectedColor = selectedColor,
-               let cell = collectionView.cellForItem(at: selectedColor) as? DetailColorCell {
+               let cell = collectionView.cellForItem(at: selectedColor) as? DetailColorCollectionViewCell {
                 cell.set(selected: false)
             }
-            if let cell = collectionView.cellForItem(at: indexPath) as? DetailColorCell {
+            if let cell = collectionView.cellForItem(at: indexPath) as? DetailColorCollectionViewCell {
                 cell.set(selected: true)
             }
             selectedColor = indexPath
             viewModel.colorSelected(colorNumber: indexPath.row)
         case .capasity:
             if let selectedCapasity = selectedCapasity,
-               let cell = collectionView.cellForItem(at: selectedCapasity) as? CapasityCollectionViewCell {
+               let cell = collectionView.cellForItem(at: selectedCapasity) as? DetailCapasityCollectionViewCell {
                 cell.set(selected: false)
             }
-            if let cell = collectionView.cellForItem(at: indexPath) as? CapasityCollectionViewCell {
+            if let cell = collectionView.cellForItem(at: indexPath) as? DetailCapasityCollectionViewCell {
                 cell.set(selected: true)
             }
             selectedCapasity = indexPath

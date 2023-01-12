@@ -44,9 +44,9 @@ class DetailSpecSubview: UIView {
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
-        view.register(SpecsCollectionViewCell.self)
-        view.register(DetailColorCell.self)
-        view.register(CapasityCollectionViewCell.self)
+        view.register(DetailSpecsCollectionViewCell.self)
+        view.register(DetailColorCollectionViewCell.self)
+        view.register(DetailCapasityCollectionViewCell.self)
         view.register(DetailCollectionHeaderView.self, forSupplementaryViewOfKind: .header)
         view.tag = DetailViewController.CollectionViews.detail.rawValue
         return view

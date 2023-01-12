@@ -1,5 +1,5 @@
 //
-//  DetailProductImageCell.swift
+//  DetailImageCollectionViewCell.swift
 //  GadgetShop
 //
 //  Created by Станислав Зверьков on 23.12.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailProductImageCell: UICollectionViewCell {
+class DetailImageCollectionViewCell: UICollectionViewCell {
     
     private lazy var imageView = {
         let view = UIImageView()

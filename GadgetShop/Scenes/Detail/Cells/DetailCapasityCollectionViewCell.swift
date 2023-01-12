@@ -1,5 +1,5 @@
 //
-//  CapasityCollectionViewCell.swift
+//  DetailCapasityCollectionViewCell.swift
 //  GadgetShop
 //
 //  Created by Станислав Зверьков on 11.01.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CapasityCollectionViewCell: UICollectionViewCell {
+class DetailCapasityCollectionViewCell: UICollectionViewCell {
     
     private lazy var titleLabel = {
         let label = UILabel(frame: self.frame)
