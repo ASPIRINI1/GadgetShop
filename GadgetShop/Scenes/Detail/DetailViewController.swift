@@ -60,7 +60,6 @@ class DetailViewController: UIViewController {
         super.loadView()
         customView.dataSource = self
         customView.delegate = self
-        customView.fill(product: viewModel.product)
         view = customView
     }
     
@@ -72,7 +71,7 @@ class DetailViewController: UIViewController {
     
     private func subscribeForViewModelUpdating() {
         viewModel.updateData = { [unowned self] in
-            customView.reloadData()
+            customView.fill(product: viewModel.product)
         }
     }
 }

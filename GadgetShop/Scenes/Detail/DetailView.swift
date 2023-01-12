@@ -55,6 +55,7 @@ class DetailView: UIView {
             specsSubview.delegate = delegate
         }
     }
+    lazy var buyButtonPresseed: (() -> ())? = nil
     
     //  MARK: - Init
     
@@ -74,9 +75,6 @@ class DetailView: UIView {
     
     func fill(product: DetailProduct?) {
         specsSubview.fill(product: product)
-    }
-    
-    func reloadData() {
         imageCollectionView.reloadData()
         specsSubview.reloadData()
     }
