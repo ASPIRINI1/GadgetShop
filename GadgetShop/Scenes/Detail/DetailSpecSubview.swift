@@ -57,6 +57,7 @@ class DetailSpecSubview: UIView {
         button.backgroundColor = UIColor.CustomColor.orange.uiColor
         button.layer.cornerRadius = 10
         button.setTitleColor(.white, for: .normal)
+        button.addAction(buyButtonAction, for: .touchUpInside)
         return button
     }()
     weak var dataSource: UICollectionViewDataSource? {
@@ -69,6 +70,7 @@ class DetailSpecSubview: UIView {
             specsCollection.delegate = delegate
         }
     }
+    lazy var buyButtonPressed: (() -> ())? = nil
     
     private enum RaitingStars: String {
         case star = "star"
@@ -102,7 +104,7 @@ class DetailSpecSubview: UIView {
         guard let product = product else { return }
         productNameLabel.text = product.title
         addToFavorietsButton.isSelected = product.isFavorites
-        buyButton.setTitle(String(product.price), for: .normal)
+        buyButton.setTitle("Add to cart $\(product.price)", for: .normal)
         for (index, item) in raitingStackView.arrangedSubviews.enumerated() {
             guard let item = item as? UIImageView else { break }
             if Float(index + 1) > product.rating {
@@ -119,6 +121,12 @@ class DetailSpecSubview: UIView {
     
     func reloadData() {
         specsCollection.reloadData()
+    }
+    
+    // MARK: - Actions
+    
+    private lazy var buyButtonAction = UIAction { _ in
+        self.buyButtonPressed?()
     }
     
     //  MARK: - Layout
