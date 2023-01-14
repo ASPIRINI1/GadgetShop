@@ -7,18 +7,22 @@
 
 import UIKit
 
-class AppCoordinator: CoordinatorProtocol {
+final class AppCoordinator: CoordinatorProtocol {
     
+    var tabBarController: UITabBarController
     var navigationController: UINavigationController
     var parentCoordinator: CoordinatorProtocol?
     var childCoordinators = [CoordinatorProtocol]()
-
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    
+    init(tabBarController: UITabBarController) {
+        self.tabBarController = tabBarController
+        self.navigationController = .init()
     }
     
     func start() {
-        let mainFlowCoordinator = MainFlowCoordinator(navigationController: navigationController)
+        let mainFlowCoordinator = MainFlowCoordinator(tabBarController: tabBarController, navigationController: navigationController)
         mainFlowCoordinator.start()
+        mainFlowCoordinator.parentCoordinator = self
+        childCoordinators.append(mainFlowCoordinator)
     }
 }

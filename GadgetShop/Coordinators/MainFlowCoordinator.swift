@@ -14,20 +14,21 @@ protocol MainFlowCoordinatorProtocol: CoordinatorProtocol {
     func presentFilter(delegate: FilterViewModelDelegate?)
 }
 
-class MainFlowCoordinator: MainFlowCoordinatorProtocol {
+final class MainFlowCoordinator: MainFlowCoordinatorProtocol {
     
     var navigationController: UINavigationController
+    var tabBarController: UITabBarController
     var parentCoordinator: CoordinatorProtocol?
     var childCoordinators = [CoordinatorProtocol]()
     let flowFactory = MainFlowFactory()
     
-    init(navigationController: UINavigationController) {
+    init(tabBarController: UITabBarController, navigationController: UINavigationController) {
+        self.tabBarController = tabBarController
         self.navigationController = navigationController
-        navigationController.setNavigationBarHidden(true, animated: false)
     }
     
     func start() {
-        pushToProductList()
+        tabBarController.viewControllers = [flowFactory.makeProductList(self) ,flowFactory.makeCart(self)]
     }
     
     func pushToProductList() {
