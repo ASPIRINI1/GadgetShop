@@ -8,7 +8,21 @@
 import UIKit
 
 extension UIColor {
-    convenience init?(_ hex:String) {
+    enum CustomColor: String {
+        case orange = "FF6E4E"
+        case pink = "010035"
+        
+        var uiColor: UIColor? { // remove
+            switch self {
+            case .orange:
+                return .init(CustomColor.orange.rawValue)
+            case .pink:
+                return .init(CustomColor.pink.rawValue)
+            }
+        }
+    }
+    
+    convenience init?(_ hex: String) {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         if cString.hasPrefix("#") {
             cString.remove(at: cString.startIndex)
@@ -22,17 +36,12 @@ extension UIColor {
                   alpha: 1.0)
     }
     
-    enum CustomColor: String {
-        case orange = "FF6E4E"
-        case pink = "010035"
-        
-        var uiColor: UIColor? {
-            switch self {
-            case .orange:
-                return .init(CustomColor.orange.rawValue)
-            case .pink:
-                return .init(CustomColor.pink.rawValue)
-            }
+    convenience init?(_ customColor: CustomColor) {
+        switch customColor {
+        case .orange:
+            self.init(customColor.rawValue)
+        case .pink:
+            self.init(customColor.rawValue)
         }
     }
 }

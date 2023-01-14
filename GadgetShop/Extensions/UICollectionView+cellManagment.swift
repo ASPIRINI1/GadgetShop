@@ -7,7 +7,7 @@
 
 import UIKit
 
-//  MARK: = ReuseCell
+//  MARK: - ReuseCell
 
 extension UICollectionView {
     func register<T: UICollectionViewCell>(_ cellClass: T.Type) {
