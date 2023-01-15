@@ -46,6 +46,6 @@ final class AppCoordinator: CoordinatorProtocol {
     }
     
     func showProfileFlow() {
-        
+        addCoordinator(ProfileFlowCoordinator(tabBarController: tabBarController))
     }
 }

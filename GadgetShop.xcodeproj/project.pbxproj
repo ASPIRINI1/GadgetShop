@@ -39,6 +39,8 @@
 		DE79C9CD2974210400493FF6 /* CartFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79C9CC2974210400493FF6 /* CartFlowCoordinator.swift */; };
 		DE79C9CF29742BB200493FF6 /* FavorietsFlowCoorditanor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79C9CE29742BB200493FF6 /* FavorietsFlowCoorditanor.swift */; };
 		DE79C9D129742C8B00493FF6 /* FavorietsFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79C9D029742C8B00493FF6 /* FavorietsFlowFactory.swift */; };
+		DE79C9D429742E8C00493FF6 /* ProfileFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79C9D329742E8C00493FF6 /* ProfileFlowCoordinator.swift */; };
+		DE79C9D629742F1700493FF6 /* ProfileFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79C9D529742F1700493FF6 /* ProfileFlowFactory.swift */; };
 		DE7B353B294B624600DA61D8 /* FiltreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7B353A294B624600DA61D8 /* FiltreViewModel.swift */; };
 		DE7B353F294B62E100DA61D8 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7B353E294B62E100DA61D8 /* FilterTableViewCell.swift */; };
 		DE7B3541294B757500DA61D8 /* UITableViewCell+Identefier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7B3540294B757500DA61D8 /* UITableViewCell+Identefier.swift */; };
@@ -102,6 +104,8 @@
 		DE79C9CC2974210400493FF6 /* CartFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartFlowCoordinator.swift; sourceTree = "<group>"; };
 		DE79C9CE29742BB200493FF6 /* FavorietsFlowCoorditanor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavorietsFlowCoorditanor.swift; sourceTree = "<group>"; };
 		DE79C9D029742C8B00493FF6 /* FavorietsFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavorietsFlowFactory.swift; sourceTree = "<group>"; };
+		DE79C9D329742E8C00493FF6 /* ProfileFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFlowCoordinator.swift; sourceTree = "<group>"; };
+		DE79C9D529742F1700493FF6 /* ProfileFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFlowFactory.swift; sourceTree = "<group>"; };
 		DE7B353A294B624600DA61D8 /* FiltreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltreViewModel.swift; sourceTree = "<group>"; };
 		DE7B353E294B62E100DA61D8 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		DE7B3540294B757500DA61D8 /* UITableViewCell+Identefier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Identefier.swift"; sourceTree = "<group>"; };
@@ -163,9 +167,9 @@
 				DE2681B3293BDA6D00F1B5FC /* AppDelegate.swift */,
 				DE2681B5293BDA6D00F1B5FC /* SceneDelegate.swift */,
 				DEC854B1293C943300A8660E /* Services */,
+				DE2681D9293BF9C600F1B5FC /* Model */,
 				DECB242729423BC5000A389D /* Extensions */,
 				DE4090C62940E3FF00C66086 /* Coordinators */,
-				DE2681D9293BF9C600F1B5FC /* Model */,
 				DE79C9D229742E3900493FF6 /* Factories */,
 				DE4565E5294BB6AB00717351 /* Controls */,
 				DE4090CA2941107900C66086 /* Scenes */,
@@ -216,6 +220,7 @@
 				DE4090C32940E34200C66086 /* MainFlowCoordinator.swift */,
 				DE79C9CC2974210400493FF6 /* CartFlowCoordinator.swift */,
 				DE79C9CE29742BB200493FF6 /* FavorietsFlowCoorditanor.swift */,
+				DE79C9D329742E8C00493FF6 /* ProfileFlowCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -259,6 +264,7 @@
 				DEF19E16293C9A890080EA00 /* MainFlowFactory.swift */,
 				DE79C9CA29741CD800493FF6 /* CartFlowFactory.swift */,
 				DE79C9D029742C8B00493FF6 /* FavorietsFlowFactory.swift */,
+				DE79C9D529742F1700493FF6 /* ProfileFlowFactory.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -438,6 +444,8 @@
 				DE944337294346900095338F /* UICollectioViewCell+Identefier.swift in Sources */,
 				DEF19E27293E4A3E0080EA00 /* MainHomeStoreCollectionViewCell.swift in Sources */,
 				DE4090CF2941139A00C66086 /* DetailViewController.swift in Sources */,
+				DE79C9D429742E8C00493FF6 /* ProfileFlowCoordinator.swift in Sources */,
+				DE79C9D629742F1700493FF6 /* ProfileFlowFactory.swift in Sources */,
 				DE4090C42940E34200C66086 /* MainFlowCoordinator.swift in Sources */,
 				DEF19E29293E4AFD0080EA00 /* MainCategoryCollectionViewCell.swift in Sources */,
 				DE7B3543294B758C00DA61D8 /* UITableView+CellManagment.swift in Sources */,
