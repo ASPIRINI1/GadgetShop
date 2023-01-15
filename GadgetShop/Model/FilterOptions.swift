@@ -15,20 +15,7 @@ class FilterOptions {
     var prices = [100, 200, 300 ,400 ,500, 600, 700, 800, 900, 1000]
     var sizes = [4.5, 4.7, 5.0, 5.5]
     
-//    enum Brands: String, CaseIterable {
-//        case samsung = "Samsung"
-//        case apple = "Apple"
-//        case huawei = "Huawei"
-//        case motorolla = "Motorolla"
-//    }
-//
-//    enum Prices: Int, CaseIterable {
-//
-//    }
-    
-    init() {
-        
-    }
+    init() { }
     
     init(brand: String?, price: (from: Int?, to: Int?), size: (from: Double?, to: Double?)) {
         self.brand = brand
