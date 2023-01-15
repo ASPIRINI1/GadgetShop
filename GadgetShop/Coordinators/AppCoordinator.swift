@@ -17,13 +17,36 @@ final class AppCoordinator: CoordinatorProtocol {
     init(tabBarController: UITabBarController) {
         self.tabBarController = tabBarController
         self.navigationController = .init()
-        self.navigationController.isNavigationBarHidden = true
     }
     
     func start() {
-        let mainFlowCoordinator = MainFlowCoordinator(tabBarController: tabBarController, navigationController: navigationController)
-        mainFlowCoordinator.start()
-        mainFlowCoordinator.parentCoordinator = self
-        childCoordinators.append(mainFlowCoordinator)
+        showMainFlow()
+        showCartFlow()
+        showFavorietsFlow()
+        showProfileFlow()
+    }
+    
+    func showMainFlow() {
+        let coordinator = MainFlowCoordinator(tabBarController: tabBarController)
+        coordinator.start()
+        tabBarController.addChild(coordinator.navigationController)
+        coordinator.parentCoordinator = self
+        childCoordinators.append(coordinator)
+    }
+    
+    func showCartFlow() {
+        let coordinator = CartFlowCoordinator(tabBarController: tabBarController)
+        coordinator.start()
+        tabBarController.addChild(coordinator.navigationController)
+        coordinator.parentCoordinator = self
+        childCoordinators.append(coordinator)
+    }
+    
+    func showFavorietsFlow() {
+        
+    }
+    
+    func showProfileFlow() {
+        
     }
 }

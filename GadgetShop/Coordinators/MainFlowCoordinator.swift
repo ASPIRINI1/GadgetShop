@@ -9,7 +9,6 @@ import UIKit
 
 protocol MainFlowCoordinatorProtocol: CoordinatorProtocol {
     func pushToProductList()
-    func presentCart()
     func pushToDetail(productID: Int)
     func presentFilter(delegate: FilterViewModelDelegate?)
 }
@@ -22,22 +21,18 @@ final class MainFlowCoordinator: MainFlowCoordinatorProtocol {
     var childCoordinators = [CoordinatorProtocol]()
     let flowFactory = MainFlowFactory()
     
-    init(tabBarController: UITabBarController, navigationController: UINavigationController) {
+    init(tabBarController: UITabBarController) {
         self.tabBarController = tabBarController
-        self.navigationController = navigationController
+        self.navigationController = UINavigationController()
+        self.navigationController.isNavigationBarHidden = true
     }
     
     func start() {
-        navigationController.viewControllers = [flowFactory.makeProductList(self)]
-        tabBarController.viewControllers = [navigationController ,flowFactory.makeCart(self)]
+        navigationController.setViewControllers([flowFactory.makeProductList(self)], animated: false)
     }
     
     func pushToProductList() {
         navigationController.pushViewController(flowFactory.makeProductList(self), animated: false)
-    }
-    
-    func presentCart() {
-        navigationController.pushViewController(flowFactory.makeCart(self), animated: true)
     }
     
     func pushToDetail(productID: Int) {

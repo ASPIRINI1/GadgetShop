@@ -8,6 +8,7 @@
 import UIKit
 
 protocol CoordinatorProtocol: AnyObject {
+    var tabBarController: UITabBarController { get set }
     var navigationController: UINavigationController { get set }
     var parentCoordinator: CoordinatorProtocol? { get set }
     var childCoordinators: [CoordinatorProtocol] { get set }
