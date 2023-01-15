@@ -12,7 +12,7 @@ protocol CartFlowFactoryProtocol {
     func makePaymentScreen(_ coordinator: CartFlowCoordinatorProtocol)  -> UIViewController
 }
 
-class CartFlowFactory: CartFlowFactoryProtocol {
+final class CartFlowFactory: CartFlowFactoryProtocol {
     
     func makeCart(_ coordinator: CartFlowCoordinatorProtocol) -> UIViewController {
         let vc = UIViewController()
