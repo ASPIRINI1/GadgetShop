@@ -19,6 +19,13 @@ final class AppCoordinator: CoordinatorProtocol {
         self.navigationController = .init()
     }
     
+    private func addCoordinator(_ coordinator: CoordinatorProtocol) {
+        coordinator.start()
+        tabBarController.addChild(coordinator.navigationController)
+        coordinator.parentCoordinator = self
+        childCoordinators.append(coordinator)
+    }
+    
     func start() {
         showMainFlow()
         showCartFlow()
@@ -27,23 +34,15 @@ final class AppCoordinator: CoordinatorProtocol {
     }
     
     func showMainFlow() {
-        let coordinator = MainFlowCoordinator(tabBarController: tabBarController)
-        coordinator.start()
-        tabBarController.addChild(coordinator.navigationController)
-        coordinator.parentCoordinator = self
-        childCoordinators.append(coordinator)
+        addCoordinator(MainFlowCoordinator(tabBarController: tabBarController))
     }
     
     func showCartFlow() {
-        let coordinator = CartFlowCoordinator(tabBarController: tabBarController)
-        coordinator.start()
-        tabBarController.addChild(coordinator.navigationController)
-        coordinator.parentCoordinator = self
-        childCoordinators.append(coordinator)
+        addCoordinator(CartFlowCoordinator(tabBarController: tabBarController))
     }
     
     func showFavorietsFlow() {
-        
+        addCoordinator(FavorietsFlowCoorditanor(tabBarController: tabBarController))
     }
     
     func showProfileFlow() {

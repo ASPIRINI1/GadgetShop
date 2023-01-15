@@ -37,6 +37,8 @@
 		DE4A4D7229468188005FD701 /* MainHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4A4D7129468188005FD701 /* MainHeaderCollectionViewCell.swift */; };
 		DE79C9CB29741CD800493FF6 /* CartFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79C9CA29741CD800493FF6 /* CartFlowFactory.swift */; };
 		DE79C9CD2974210400493FF6 /* CartFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79C9CC2974210400493FF6 /* CartFlowCoordinator.swift */; };
+		DE79C9CF29742BB200493FF6 /* FavorietsFlowCoorditanor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79C9CE29742BB200493FF6 /* FavorietsFlowCoorditanor.swift */; };
+		DE79C9D129742C8B00493FF6 /* FavorietsFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79C9D029742C8B00493FF6 /* FavorietsFlowFactory.swift */; };
 		DE7B353B294B624600DA61D8 /* FiltreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7B353A294B624600DA61D8 /* FiltreViewModel.swift */; };
 		DE7B353F294B62E100DA61D8 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7B353E294B62E100DA61D8 /* FilterTableViewCell.swift */; };
 		DE7B3541294B757500DA61D8 /* UITableViewCell+Identefier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7B3540294B757500DA61D8 /* UITableViewCell+Identefier.swift */; };
@@ -98,6 +100,8 @@
 		DE4A4D7129468188005FD701 /* MainHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		DE79C9CA29741CD800493FF6 /* CartFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartFlowFactory.swift; sourceTree = "<group>"; };
 		DE79C9CC2974210400493FF6 /* CartFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartFlowCoordinator.swift; sourceTree = "<group>"; };
+		DE79C9CE29742BB200493FF6 /* FavorietsFlowCoorditanor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavorietsFlowCoorditanor.swift; sourceTree = "<group>"; };
+		DE79C9D029742C8B00493FF6 /* FavorietsFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavorietsFlowFactory.swift; sourceTree = "<group>"; };
 		DE7B353A294B624600DA61D8 /* FiltreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltreViewModel.swift; sourceTree = "<group>"; };
 		DE7B353E294B62E100DA61D8 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		DE7B3540294B757500DA61D8 /* UITableViewCell+Identefier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Identefier.swift"; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 				DE2681D9293BF9C600F1B5FC /* Model */,
 				DEF19E16293C9A890080EA00 /* MainFlowFactory.swift */,
 				DE79C9CA29741CD800493FF6 /* CartFlowFactory.swift */,
+				DE79C9D029742C8B00493FF6 /* FavorietsFlowFactory.swift */,
 				DE4565E5294BB6AB00717351 /* Controls */,
 				DE4090CA2941107900C66086 /* Scenes */,
 				DE2681BE293BDA7000F1B5FC /* LaunchScreen.storyboard */,
@@ -212,6 +217,7 @@
 				DEF19E14293C9A7D0080EA00 /* AppCoordinator.swift */,
 				DE4090C32940E34200C66086 /* MainFlowCoordinator.swift */,
 				DE79C9CC2974210400493FF6 /* CartFlowCoordinator.swift */,
+				DE79C9CE29742BB200493FF6 /* FavorietsFlowCoorditanor.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -412,8 +418,10 @@
 				DECB242929423BE9000A389D /* UIColor+Hex.swift in Sources */,
 				DE4797AB2956254300178EC8 /* DetailImageCollectionViewCell.swift in Sources */,
 				DE4565E4294BB2A600717351 /* FilterView.swift in Sources */,
+				DE79C9CF29742BB200493FF6 /* FavorietsFlowCoorditanor.swift in Sources */,
 				DE4565E7294BB6DE00717351 /* HeaderView.swift in Sources */,
 				DEF19E25293E49560080EA00 /* MainBestSellerCollectionViewCell.swift in Sources */,
+				DE79C9D129742C8B00493FF6 /* FavorietsFlowFactory.swift in Sources */,
 				DE4A4D6E29467A1C005FD701 /* MainCollectionViewController.swift in Sources */,
 				DE8B13802949EC510004CDBB /* UIImage+CustomImages.swift in Sources */,
 				DE4090CD294110AC00C66086 /* DetailViewModel.swift in Sources */,
