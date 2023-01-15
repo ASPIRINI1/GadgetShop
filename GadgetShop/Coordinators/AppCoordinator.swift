@@ -17,6 +17,7 @@ final class AppCoordinator: CoordinatorProtocol {
     init(tabBarController: UITabBarController) {
         self.tabBarController = tabBarController
         self.navigationController = .init()
+        self.navigationController.isNavigationBarHidden = true
     }
     
     func start() {

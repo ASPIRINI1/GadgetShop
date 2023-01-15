@@ -11,9 +11,13 @@ class RoundedTapBarController: UITabBarController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        tabBar.layer.cornerRadius = 20
         tabBar.backgroundColor = UIColor.CustomColor.pink.uiColor
-    }
+        tabBar.barTintColor = UIColor(.pink)
+        tabBar.tintColor = UIColor(.orange)
+        tabBar.layer.cornerRadius = 20
+        tabBar.layer.masksToBounds = true
+        tabBar.unselectedItemTintColor = .white
+        }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

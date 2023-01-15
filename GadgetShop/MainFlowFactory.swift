@@ -24,7 +24,10 @@ final class MainFlowFactory: MainFlowFactoryProtocol {
     }
     
     func makeCart(_ coordinator: MainFlowCoordinatorProtocol) -> UIViewController {
-        return UIViewController()
+        let vc = UIViewController()
+        vc.tabBarItem.image = UIImage(systemName: "star")
+        vc.tabBarItem.title = "Cart"
+        return vc
     }
     
     func makeDetail(_ coordinator: MainFlowCoordinatorProtocol, productID: Int) -> UIViewController {

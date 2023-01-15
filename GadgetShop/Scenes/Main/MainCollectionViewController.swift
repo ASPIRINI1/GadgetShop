@@ -31,6 +31,9 @@ class MainCollectionViewController: UICollectionViewController {
     init(viewModel: MainViewModelProtocol) {
         self.viewModel = viewModel
         super.init(collectionViewLayout: MainCompositionalLayout())
+        tabBarItem.image = UIImage(systemName: "bag")
+        tabBarItem.selectedImage = UIImage(systemName: "bag.fill")
+        tabBarItem.title = "Main"
     }
     
     required init?(coder: NSCoder) {

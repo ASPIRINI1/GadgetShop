@@ -28,7 +28,8 @@ final class MainFlowCoordinator: MainFlowCoordinatorProtocol {
     }
     
     func start() {
-        tabBarController.viewControllers = [flowFactory.makeProductList(self) ,flowFactory.makeCart(self)]
+        navigationController.viewControllers = [flowFactory.makeProductList(self)]
+        tabBarController.viewControllers = [navigationController ,flowFactory.makeCart(self)]
     }
     
     func pushToProductList() {
