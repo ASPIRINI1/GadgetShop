@@ -22,6 +22,7 @@ final class FavorietsFlowCoorditanor: FavorietsFlowCoorditanorProtocol {
     init(tabBarController: UITabBarController) {
         self.tabBarController = tabBarController
         self.navigationController = UINavigationController()
+        self.navigationController.isNavigationBarHidden = true
     }
     
     func start() {

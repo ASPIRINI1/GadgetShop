@@ -11,7 +11,7 @@ protocol FavorietsFlowFactoryProtocol {
     func makeFavoriets(_ coordinator: FavorietsFlowCoorditanorProtocol) -> UIViewController
 }
 
-class FavorietsFlowFactory: FavorietsFlowFactoryProtocol {
+final class FavorietsFlowFactory: FavorietsFlowFactoryProtocol {
     func makeFavoriets(_ coordinator: FavorietsFlowCoorditanorProtocol) -> UIViewController {
         let vc = UIViewController()
         vc.tabBarItem.image = UIImage(systemName: "heart")

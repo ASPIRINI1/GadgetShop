@@ -166,9 +166,7 @@
 				DECB242729423BC5000A389D /* Extensions */,
 				DE4090C62940E3FF00C66086 /* Coordinators */,
 				DE2681D9293BF9C600F1B5FC /* Model */,
-				DEF19E16293C9A890080EA00 /* MainFlowFactory.swift */,
-				DE79C9CA29741CD800493FF6 /* CartFlowFactory.swift */,
-				DE79C9D029742C8B00493FF6 /* FavorietsFlowFactory.swift */,
+				DE79C9D229742E3900493FF6 /* Factories */,
 				DE4565E5294BB6AB00717351 /* Controls */,
 				DE4090CA2941107900C66086 /* Scenes */,
 				DE2681BE293BDA7000F1B5FC /* LaunchScreen.storyboard */,
@@ -253,6 +251,16 @@
 				DE97F0522970823900693DBE /* RoundedTapBarController.swift */,
 			);
 			path = Controls;
+			sourceTree = "<group>";
+		};
+		DE79C9D229742E3900493FF6 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				DEF19E16293C9A890080EA00 /* MainFlowFactory.swift */,
+				DE79C9CA29741CD800493FF6 /* CartFlowFactory.swift */,
+				DE79C9D029742C8B00493FF6 /* FavorietsFlowFactory.swift */,
+			);
+			path = Factories;
 			sourceTree = "<group>";
 		};
 		DE7B3537294B621F00DA61D8 /* Filter */ = {
