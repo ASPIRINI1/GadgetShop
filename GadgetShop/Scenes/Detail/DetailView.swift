@@ -11,9 +11,12 @@ protocol DetailViewDelegate: AnyObject {
     func detailViewDidTapBackButton(_ view: UIView)
     func detailViewDidTapGoToCartButton(_ view: UIView)
     func detailViewDidTapAddToCartButton(_ view: UIView)
+    func detailView(_ view: UIView, didSelectTabWith index: Int)
 }
 
 class DetailView: UIView {
+    
+    // MARK: - Private properies
 
     private lazy var headerView = {
         let leftButton = RoundedButton(frame: .box,
@@ -50,6 +53,8 @@ class DetailView: UIView {
         return view
     }()
     
+    // MARK: - Public properies
+    
     weak var dataSource: UICollectionViewDataSource? {
         didSet {
             imageCollectionView.dataSource = dataSource
@@ -72,13 +77,25 @@ class DetailView: UIView {
         addSubview(headerView)
         addSubview(imageCollectionView)
         addSubview(specsSubview)
+        subscribeForDetailViewCallbacks()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - View setup
+    // MARK: - Private funcs
+    
+    private func subscribeForDetailViewCallbacks() {
+        specsSubview.buyButtonPressed = {
+            
+        }
+        specsSubview.tabSegmentSelected = { [unowned self] tabIndex in
+            self.viewDelegate?.detailView(self, didSelectTabWith: tabIndex)
+        }
+    }
+    
+    // MARK: - Public funcs
     
     func fill(product: DetailProduct?) {
         specsSubview.fill(product: product)

@@ -35,6 +35,7 @@
 		DE4A4D6E29467A1C005FD701 /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4A4D6D29467A1C005FD701 /* MainCollectionViewController.swift */; };
 		DE4A4D7029468052005FD701 /* MainSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4A4D6F29468052005FD701 /* MainSearchCollectionViewCell.swift */; };
 		DE4A4D7229468188005FD701 /* MainHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4A4D7129468188005FD701 /* MainHeaderCollectionViewCell.swift */; };
+		DE599C3329749BBD00BA42EA /* MaterialSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE599C3229749BBD00BA42EA /* MaterialSegmentedControl.swift */; };
 		DE79C9CB29741CD800493FF6 /* CartFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79C9CA29741CD800493FF6 /* CartFlowFactory.swift */; };
 		DE79C9CD2974210400493FF6 /* CartFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79C9CC2974210400493FF6 /* CartFlowCoordinator.swift */; };
 		DE79C9CF29742BB200493FF6 /* FavorietsFlowCoorditanor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79C9CE29742BB200493FF6 /* FavorietsFlowCoorditanor.swift */; };
@@ -100,6 +101,7 @@
 		DE4A4D6D29467A1C005FD701 /* MainCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
 		DE4A4D6F29468052005FD701 /* MainSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		DE4A4D7129468188005FD701 /* MainHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
+		DE599C3229749BBD00BA42EA /* MaterialSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialSegmentedControl.swift; sourceTree = "<group>"; };
 		DE79C9CA29741CD800493FF6 /* CartFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartFlowFactory.swift; sourceTree = "<group>"; };
 		DE79C9CC2974210400493FF6 /* CartFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartFlowCoordinator.swift; sourceTree = "<group>"; };
 		DE79C9CE29742BB200493FF6 /* FavorietsFlowCoorditanor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavorietsFlowCoorditanor.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				DE4565E8294BB81300717351 /* RoundedButton.swift */,
 				DE4565E6294BB6DE00717351 /* HeaderView.swift */,
 				DE97F0522970823900693DBE /* RoundedTapBarController.swift */,
+				DE599C3229749BBD00BA42EA /* MaterialSegmentedControl.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				DEC854BF293CFCBE00A8660E /* BestSellerProduct.swift in Sources */,
 				DE944337294346900095338F /* UICollectioViewCell+Identefier.swift in Sources */,
 				DEF19E27293E4A3E0080EA00 /* MainHomeStoreCollectionViewCell.swift in Sources */,
+				DE599C3329749BBD00BA42EA /* MaterialSegmentedControl.swift in Sources */,
 				DE4090CF2941139A00C66086 /* DetailViewController.swift in Sources */,
 				DE79C9D429742E8C00493FF6 /* ProfileFlowCoordinator.swift in Sources */,
 				DE79C9D629742F1700493FF6 /* ProfileFlowFactory.swift in Sources */,

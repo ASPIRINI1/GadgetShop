@@ -9,6 +9,8 @@ import UIKit
 
 class DetailSpecSubview: UIView {
     
+    // MARK: - Private properies
+    
     private lazy var productNameLabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -33,10 +35,9 @@ class DetailSpecSubview: UIView {
         return button
     }()
     private lazy var categorySegmentedControl = {
-        let control = UISegmentedControl(items: ["Shop", "Details", "Features"])
+        let control = MaterialSegmentedControl(frame: .zero, items: ["Shop", "Details", "Features"])
         control.translatesAutoresizingMaskIntoConstraints = false
-        control.selectedSegmentIndex = 0
-        control.selectedSegmentTintColor = UIColor.CustomColor.orange.uiColor
+        control.delegate = self
         return control
     }()
     private lazy var specsCollection = {
@@ -60,6 +61,9 @@ class DetailSpecSubview: UIView {
         button.addAction(buyButtonAction, for: .touchUpInside)
         return button
     }()
+    
+    // MARK: - Public properies
+    
     weak var dataSource: UICollectionViewDataSource? {
         didSet {
             specsCollection.dataSource = dataSource
@@ -70,8 +74,12 @@ class DetailSpecSubview: UIView {
             specsCollection.delegate = delegate
         }
     }
-    lazy var buyButtonPressed: (() -> ())? = nil
     
+    // MARK: - Callbacks
+    
+    lazy var buyButtonPressed: (() -> ())? = nil
+    lazy var tabSegmentSelected: ((Int) -> ())? = nil
+
     private enum RaitingStars: String {
         case star = "star"
         case halfFilledStar = "star.leadinghalf.filled"
@@ -98,7 +106,7 @@ class DetailSpecSubview: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - View setup
+    // MARK: - Public funcs
     
     func fill(product: DetailProduct?) {
         guard let product = product else { return }
@@ -156,5 +164,13 @@ class DetailSpecSubview: UIView {
         specsCollection.bottomAnchor.constraint(equalTo: buyButton.topAnchor, constant: -10).isActive = true
         specsCollection.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
         specsCollection.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
+    }
+}
+
+// MARK: - MaterialSegmentedControlDelegate
+
+extension DetailSpecSubview: MaterialSegmentedControlDelegate {
+    func materialSegmentedControl(_ control: MaterialSegmentedControl, didSelectItemAt index: Int) {
+        tabSegmentSelected?(index)
     }
 }

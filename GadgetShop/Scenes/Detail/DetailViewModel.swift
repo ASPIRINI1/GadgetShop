@@ -17,6 +17,7 @@ protocol DetailViewModelProtocol {
     func goToCartPressed()
     func colorSelected(colorNumber: Int)
     func capacitySelected(capacityNumber: Int)
+    func tabSelected(index: Int)
 }
 
 final class DetailViewModel: DetailViewModelProtocol {
@@ -68,6 +69,10 @@ final class DetailViewModel: DetailViewModelProtocol {
     }
     
     func capacitySelected(capacityNumber: Int) {
+        
+    }
+    
+    func tabSelected(index: Int) {
         
     }
 }

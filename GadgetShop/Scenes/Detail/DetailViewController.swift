@@ -226,4 +226,8 @@ extension DetailViewController: DetailViewDelegate {
     func detailViewDidTapAddToCartButton(_ view: UIView) {
         viewModel.addToCartPressed()
     }
+    
+    func detailView(_ view: UIView, didSelectTabWith index: Int) {
+        viewModel.tabSelected(index: index)
+    }
 }
