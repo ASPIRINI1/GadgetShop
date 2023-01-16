@@ -7,6 +7,12 @@
 
 import UIKit
 
+protocol DetailViewDelegate: AnyObject {
+    func detailViewDidTapBackButton(_ view: UIView)
+    func detailViewDidTapGoToCartButton(_ view: UIView)
+    func detailViewDidTapAddToCartButton(_ view: UIView)
+}
+
 class DetailView: UIView {
 
     private lazy var headerView = {
@@ -18,8 +24,9 @@ class DetailView: UIView {
                                         image: UIImage(systemName: "bag"),
                                         title: nil,
                                         color: UIColor.CustomColor.orange.uiColor)
+        leftButton.addAction(backButtonAction, for: .touchUpInside)
+        rightButton.addAction(goToCartButtonAction, for: .touchUpInside)
         let view = HeaderView(leftButton: leftButton, title: "Product Details", rightButton: rightButton)
-        
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -55,7 +62,7 @@ class DetailView: UIView {
             specsSubview.delegate = delegate
         }
     }
-    lazy var buyButtonPresseed: (() -> ())? = nil
+    weak var viewDelegate: DetailViewDelegate?
     
     // MARK: - Init
     
@@ -78,6 +85,21 @@ class DetailView: UIView {
         imageCollectionView.reloadData()
         specsSubview.reloadData()
     }
+    
+    // MARK: - Actions
+    
+    private lazy var backButtonAction = UIAction { _ in
+        self.viewDelegate?.detailViewDidTapBackButton(self)
+    }
+    
+    private lazy var goToCartButtonAction = UIAction { _ in
+        self.viewDelegate?.detailViewDidTapGoToCartButton(self)
+    }
+    
+    private lazy var addToCartButtonAction = UIAction { _ in
+        self.viewDelegate?.detailViewDidTapAddToCartButton(self)
+    }
+    
     
     // MARK: - Layout
 

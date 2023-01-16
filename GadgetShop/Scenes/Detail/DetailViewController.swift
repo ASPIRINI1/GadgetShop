@@ -60,6 +60,7 @@ class DetailViewController: UIViewController {
         super.loadView()
         customView.dataSource = self
         customView.delegate = self
+        customView.viewDelegate = self
         view = customView
     }
     
@@ -213,3 +214,16 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension DetailViewController: DetailViewDelegate {
+    func detailViewDidTapBackButton(_ view: UIView) {
+        viewModel.backPressed()
+    }
+    
+    func detailViewDidTapGoToCartButton(_ view: UIView) {
+        viewModel.goToCartPressed()
+    }
+    
+    func detailViewDidTapAddToCartButton(_ view: UIView) {
+        viewModel.addToCartPressed()
+    }
+}

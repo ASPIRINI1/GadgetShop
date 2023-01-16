@@ -14,6 +14,7 @@ protocol DetailViewModelProtocol {
     func viewLoaded()
     func backPressed()
     func addToCartPressed()
+    func goToCartPressed()
     func colorSelected(colorNumber: Int)
     func capacitySelected(capacityNumber: Int)
 }
@@ -51,10 +52,14 @@ final class DetailViewModel: DetailViewModelProtocol {
     }
     
     func backPressed() {
-        
+        coordinator.popViewController(animated: true)
     }
     
     func addToCartPressed() {
+        
+    }
+    
+    func goToCartPressed() {
         
     }
     
