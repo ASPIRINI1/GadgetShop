@@ -13,19 +13,15 @@ class DetailCollectionHeaderView: UICollectionReusableView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(label)
+        label.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        label.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        label.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         return label
     }()
     
-    // MARK: - View setup
+    // MARK: - Public funcs
     
     func fill(title: String) {
         titleLalel.text = title
-    }
-    
-    override func updateConstraints() {
-        super.updateConstraints()
-        titleLalel.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        titleLalel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        titleLalel.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
     }
 }

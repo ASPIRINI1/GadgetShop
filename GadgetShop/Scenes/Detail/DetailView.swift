@@ -77,6 +77,7 @@ class DetailView: UIView {
         addSubview(headerView)
         addSubview(imageCollectionView)
         addSubview(specsSubview)
+        activateConstraints()
         subscribeForDetailViewCallbacks()
     }
     
@@ -93,6 +94,22 @@ class DetailView: UIView {
         specsSubview.tabSegmentSelected = { [unowned self] tabIndex in
             self.viewDelegate?.detailView(self, didSelectTabWith: tabIndex)
         }
+    }
+    
+    private func activateConstraints() {
+        headerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
+        headerView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
+        headerView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
+        
+        imageCollectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor).isActive = true
+        imageCollectionView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        imageCollectionView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        imageCollectionView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4).isActive = true
+        
+        specsSubview.topAnchor.constraint(equalTo: imageCollectionView.bottomAnchor).isActive = true
+        specsSubview.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        specsSubview.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        specsSubview.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
     }
     
     // MARK: - Public funcs
@@ -115,25 +132,5 @@ class DetailView: UIView {
     
     private lazy var addToCartButtonAction = UIAction { [unowned self] _ in
         self.viewDelegate?.detailViewDidTapAddToCartButton(self)
-    }
-    
-    
-    // MARK: - Layout
-
-    override func updateConstraints() {
-        super.updateConstraints()
-        headerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
-        headerView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
-        headerView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
-        
-        imageCollectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor).isActive = true
-        imageCollectionView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        imageCollectionView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        imageCollectionView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4).isActive = true
-        
-        specsSubview.topAnchor.constraint(equalTo: imageCollectionView.bottomAnchor).isActive = true
-        specsSubview.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        specsSubview.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        specsSubview.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
     }
 }

@@ -35,26 +35,26 @@ class DetailSpecsCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(stackView)
+        activateConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Cell Setup
+    // MARK: - Private funcs
     
-    func fill(image: UIImage?, title: String?) {
-        imageView.image = image
-        titleLabel.text = title
-    }
-    
-    // MARK: - Layout
-    
-    override func updateConstraints() {
-        super.updateConstraints()
+    private func activateConstraints() {
         stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         stackView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         stackView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+    }
+    
+    // MARK: - Public funcs
+    
+    func fill(image: UIImage?, title: String?) {
+        imageView.image = image
+        titleLabel.text = title
     }
 }

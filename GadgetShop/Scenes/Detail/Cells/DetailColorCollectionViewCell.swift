@@ -17,6 +17,10 @@ class DetailColorCollectionViewCell: UICollectionViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.isHidden = true
         addSubview(view)
+        view.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        view.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        view.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        view.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         return view
     }()
     
@@ -31,7 +35,7 @@ class DetailColorCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Cell setup
+    // MARK: - Public funcs
     
     func fill(hexColor: String?) {
         guard let hexColor = hexColor else { return }
@@ -41,15 +45,5 @@ class DetailColorCollectionViewCell: UICollectionViewCell {
     
     func set(selected: Bool) {
         imageView.isHidden = !selected
-    }
-    
-    // MARK: - Layout
-    
-    override func updateConstraints() {
-        super.updateConstraints()
-        imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        imageView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        imageView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
     }
 }

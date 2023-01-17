@@ -15,6 +15,11 @@ class DetailImageCollectionViewCell: UICollectionViewCell {
         view.clipsToBounds = true
         view.backgroundColor = .clear
         view.layer.cornerRadius = 20
+        addSubview(view)
+        view.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        view.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        view.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        view.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         return view
     }()
     
@@ -27,29 +32,18 @@ class DetailImageCollectionViewCell: UICollectionViewCell {
         layer.shadowRadius = 10
         layer.shadowOpacity = 0.1
         layer.shadowOffset = CGSize(width: 0, height: 10)
-        addSubview(imageView)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Cell setup
+    // MARK: - Public funcs
     
     func fill(_ imageData: Data?) {
         guard let imageData = imageData else { return }
         guard let image = UIImage(data: imageData) else { return }
         imageView.image = image
         setNeedsUpdateConstraints()
-    }
-    
-    // MARK: - Layout
-    
-    override func updateConstraints() {
-        super.updateConstraints()
-        imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        imageView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        imageView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
     }
 }

@@ -18,10 +18,14 @@ class DetailCapasityCollectionViewCell: UICollectionViewCell {
         label.textColor = .systemGray
         label.textAlignment = .center
         addSubview(label)
+        label.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        label.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        label.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        label.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         return label
     }()
     
-    // MARK: - Cell setup
+    // MARK: - Public funcs
     
     func fill(title: String?) {
         titleLabel.text = title?.appending(" GB")
@@ -36,15 +40,5 @@ class DetailCapasityCollectionViewCell: UICollectionViewCell {
             titleLabel.backgroundColor = .clear
             titleLabel.textColor = .systemGray
         }
-    }
-    
-    // MARK: - Layout
-    
-    override func updateConstraints() {
-        super.updateConstraints()
-        titleLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
     }
 }

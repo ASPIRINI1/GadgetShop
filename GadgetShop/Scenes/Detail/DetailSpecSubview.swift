@@ -100,10 +100,39 @@ class DetailSpecSubview: UIView {
         addSubview(categorySegmentedControl)
         addSubview(specsCollection)
         addSubview(buyButton)
+        activateConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Private funcs
+    
+    private func activateConstraints() {
+        productNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
+        productNameLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
+        
+        addToFavorietsButton.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
+        addToFavorietsButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
+        addToFavorietsButton.leftAnchor.constraint(greaterThanOrEqualTo: productNameLabel.rightAnchor, constant: 10).isActive = true
+        
+        raitingStackView.topAnchor.constraint(equalTo: productNameLabel.bottomAnchor, constant: 5).isActive = true
+        raitingStackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
+        
+        categorySegmentedControl.topAnchor.constraint(equalTo: raitingStackView.bottomAnchor, constant: 20).isActive = true
+        categorySegmentedControl.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
+        categorySegmentedControl.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
+        
+        buyButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
+        buyButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
+        buyButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
+        buyButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        specsCollection.topAnchor.constraint(equalTo: categorySegmentedControl.bottomAnchor, constant: 10).isActive = true
+        specsCollection.bottomAnchor.constraint(equalTo: buyButton.topAnchor, constant: -10).isActive = true
+        specsCollection.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
+        specsCollection.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
     }
     
     // MARK: - Public funcs
@@ -135,35 +164,6 @@ class DetailSpecSubview: UIView {
     
     private lazy var buyButtonAction = UIAction { [unowned self] _ in
         self.buyButtonPressed?()
-    }
-    
-    // MARK: - Layout
-    
-    override func updateConstraints() {
-        super.updateConstraints()
-        productNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
-        productNameLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
-        
-        addToFavorietsButton.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
-        addToFavorietsButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
-        addToFavorietsButton.leftAnchor.constraint(greaterThanOrEqualTo: productNameLabel.rightAnchor, constant: 10).isActive = true
-        
-        raitingStackView.topAnchor.constraint(equalTo: productNameLabel.bottomAnchor, constant: 5).isActive = true
-        raitingStackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
-        
-        categorySegmentedControl.topAnchor.constraint(equalTo: raitingStackView.bottomAnchor, constant: 20).isActive = true
-        categorySegmentedControl.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
-        categorySegmentedControl.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
-        
-        buyButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
-        buyButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
-        buyButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
-        buyButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
-        specsCollection.topAnchor.constraint(equalTo: categorySegmentedControl.bottomAnchor, constant: 10).isActive = true
-        specsCollection.bottomAnchor.constraint(equalTo: buyButton.topAnchor, constant: -10).isActive = true
-        specsCollection.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
-        specsCollection.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
     }
 }
 
