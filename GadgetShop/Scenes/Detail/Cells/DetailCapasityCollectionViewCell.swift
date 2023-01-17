@@ -33,12 +33,14 @@ class DetailCapasityCollectionViewCell: UICollectionViewCell {
     }
     
     func set(selected: Bool) {
-        if selected {
-            titleLabel.backgroundColor = UIColor.CustomColor.orange.uiColor
-            titleLabel.textColor = .white
-        } else {
-            titleLabel.backgroundColor = .clear
-            titleLabel.textColor = .systemGray
+        UIView.animate(withDuration: 0.3) {
+            if selected {
+                self.titleLabel.layer.backgroundColor = UIColor.CustomColor.orange.uiColor?.cgColor
+                self.titleLabel.textColor = .white
+            } else {
+                self.titleLabel.layer.backgroundColor = UIColor.clear.cgColor
+                self.titleLabel.textColor = .systemGray
+            }
         }
     }
 }

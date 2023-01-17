@@ -44,6 +44,8 @@ class DetailColorCollectionViewCell: UICollectionViewCell {
     }
     
     func set(selected: Bool) {
-        imageView.isHidden = !selected
+        UIView.transition(with: imageView, duration: 0.3, options: .transitionCrossDissolve) {
+            self.imageView.isHidden = !selected
+        }
     }
 }
