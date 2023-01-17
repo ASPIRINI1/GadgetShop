@@ -15,7 +15,7 @@ class DetailViewController: UIViewController {
     private var selectedCapasity = 0
     
     enum Sections: String, CaseIterable {
-        case image, specs
+        case image, specs = "Specs"
         case color = "Color"
         case capasity = "Capasity"
     }
@@ -128,7 +128,7 @@ extension DetailViewController: UICollectionViewDataSource {
         case .detail:
             guard kind == UICollectionView.ReuseViewKind.header.stringValue else { break }
             let view = collectionView.dequeue(DetailCollectionHeaderView.self, ofKind: .header, indexPath: indexPath)
-            view.fill(title: Sections.allCases[indexPath.section].rawValue)
+            view.fill(title: CollectionViews.detail.sections[indexPath.section].rawValue)
             return view
         }
         return UICollectionReusableView()
