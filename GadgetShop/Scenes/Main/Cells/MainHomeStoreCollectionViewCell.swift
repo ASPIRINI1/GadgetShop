@@ -110,7 +110,7 @@ class MainHomeStoreCollectionViewCell: UICollectionViewCell {
         buyButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -25).isActive = true
         buyButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
         buyButton.heightAnchor.constraint(equalToConstant: 31).isActive = true
-        buyButton.widthAnchor.constraint(equalTo: labelStackView.widthAnchor).isActive = true
+        buyButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
         
         imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         imageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
