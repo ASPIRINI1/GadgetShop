@@ -11,11 +11,11 @@ class MainCollectionViewController: UICollectionViewController {
     
     private var viewModel: MainViewModelProtocol
     private var categories: [(image: UIImage?, title: String)] = [
-        (image: UIImage(.phone), title: "Phones"),
-        (image: UIImage(.monitor), title: "Computer"),
-        (image: UIImage(.heart), title: "Health"),
-        (image: UIImage(.book), title: "Books"),
-        (image: UIImage(.accessories), title: "Else")]
+        (image: CustomInterfaceAssets.phone.uiImage, title: "Phones"),
+        (image: CustomInterfaceAssets.monitor.uiImage, title: "Computer"),
+        (image: CustomInterfaceAssets.heart.uiImage, title: "Health"),
+        (image: CustomInterfaceAssets.book.uiImage, title: "Books"),
+        (image: CustomInterfaceAssets.accessories.uiImage, title: "Else")]
     private var selectedCategoryIndex: IndexPath?
 
     enum Sections: Int, CaseIterable {

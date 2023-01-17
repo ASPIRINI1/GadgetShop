@@ -22,7 +22,7 @@ class MainHomeStoreCollectionViewCell: UICollectionViewCell {
     private lazy var newMark = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.image = UIImage(.newMark)
+        view.image = CustomInterfaceAssets.newMark.uiImage
         return view
     }()
     private lazy var brandLabel = {

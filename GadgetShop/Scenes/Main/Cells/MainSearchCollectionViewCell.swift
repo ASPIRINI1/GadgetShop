@@ -29,7 +29,7 @@ class MainSearchCollectionViewCell: UICollectionViewCell {
     private lazy var filterButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(.filter), for: .normal)
+        button.setImage(CustomInterfaceAssets.filter.uiImage, for: .normal)
         button.tintColor = .white
         button.backgroundColor = UIColor.CustomColor.orange.uiColor
         button.contentEdgeInsets = .init(top: 10, left: 10, bottom: 10, right: 10)

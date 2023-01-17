@@ -32,14 +32,14 @@ class MainHeaderCollectionViewCell: UICollectionViewCell {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = .black
-        button.setImage(UIImage(.filler), for: .normal)
+        button.setImage(CustomInterfaceAssets.filler.uiImage, for: .normal)
         button.addAction(fillterButtonAction, for: .touchUpInside)
         return button
     }()
     private lazy var mapLlocatorImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(.mapPoint)
+        imageView.image = CustomInterfaceAssets.mapPoint.uiImage
         imageView.tintColor = UIColor.CustomColor.orange.uiColor
         return imageView
     }()
