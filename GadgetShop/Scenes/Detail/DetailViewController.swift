@@ -33,15 +33,6 @@ class DetailViewController: UIViewController {
             }
         }
     }
-
-    // hardcode
-    var specs: [(image: UIImage?, title: String)]? {
-        guard let product = viewModel.product else { return nil }
-        return [(UIImage(.cpu), product.CPU),
-                (UIImage(.camera), product.camera),
-                (UIImage(.ram), product.sd),
-                (UIImage(.rom), product.ssd)]
-    }
     
     // MARK: - Init
     
@@ -95,7 +86,7 @@ extension DetailViewController: UICollectionViewDataSource {
         case .image:
             return viewModel.product?.images.count ?? 0
         case .specs:
-            return specs?.count ?? 0
+            return viewModel.specs?.count ?? 0
         case .color:
             return viewModel.product?.color.count ?? 0
         case .capasity:
@@ -113,8 +104,8 @@ extension DetailViewController: UICollectionViewDataSource {
             return cell
         case .specs:
             let cell = collectionView.dequeue(DetailSpecsCollectionViewCell.self, indexPath)
-            let spec = specs?[indexPath.item]
-            cell.fill(image: spec?.image, title: spec?.title)
+            let spec = viewModel.specs?[indexPath.item]
+            cell.fill(imageData: spec?.image, title: spec?.title)
             return cell
         case .color:
             let cell = collectionView.dequeue(DetailColorCollectionViewCell.self, indexPath)

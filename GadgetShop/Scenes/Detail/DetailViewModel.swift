@@ -10,6 +10,7 @@ import Foundation
 protocol DetailViewModelProtocol {
     var updateData: (() -> ())? { get set }
     var product: DetailProduct? { get set }
+    var specs: [(image: Data?, title: String)]? { get }
     init(networkService: NetwokrServiceProtocol, coordinator: MainFlowCoordinatorProtocol, productID: Int)
     func viewLoaded()
     func backPressed()
@@ -26,6 +27,13 @@ final class DetailViewModel: DetailViewModelProtocol {
     var product: DetailProduct?
     var networkService: NetwokrServiceProtocol
     var coordinator: MainFlowCoordinatorProtocol
+    var specs: [(image: Data?, title: String)]? { // hardcode
+        guard let product = product else { return nil }
+        return [(CustomCategoriesAssets.cpu.imageData, product.CPU),
+                (CustomCategoriesAssets.camera.imageData, product.camera),
+                (CustomCategoriesAssets.ram.imageData, product.sd),
+                (CustomCategoriesAssets.rom.imageData, product.ssd)]
+    }
     
     init(networkService: NetwokrServiceProtocol, coordinator: MainFlowCoordinatorProtocol, productID: Int) {
         self.networkService = networkService

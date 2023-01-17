@@ -53,8 +53,9 @@ class DetailSpecsCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Public funcs
     
-    func fill(image: UIImage?, title: String?) {
-        imageView.image = image
+    func fill(imageData: Data?, title: String?) {
         titleLabel.text = title
+        guard let imageData = imageData else { return }
+        imageView.image = UIImage(data: imageData)?.withRenderingMode(.alwaysTemplate)
     }
 }
