@@ -11,8 +11,8 @@ class DetailViewController: UIViewController {
     
     private var viewModel: DetailViewModelProtocol
     private var customView = DetailView()
-    private var selectedColor: IndexPath?
-    private var selectedCapasity: IndexPath?
+    private var selectedColor = 0
+    private var selectedCapasity = 0
     
     enum Sections: String, CaseIterable {
         case image, specs
@@ -119,18 +119,12 @@ extension DetailViewController: UICollectionViewDataSource {
         case .color:
             let cell = collectionView.dequeue(DetailColorCollectionViewCell.self, indexPath)
             cell.fill(hexColor: viewModel.product?.color[indexPath.row])
-            if selectedColor == nil {
-                selectedColor = indexPath
-            }
-            cell.set(selected: selectedColor == indexPath)
+            cell.set(selected: selectedColor == indexPath.item)
             return cell
         case .capasity:
             let cell = collectionView.dequeue(DetailCapasityCollectionViewCell.self, indexPath)
             cell.fill(title: viewModel.product?.capacity[indexPath.item])
-            if selectedCapasity == nil {
-                selectedCapasity = indexPath
-            }
-            cell.set(selected: selectedCapasity == indexPath)
+            cell.set(selected: selectedCapasity == indexPath.item)
             return cell
         }
     }
@@ -141,11 +135,10 @@ extension DetailViewController: UICollectionViewDataSource {
         case .image:
             break
         case .detail:
-            if kind == UICollectionView.ReuseViewKind.header.stringValue {
-                let view = collectionView.dequeue(DetailCollectionHeaderView.self, ofKind: .header, indexPath: indexPath)
-                view.fill(title: Sections.allCases[indexPath.section].rawValue)
-                return view
-            }
+            guard kind == UICollectionView.ReuseViewKind.header.stringValue else { break }
+            let view = collectionView.dequeue(DetailCollectionHeaderView.self, ofKind: .header, indexPath: indexPath)
+            view.fill(title: Sections.allCases[indexPath.section].rawValue)
+            return view
         }
         return UICollectionReusableView()
     }
@@ -161,29 +154,28 @@ extension DetailViewController: UICollectionViewDelegate {
         case .image, .specs:
             break
         case .color:
-            if let selectedColor = selectedColor,
-               let cell = collectionView.cellForItem(at: selectedColor) as? DetailColorCollectionViewCell {
+            let previosIndexPath = IndexPath(item: selectedColor, section: indexPath.section)
+            if let cell = collectionView.cellForItem(at: previosIndexPath) as? DetailColorCollectionViewCell {
                 cell.set(selected: false)
             }
             if let cell = collectionView.cellForItem(at: indexPath) as? DetailColorCollectionViewCell {
                 cell.set(selected: true)
             }
-            selectedColor = indexPath
+            selectedColor = indexPath.item
             viewModel.colorSelected(colorNumber: indexPath.row)
         case .capasity:
-            if let selectedCapasity = selectedCapasity,
-               let cell = collectionView.cellForItem(at: selectedCapasity) as? DetailCapasityCollectionViewCell {
+            let previosIndexPath = IndexPath(item: selectedCapasity, section: indexPath.section)
+            if let cell = collectionView.cellForItem(at: previosIndexPath) as? DetailCapasityCollectionViewCell {
                 cell.set(selected: false)
             }
             if let cell = collectionView.cellForItem(at: indexPath) as? DetailCapasityCollectionViewCell {
                 cell.set(selected: true)
             }
-            selectedCapasity = indexPath
+            selectedCapasity = indexPath.item
             viewModel.capacitySelected(capacityNumber: indexPath.row)
         }
     }
 }
-
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
@@ -207,11 +199,10 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
         let collectionType = DetailViewController.CollectionViews.allCases[collectionView.tag]
         switch collectionType {
         case .image:
-            break
+            return .zero
         case .detail:
             return .init(width: 0, height: 40)
         }
-        return .zero
     }
 }
 
