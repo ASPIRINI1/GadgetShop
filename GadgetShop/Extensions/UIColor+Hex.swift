@@ -12,7 +12,7 @@ extension UIColor {
         case orange = "FF6E4E"
         case pink = "010035"
         
-        var uiColor: UIColor? { // remove
+        var uiColor: UIColor? {
             switch self {
             case .orange:
                 return .init(CustomColor.orange.rawValue)
@@ -37,11 +37,6 @@ extension UIColor {
     }
     
     convenience init?(_ customColor: CustomColor) {
-        switch customColor {
-        case .orange:
-            self.init(customColor.rawValue)
-        case .pink:
-            self.init(customColor.rawValue)
-        }
+        self.init(customColor.rawValue)
     }
 }

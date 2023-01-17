@@ -17,19 +17,6 @@ extension UIFont {
     }
     
     convenience init?(name: FontName, size: CGFloat) {
-        var fontname: String
-        switch name {
-        case .markPro:
-            fontname = FontName.markPro.rawValue
-        case .markProBlack:
-            fontname = FontName.markProBlack.rawValue
-        case .markProMedium:
-            fontname = FontName.markProMedium.rawValue
-        case .markProBold:
-            fontname = FontName.markProBold.rawValue
-        case .markProHeavy:
-            fontname = FontName.markProHeavy.rawValue
-        }
-        self.init(name: fontname, size: size)
+        self.init(name: name.rawValue, size: size)
     }
 }
