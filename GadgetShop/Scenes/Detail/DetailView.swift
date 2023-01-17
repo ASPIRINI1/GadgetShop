@@ -105,15 +105,15 @@ class DetailView: UIView {
     
     // MARK: - Actions
     
-    private lazy var backButtonAction = UIAction { _ in
+    private lazy var backButtonAction = UIAction { [unowned self] _ in
         self.viewDelegate?.detailViewDidTapBackButton(self)
     }
     
-    private lazy var goToCartButtonAction = UIAction { _ in
+    private lazy var goToCartButtonAction = UIAction { [unowned self] _ in
         self.viewDelegate?.detailViewDidTapGoToCartButton(self)
     }
     
-    private lazy var addToCartButtonAction = UIAction { _ in
+    private lazy var addToCartButtonAction = UIAction { [unowned self] _ in
         self.viewDelegate?.detailViewDidTapAddToCartButton(self)
     }
     

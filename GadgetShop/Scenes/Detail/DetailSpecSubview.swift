@@ -133,7 +133,7 @@ class DetailSpecSubview: UIView {
     
     // MARK: - Actions
     
-    private lazy var buyButtonAction = UIAction { _ in
+    private lazy var buyButtonAction = UIAction { [unowned self] _ in
         self.buyButtonPressed?()
     }
     
