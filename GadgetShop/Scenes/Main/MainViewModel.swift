@@ -91,7 +91,7 @@ final class MainViewModel: MainViewModelProtocol {
     }
     
     func filterButtonSeleced() {
-        coordinator.presentFilter(delegate: self)
+        coordinator.presentFilter(delegate: self, true)
     }
     
     func cartSelected() {
@@ -100,12 +100,12 @@ final class MainViewModel: MainViewModelProtocol {
     
     func homeStoreProductSelected(_ productIndex: Int) {
         guard let productID = productList?.homeStore[productIndex].id else { return }
-        coordinator.pushToDetail(productID: productID)
+        coordinator.pushToDetail(productID: productID, true)
     }
     
     func bestSellerProductSelected(_ productIndex: Int) {
         guard let productID = productList?.bestSeller[productIndex].id else { return }
-        coordinator.pushToDetail(productID: productID)
+        coordinator.pushToDetail(productID: productID, true)
     }
 }
 

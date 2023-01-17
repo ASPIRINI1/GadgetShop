@@ -8,9 +8,9 @@
 import UIKit
 
 protocol MainFlowCoordinatorProtocol: CoordinatorProtocol {
-    func pushToProductList()
-    func pushToDetail(productID: Int)
-    func presentFilter(delegate: FilterViewModelDelegate?)
+    func pushToProductList(_ animated: Bool)
+    func pushToDetail(productID: Int, _ animated: Bool)
+    func presentFilter(delegate: FilterViewModelDelegate?, _ animated: Bool)
 }
 
 final class MainFlowCoordinator: MainFlowCoordinatorProtocol {
@@ -31,15 +31,15 @@ final class MainFlowCoordinator: MainFlowCoordinatorProtocol {
         navigationController.setViewControllers([flowFactory.makeProductList(self)], animated: false)
     }
     
-    func pushToProductList() {
-        navigationController.pushViewController(flowFactory.makeProductList(self), animated: false)
+    func pushToProductList(_ animated: Bool) {
+        navigationController.pushViewController(flowFactory.makeProductList(self), animated: animated)
     }
     
-    func pushToDetail(productID: Int) {
-        navigationController.pushViewController(flowFactory.makeDetail(self, productID: productID), animated: true)
+    func pushToDetail(productID: Int, _ animated: Bool) {
+        navigationController.pushViewController(flowFactory.makeDetail(self, productID: productID), animated: animated)
     }
     
-    func presentFilter(delegate: FilterViewModelDelegate?) {
-        navigationController.present(flowFactory.makeFilter(self, delegate: delegate), animated: true)
+    func presentFilter(delegate: FilterViewModelDelegate?, _ animated: Bool) {
+        navigationController.present(flowFactory.makeFilter(self, delegate: delegate), animated: animated)
     }
 }
