@@ -55,14 +55,16 @@ class MainCategoryCollectionViewCell: UICollectionViewCell {
     }
     
     func set(selected: Bool) {
-        if selected {
-            subView.backgroundColor = UIColor.CustomColor.orange.uiColor
-            imageView.tintColor = .white
-            isSelected = true
-        } else {
-            subView.backgroundColor = .white
-            imageView.tintColor = .gray
-            isSelected = false
+        UIView.animate(withDuration: 0.3) {
+            if selected {
+                self.subView.backgroundColor = UIColor.CustomColor.orange.uiColor
+                self.imageView.tintColor = .white
+                self.isSelected = true
+            } else {
+                self.subView.backgroundColor = .white
+                self.imageView.tintColor = .gray
+                self.isSelected = false
+            }
         }
     }
     
