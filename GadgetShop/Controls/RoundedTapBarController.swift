@@ -15,6 +15,7 @@ class RoundedTapBarController: UITabBarController {
         tabBar.barTintColor = UIColor(.pink)
         tabBar.tintColor = UIColor(.orange)
         tabBar.layer.cornerRadius = 20
+        tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         tabBar.layer.masksToBounds = true
         tabBar.unselectedItemTintColor = .white
         }

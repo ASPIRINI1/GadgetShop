@@ -50,6 +50,7 @@ class FilterView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         layer.cornerRadius = 20
+        layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         backgroundColor = .systemBackground
         addSubview(headerView)
         addSubview(tableView)
