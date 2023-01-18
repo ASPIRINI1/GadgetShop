@@ -230,8 +230,8 @@
 		DE4090CA2941107900C66086 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				DE7B3537294B621F00DA61D8 /* Filter */,
 				DEF19E20293E3F810080EA00 /* Main */,
+				DE7B3537294B621F00DA61D8 /* Filter */,
 				DE4090CB2941108B00C66086 /* Detail */,
 			);
 			path = Scenes;

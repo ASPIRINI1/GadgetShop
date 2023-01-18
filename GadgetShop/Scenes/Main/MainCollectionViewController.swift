@@ -172,9 +172,9 @@ extension MainCollectionViewController {
             handleCategorySelection(collectionView, indexPath)
             viewModel.selectCategoryWith(id: indexPath.item)
         case .homeStore:
-            viewModel.homeStoreProductSelected(indexPath.item)
+            viewModel.selecthomeStoreProductWith(indexPath.item)
         case .bestSeller:
-            viewModel.bestSellerProductSelected(indexPath.item)
+            viewModel.selectBestSellerProductWith(indexPath.item)
         }
     }
 }
@@ -187,6 +187,6 @@ extension MainCollectionViewController: MainHeaderCollectionViewCellDelegate {
     }
     
     func headerCollectionViewCelldidSelectFllerButton(_ cell: MainHeaderCollectionViewCell) {
-        viewModel.filterButtonSeleced()
+        viewModel.selectFilterButton()
     }
 }

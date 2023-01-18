@@ -15,10 +15,10 @@ protocol MainViewModelProtocol {
     init(networkService: NetwokrServiceProtocol, coordinator: MainFlowCoordinatorProtocol)
     func viewLoaded()
     func selectCategoryWith(id: Int)
-    func filterButtonSeleced()
-    func cartSelected()
-    func homeStoreProductSelected(_ productIndex: Int)
-    func bestSellerProductSelected(_ productIndex: Int)
+    func selectFilterButton()
+    func selectCart()
+    func selecthomeStoreProductWith(_ index: Int)
+    func selectBestSellerProductWith(_ index: Int)
 }
 
 final class MainViewModel: MainViewModelProtocol {
@@ -33,7 +33,6 @@ final class MainViewModel: MainViewModelProtocol {
     }
     var networkService: NetwokrServiceProtocol
     var coordinator: MainFlowCoordinatorProtocol
-    var productCache: NSCache<AnyObject, AnyObject>?
     
     //  MARK: - Init
     
@@ -52,9 +51,9 @@ final class MainViewModel: MainViewModelProtocol {
                     break
                 case .nilData:
                     break
-                case .dataParsingError(let error):
+                case .dataParsingError(_):
                     break
-                case .connectingError(let error):
+                case .connectingError(_):
                     break
                 }
             }
@@ -90,20 +89,20 @@ final class MainViewModel: MainViewModelProtocol {
         
     }
     
-    func filterButtonSeleced() {
+    func selectFilterButton() {
         coordinator.presentFilter(delegate: self, true)
     }
     
-    func cartSelected() {
+    func selectCart() {
         
     }
     
-    func homeStoreProductSelected(_ productIndex: Int) {
+    func selecthomeStoreProductWith(_ productIndex: Int) {
         guard let productID = productList?.homeStore[productIndex].id else { return }
         coordinator.pushToDetail(productID: productID, true)
     }
     
-    func bestSellerProductSelected(_ productIndex: Int) {
+    func selectBestSellerProductWith(_ productIndex: Int) {
         guard let productID = productList?.bestSeller[productIndex].id else { return }
         coordinator.pushToDetail(productID: productID, true)
     }
