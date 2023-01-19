@@ -162,8 +162,16 @@ class DetailSpecSubview: UIView {
     
     // MARK: - Actions
     
-    private lazy var buyButtonAction = UIAction { [unowned self] _ in
+    private lazy var buyButtonAction = UIAction { [unowned self] action in
         self.buyButtonPressed?()
+        guard let button = action.sender as? UIButton else { return }
+        UIView.animate(withDuration: 0.2) {
+            button.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+        } completion: { _ in
+            UIView.animate(withDuration: 0.2) {
+                button.transform = CGAffineTransform.identity
+            }
+        }
     }
 }
 
