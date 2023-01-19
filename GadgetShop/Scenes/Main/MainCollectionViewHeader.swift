@@ -36,6 +36,7 @@ class MainCollectionViewHeader: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(stackView)
+        activateConstraints()
     }
     
     required init?(coder: NSCoder) {
