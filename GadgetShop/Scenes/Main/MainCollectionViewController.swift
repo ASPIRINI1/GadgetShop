@@ -9,6 +9,8 @@ import UIKit
 
 class MainCollectionViewController: UICollectionViewController {
     
+    // MARK: Private properties
+    
     private var viewModel: MainViewModelProtocol
     private var categories: [(image: UIImage?, title: String)] = [
         (image: CustomInterfaceAssets.phone.uiImage, title: "Phones"),

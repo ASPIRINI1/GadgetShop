@@ -13,6 +13,8 @@ protocol MainBestSellerCollectionViewCellDelegate: AnyObject {
 
 class MainBestSellerCollectionViewCell: UICollectionViewCell {
     
+    // MARK: Private properties
+    
     private lazy var imageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +58,10 @@ class MainBestSellerCollectionViewCell: UICollectionViewCell {
         button.addTarget(self, action: #selector(addToFavorietsAction), for: .touchUpInside)
         return button
     }()
-    var productID: Int = 0
+    private var productID: Int = 0
+    
+    // MARK: - Public properties
+    
     weak var delegate: MainBestSellerCollectionViewCellDelegate?
     
     // MARK: - Init
@@ -75,10 +80,35 @@ class MainBestSellerCollectionViewCell: UICollectionViewCell {
         addSubview(priceWithoutDiscountLabel)
         addSubview(discountPriceLabel)
         addSubview(titleLabel)
+        activateConstraints()
         setNeedsUpdateConstraints()
     }
     
-    // MARK: - Cell setup
+    // MARK: - Private funcs
+    
+    private func activateConstraints() {
+        imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        imageView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        imageView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        imageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.75).isActive = true
+        
+        addToFavoritesButton.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
+        addToFavoritesButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
+        addToFavoritesButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        addToFavoritesButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
+        titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
+        titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
+        
+        priceWithoutDiscountLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
+        priceWithoutDiscountLabel.bottomAnchor.constraint(equalTo: titleLabel.topAnchor).isActive = true
+
+        discountPriceLabel.bottomAnchor.constraint(equalTo: titleLabel.topAnchor).isActive = true
+        discountPriceLabel.leftAnchor.constraint(equalTo: priceWithoutDiscountLabel.rightAnchor, constant: 10).isActive = true
+    }
+    
+    // MARK: - Public funcs
     
     func fill(product: BestSellerProduct) {
         productID = product.id
@@ -100,30 +130,5 @@ class MainBestSellerCollectionViewCell: UICollectionViewCell {
     @objc private func addToFavorietsAction(_ sender: UIButton) {
         self.addToFavoritesButton.isSelected = !addToFavoritesButton.isSelected
         delegate?.bestSellerProductCollectionViewCell(self, didTapAddToFavorietsForProductWith: productID)
-    }
-    
-    // MARK: - Layout
-    
-    override func updateConstraints() {
-        super.updateConstraints()
-        imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        imageView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        imageView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        imageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.75).isActive = true
-        
-        addToFavoritesButton.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
-        addToFavoritesButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
-        addToFavoritesButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        addToFavoritesButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
-        
-        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
-        
-        priceWithoutDiscountLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
-        priceWithoutDiscountLabel.bottomAnchor.constraint(equalTo: titleLabel.topAnchor).isActive = true
-
-        discountPriceLabel.bottomAnchor.constraint(equalTo: titleLabel.topAnchor).isActive = true
-        discountPriceLabel.leftAnchor.constraint(equalTo: priceWithoutDiscountLabel.rightAnchor, constant: 10).isActive = true
     }
 }

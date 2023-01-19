@@ -13,6 +13,8 @@ protocol MainHomeStoreCollectionViewCellDelegate: AnyObject {
 
 class MainHomeStoreCollectionViewCell: UICollectionViewCell {
     
+    // MARK: Private properties
+    
     private lazy var imageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -58,6 +60,9 @@ class MainHomeStoreCollectionViewCell: UICollectionViewCell {
         return view
     }()
     private var productID: Int = 0
+    
+    // MARK: - Public properties
+    
     weak var delegate: MainHomeStoreCollectionViewCellDelegate?
     
     // MARK: - Init
@@ -75,29 +80,13 @@ class MainHomeStoreCollectionViewCell: UICollectionViewCell {
         addSubview(buyButton)
         addSubview(newMark)
         backgroundColor = .lightGray
+        activateConstraints()
         setNeedsUpdateConstraints()
     }
     
-    // MARK: - Cell setup
+    // MARK: - Public funcs
     
-    func fill(product: HomeStoreProduct) {
-        productID = product.id
-        brandLabel.text = product.title
-        descriptionLabel.text = product.subtitle
-        guard let imageData = product.imageData else { return }
-        imageView.image = UIImage(data: imageData)
-    }
-    
-    // MARK: - Actions
-    
-    @objc private func buyButtonAction(_ sender: UIButton) {
-        delegate?.homeStoreCollectionViewCell(self, didTapBuyButtonForProductWith: productID)
-    }
-    
-    // MARK: - Layout
-    
-    override func updateConstraints() {
-        super.updateConstraints()
+    private func activateConstraints() {
         newMark.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
         newMark.leftAnchor.constraint(equalTo: buyButton.leftAnchor).isActive = true
         newMark.widthAnchor.constraint(equalToConstant: 25).isActive = true
@@ -116,5 +105,21 @@ class MainHomeStoreCollectionViewCell: UICollectionViewCell {
         imageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         imageView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         imageView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+    }
+    
+    // MARK: - Public funcs
+    
+    func fill(product: HomeStoreProduct) {
+        productID = product.id
+        brandLabel.text = product.title
+        descriptionLabel.text = product.subtitle
+        guard let imageData = product.imageData else { return }
+        imageView.image = UIImage(data: imageData)
+    }
+    
+    // MARK: - Actions
+    
+    @objc private func buyButtonAction(_ sender: UIButton) {
+        delegate?.homeStoreCollectionViewCell(self, didTapBuyButtonForProductWith: productID)
     }
 }

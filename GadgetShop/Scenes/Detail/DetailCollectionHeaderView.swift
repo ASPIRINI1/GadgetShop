@@ -9,6 +9,8 @@ import UIKit
 
 class DetailCollectionHeaderView: UICollectionReusableView {
     
+    // MARK: Private properties
+    
     private lazy var titleLalel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false

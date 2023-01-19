@@ -9,7 +9,7 @@ import UIKit
 
 class DetailSpecSubview: UIView {
     
-    // MARK: - Private properies
+    // MARK:  Private properies
     
     private lazy var productNameLabel = {
         let label = UILabel()

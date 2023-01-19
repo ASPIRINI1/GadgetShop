@@ -13,6 +13,8 @@ protocol MainSearchCollectionViewCellDelegate: AnyObject {
 
 class MainSearchCollectionViewCell: UICollectionViewCell {
     
+    // MARK: Private properties
+    
     private lazy var searchBar = {
         let searchBar = UISearchBar()
         searchBar.translatesAutoresizingMaskIntoConstraints = false
@@ -36,6 +38,9 @@ class MainSearchCollectionViewCell: UICollectionViewCell {
         button.addAction(filterButtonAction, for: .touchUpInside)
         return button
     }()
+    
+    // MARK: - Public properties
+    
     weak var delegate: MainSearchCollectionViewCellDelegate?
     
     // MARK: - Init
@@ -48,7 +53,22 @@ class MainSearchCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         addSubview(searchBar)
         addSubview(filterButton)
+        activateConstraints()
         setNeedsUpdateConstraints()
+    }
+    
+    // MARK: - Private funcs
+    
+    private func activateConstraints() {
+        searchBar.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        searchBar.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        searchBar.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        
+        filterButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        filterButton.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        filterButton.leftAnchor.constraint(equalTo: searchBar.rightAnchor).isActive = true
+        filterButton.widthAnchor.constraint(equalTo: searchBar.searchTextField.heightAnchor).isActive = true
+        filterButton.heightAnchor.constraint(equalTo: searchBar.searchTextField.heightAnchor).isActive = true
     }
     
     // MARK: - Actions
@@ -63,18 +83,5 @@ class MainSearchCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         filterButton.layer.cornerRadius = filterButton.bounds.height / 2
-    }
-    
-    override func updateConstraints() {
-        super.updateConstraints()
-        searchBar.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        searchBar.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        searchBar.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        
-        filterButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        filterButton.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        filterButton.leftAnchor.constraint(equalTo: searchBar.rightAnchor).isActive = true
-        filterButton.widthAnchor.constraint(equalTo: searchBar.searchTextField.heightAnchor).isActive = true
-        filterButton.heightAnchor.constraint(equalTo: searchBar.searchTextField.heightAnchor).isActive = true
     }
 }

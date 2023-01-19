@@ -9,6 +9,8 @@ import UIKit
 
 class MainCategoryCollectionViewCell: UICollectionViewCell {
     
+    // MARK: Private properties
+    
     private lazy var titleLabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -44,9 +46,28 @@ class MainCategoryCollectionViewCell: UICollectionViewCell {
         addSubview(subView)
         subView.addSubview(imageView)
         addSubview(titleLabel)
+        activateConstraints()
     }
     
-    // MARK: - Cell setup
+    // MARK: - Private funcs
+    
+    private func activateConstraints() {
+        subView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        subView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        subView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        
+        imageView.heightAnchor.constraint(equalTo: subView.heightAnchor, multiplier: 0.5).isActive = true
+        imageView.widthAnchor.constraint(equalTo: subView.widthAnchor, multiplier: 0.5).isActive = true
+        imageView.centerXAnchor.constraint(equalTo: subView.centerXAnchor).isActive = true
+        imageView.centerYAnchor.constraint(equalTo: subView.centerYAnchor).isActive = true
+        
+        titleLabel.topAnchor.constraint(equalTo: subView.bottomAnchor, constant: 5).isActive = true
+        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        titleLabel.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        titleLabel.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+    }
+    
+    // MARK: - Public funcs
     
     func fill(image: UIImage?, title: String) {
         imageView.image = image
@@ -73,23 +94,5 @@ class MainCategoryCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         subView.layer.cornerRadius = subView.bounds.height / 2
-    }
-    
-    override func updateConstraints() {
-        super.updateConstraints()
-        
-        subView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        subView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        subView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        
-        imageView.heightAnchor.constraint(equalTo: subView.heightAnchor, multiplier: 0.5).isActive = true
-        imageView.widthAnchor.constraint(equalTo: subView.widthAnchor, multiplier: 0.5).isActive = true
-        imageView.centerXAnchor.constraint(equalTo: subView.centerXAnchor).isActive = true
-        imageView.centerYAnchor.constraint(equalTo: subView.centerYAnchor).isActive = true
-        
-        titleLabel.topAnchor.constraint(equalTo: subView.bottomAnchor, constant: 5).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
     }
 }

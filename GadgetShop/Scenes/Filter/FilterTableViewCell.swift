@@ -13,6 +13,8 @@ protocol FilterTableViewCellDelegate: AnyObject {
 
 class FilterTableViewCell: UITableViewCell {
     
+    // MARK: - Private properties
+    
     private lazy var titleLabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -61,9 +63,11 @@ class FilterTableViewCell: UITableViewCell {
             handleEditing()
         }
     }
-    
     private var filterData: [Any] = ["-"]
     private var cellStyle = FilterCellStyle.single
+    
+    // MARK: - Public properties
+    
     weak var delegate: FilterTableViewCellDelegate?
     
     enum FilterCellStyle: Int {
@@ -77,25 +81,14 @@ class FilterTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
         setNeedsUpdateConstraints()
+        activateConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Cell setup
-    
-    func fill(title: String,_ data: [Any], _ cellStyle: FilterCellStyle) {
-        titleLabel.text = title
-        self.cellStyle = cellStyle
-        self.filterData.append(contentsOf: data)
-        switch cellStyle {
-        case .single:
-            textFieldComponents = [filterData.first]
-        case .double:
-            textFieldComponents = [filterData.first, filterData.first]
-        }
-    }
+    // MARK: - Private funcs
     
     private func fillTextField() {
         switch cellStyle {
@@ -115,16 +108,7 @@ class FilterTableViewCell: UITableViewCell {
         }
     }
     
-    //  MARK: - Actions
-    
-    @objc private func pickerViewDoneButtonAction(_ sender: UIBarButtonItem) {
-        endEditing(true)
-    }
- 
-    //  MARK: - Layout
-
-    override func updateConstraints() {
-        super.updateConstraints()
+    private func activateConstraints() {
         contentView.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
         titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
@@ -139,6 +123,26 @@ class FilterTableViewCell: UITableViewCell {
         
         textFiledImage.centerYAnchor.constraint(equalTo: filterTextField.centerYAnchor).isActive = true
         textFiledImage.rightAnchor.constraint(equalTo: filterTextField.rightAnchor, constant: -10).isActive = true
+    }
+    
+    // MARK: - Public funcs
+    
+    func fill(title: String,_ data: [Any], _ cellStyle: FilterCellStyle) {
+        titleLabel.text = title
+        self.cellStyle = cellStyle
+        self.filterData.append(contentsOf: data)
+        switch cellStyle {
+        case .single:
+            textFieldComponents = [filterData.first]
+        case .double:
+            textFieldComponents = [filterData.first, filterData.first]
+        }
+    }
+    
+    //  MARK: - Actions
+    
+    @objc private func pickerViewDoneButtonAction(_ sender: UIBarButtonItem) {
+        endEditing(true)
     }
 }
 

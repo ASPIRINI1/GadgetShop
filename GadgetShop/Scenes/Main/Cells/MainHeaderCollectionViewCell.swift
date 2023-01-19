@@ -14,6 +14,8 @@ protocol MainHeaderCollectionViewCellDelegate: AnyObject {
 
 class MainHeaderCollectionViewCell: UICollectionViewCell {
     
+    // MARK: Private properties
+    
     private lazy var geoButton = {
         var config = UIButton.Configuration.plain()
         config.imagePadding = 10
@@ -43,6 +45,9 @@ class MainHeaderCollectionViewCell: UICollectionViewCell {
         imageView.tintColor = UIColor.CustomColor.orange.uiColor
         return imageView
     }()
+    
+    // MARK: - Public properties
+    
     weak var delegate: MainHeaderCollectionViewCellDelegate?
     
     // MARK: - Init
@@ -56,10 +61,31 @@ class MainHeaderCollectionViewCell: UICollectionViewCell {
         addSubview(mapLlocatorImageView)
         addSubview(geoButton)
         addSubview(fllerButtonnButton)
+        activateConstraints()
         setNeedsUpdateConstraints()
     }
     
-    // MARK: - Cell setup
+    // MARK: - Private funcs
+    
+    private func activateConstraints() {
+        geoButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        geoButton.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        geoButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        geoButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive = true
+        geoButton.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
+        
+        mapLlocatorImageView.rightAnchor.constraint(equalTo: geoButton.leftAnchor, constant: -10).isActive = true
+        mapLlocatorImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        mapLlocatorImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        mapLlocatorImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        
+        fllerButtonnButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -25).isActive = true
+        fllerButtonnButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        fllerButtonnButton.widthAnchor.constraint(equalToConstant: 15).isActive = true
+        fllerButtonnButton.heightAnchor.constraint(equalToConstant: 15).isActive = true
+    }
+    
+    // MARK: - Public funcs
     
     func fill(_ geoButtonTitle: String) {
         guard let font = UIFont(name: .markProBold, size: 17) else { return }
@@ -76,27 +102,5 @@ class MainHeaderCollectionViewCell: UICollectionViewCell {
     
     private lazy var geoButtonAction = UIAction { _ in
         self.delegate?.headerCollectionViewCelldidSelectGeoButton(self)
-    }
-    
-    // MARK: - Layout
-    
-    override func updateConstraints() {
-        super.updateConstraints()
-        
-        geoButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        geoButton.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        geoButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        geoButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive = true
-        geoButton.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
-        
-        mapLlocatorImageView.rightAnchor.constraint(equalTo: geoButton.leftAnchor, constant: -10).isActive = true
-        mapLlocatorImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        mapLlocatorImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        mapLlocatorImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        
-        fllerButtonnButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -25).isActive = true
-        fllerButtonnButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        fllerButtonnButton.widthAnchor.constraint(equalToConstant: 15).isActive = true
-        fllerButtonnButton.heightAnchor.constraint(equalToConstant: 15).isActive = true
     }
 }

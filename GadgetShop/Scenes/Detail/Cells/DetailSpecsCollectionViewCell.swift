@@ -9,6 +9,8 @@ import UIKit
 
 class DetailSpecsCollectionViewCell: UICollectionViewCell {
     
+    // MARK: Private properties
+    
     private lazy var imageView = {
         let view = UIImageView()
         view.tintColor = .systemGray4

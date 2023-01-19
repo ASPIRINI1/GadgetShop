@@ -9,6 +9,8 @@ import UIKit
 
 class DetailColorCollectionViewCell: UICollectionViewCell {
     
+    // MARK: Private properties
+    
     private lazy var imageView = {
         let view = UIImageView()
         let image = UIImage(systemName: "checkmark")?.withTintColor(.white, renderingMode: .alwaysOriginal)

@@ -45,7 +45,7 @@ class FilterView: UIView {
     lazy var doneButtonPressed: (() -> ())? = nil
     lazy var closeButtonPressed: (() -> ())? = nil
     
-    // MARK: - Cell setup
+    // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -54,10 +54,31 @@ class FilterView: UIView {
         backgroundColor = .systemBackground
         addSubview(headerView)
         addSubview(tableView)
+        activateConstraints()
     }
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Private funcs
+    
+    private func activateConstraints() {
+        headerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        headerView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
+        headerView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
+        headerView.heightAnchor.constraint(equalToConstant: 70).isActive = true
+
+        tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        tableView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
+        tableView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
+    }
+    
+    // MARK: - Public funcs
+    
+    func getIndexPath(for cell: UITableViewCell) -> IndexPath? {
+        return tableView.indexPath(for: cell)
     }
     
     // MARK: - Actions
@@ -68,26 +89,5 @@ class FilterView: UIView {
     
     private lazy var closeButtonAction = UIAction { _ in
         self.closeButtonPressed?()
-    }
-    
-    // MARK: - Public funcs
-    
-    func getIndexPath(for cell: UITableViewCell) -> IndexPath? {
-        return tableView.indexPath(for: cell)
-    }
-    
-    // MARK: - Layout
-    
-    override func updateConstraints() {
-        super.updateConstraints()
-        headerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        headerView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
-        headerView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
-        headerView.heightAnchor.constraint(equalToConstant: 70).isActive = true
-
-        tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        tableView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
-        tableView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
     }
 }

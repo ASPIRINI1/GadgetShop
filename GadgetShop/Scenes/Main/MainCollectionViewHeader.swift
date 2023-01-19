@@ -9,6 +9,8 @@ import UIKit
 
 class MainCollectionViewHeader: UICollectionReusableView {
     
+    // MARK: Private properties
+    
     private lazy var titleLabel = {
         let label = UILabel()
         label.font = UIFont(name: .markProBold, size: 23)
@@ -40,7 +42,16 @@ class MainCollectionViewHeader: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Cell setup
+    // MARK: - Private funcs
+    
+    private func activateConstraints() {
+        stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        stackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
+        stackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
+    }
+    
+    // MARK: - Public funcs
     
     func fill(title: String, buttonTitle: String) {
         self.titleLabel.text = title
@@ -51,15 +62,5 @@ class MainCollectionViewHeader: UICollectionReusableView {
     
     private lazy var buttonAction = UIAction { _ in
         
-    }
-    
-    // MARK: - Layout
-    
-    override func updateConstraints() {
-        super.updateConstraints()
-        stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        stackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
-        stackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
     }
 }

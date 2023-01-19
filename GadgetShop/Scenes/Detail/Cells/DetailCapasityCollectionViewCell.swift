@@ -9,6 +9,8 @@ import UIKit
 
 class DetailCapasityCollectionViewCell: UICollectionViewCell {
     
+    // MARK: Private properties
+    
     private lazy var titleLabel = {
         let label = UILabel(frame: self.frame)
         label.translatesAutoresizingMaskIntoConstraints = false

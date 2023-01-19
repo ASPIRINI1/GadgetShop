@@ -9,6 +9,8 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    // MARK: Private properties
+    
     private var viewModel: DetailViewModelProtocol
     private var customView = DetailView()
     private var selectedColor = 0

@@ -16,7 +16,7 @@ protocol DetailViewDelegate: AnyObject {
 
 class DetailView: UIView {
     
-    // MARK: - Private properies
+    // MARK:  Private properies
 
     private lazy var headerView = {
         let leftButton = RoundedButton(frame: .box,

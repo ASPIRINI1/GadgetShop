@@ -9,6 +9,8 @@ import UIKit
 
 class DetailImageCollectionViewCell: UICollectionViewCell {
     
+    // MARK: Private properties
+    
     private lazy var imageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
