@@ -180,7 +180,7 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
         case .specs:
             return CGSize(width: 80, height: 80)
         case .color:
-            return CGSize(width: 50, height: 50)
+            return CGSize(width: 40, height: 40)
         case .capasity:
             return CGSize(width: 70, height: 31)
         }
