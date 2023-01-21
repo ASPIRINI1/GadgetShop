@@ -20,6 +20,7 @@ enum NetworkErrors: Error {
     case nilData
     case dataParsingError(error: Error)
     case connectingError(error: Error)
+    case urlPharseFail
 }
 
 final class NetwokrService: NetwokrServiceProtocol {
@@ -31,18 +32,13 @@ final class NetwokrService: NetwokrServiceProtocol {
         case cart = "https://run.mocky.io/v3/53539a72-3c5f-4f30-bbb1-6ca10d42c149"
         
         var url: URL? {
-            switch self {
-            case .productList:
-                return URL(string: NetwokrService.Paths.productList.rawValue)
-            case .productDetail:
-                return URL(string: NetwokrService.Paths.productDetail.rawValue)
-            case .cart:
-                return URL(string: NetwokrService.Paths.cart.rawValue)
-            }
+            return URL(string: rawValue)
         }
     }
     
     private init() { }
+    
+    // MARK: - Private funcs
     
     private func connectionHandle(response: URLResponse?, error: Error?) -> NetworkErrors? {
         if response == nil {
@@ -54,99 +50,58 @@ final class NetwokrService: NetwokrServiceProtocol {
         return nil
     }
     
-    func getProductList(completion: @escaping(ProductList?, NetworkErrors?) -> ()) {
-        guard let url = Paths.productList.url else { return }
+    private func dataPharseTaskWith<T: Decodable>(url: URL?, completion: @escaping(T? , NetworkErrors?) -> ()) {
+        guard let url = url else { completion(nil, .urlPharseFail); return }
         URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = self.connectionHandle(response: response, error: error) {
-                DispatchQueue.main.async {
-                    completion(nil, error)
-                }
-                return
-            }
-            guard let data = data else { return }
+            var result: T?
+            var errors = self.connectionHandle(response: response, error: error)
             do {
-                let result = try JSONDecoder().decode(ProductList.self, from: data)
-                DispatchQueue.main.async {
-                    completion(result, nil)
-                }
+                guard let data = data else { throw NetworkErrors.nilData }
+                result = try JSONDecoder().decode(T.self, from: data)
             } catch {
-                print(error)
-                DispatchQueue.main.async {
-                    completion(nil, NetworkErrors.dataParsingError(error: error))
-                }
+                errors = .dataParsingError(error: error)
             }
-        }.resume()
-    }
-
-    func getProductDetailFor(id: Int, completion: @escaping(DetailProduct?, NetworkErrors?) -> ()) {
-        guard let url = Paths.productDetail.url else { return }
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = self.connectionHandle(response: response, error: error) {
-                DispatchQueue.main.async {
-                    completion(nil, error)
-                }
-                return
-            }
-            guard let data = data else { return }
-            do {
-                let result = try JSONDecoder().decode(DetailProduct.self, from: data)
-                DispatchQueue.main.async {
-                    completion(result, nil)
-                }
-            } catch {
-                print(error)
-                DispatchQueue.main.async {
-                    completion(nil, NetworkErrors.dataParsingError(error: error))
-                }
-            }
-        }.resume()
-    }
-
-    func getCart(completion: @escaping(Cart?, NetworkErrors?) -> ()) {
-        guard let url = Paths.cart.url else { return }
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = self.connectionHandle(response: response, error: error) {
-                completion(nil, error)
-                return
-            }
-            guard let data = data else { return }
-            do {
-                let result = try JSONDecoder().decode(Cart.self, from: data)
-                completion(result, nil)
-            } catch {
-                print(error)
-                completion(nil, NetworkErrors.dataParsingError(error: error))
+            DispatchQueue.main.async {
+                completion(result, errors)
             }
         }.resume()
     }
     
+    // MARK: - Public funcs
+    
+    func getProductList(completion: @escaping(ProductList?, NetworkErrors?) -> ()) {
+        dataPharseTaskWith(url: Paths.productList.url, completion: completion)
+    }
+
+    func getProductDetailFor(id: Int, completion: @escaping(DetailProduct?, NetworkErrors?) -> ()) { // id is not currently used
+        dataPharseTaskWith(url: Paths.productDetail.url, completion: completion)
+    }
+
+    func getCart(completion: @escaping(Cart?, NetworkErrors?) -> ()) {
+        dataPharseTaskWith(url: Paths.cart.url, completion: completion)
+    }
+    
     func getImageFor(urlString: String, completion: @escaping (Data?, NetworkErrors?) -> ()) {
-        guard let url = URL(string: urlString) else { return }
+        guard let url = URL(string: urlString) else { completion(nil, .urlPharseFail); return }
         URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = self.connectionHandle(response: response, error: error) {
-                DispatchQueue.main.async {
-                    completion(nil, error)
-                }
-                return
-            }
+            let errors = self.connectionHandle(response: response, error: error)
             DispatchQueue.main.async {
-                completion(data, nil)
+                completion(data, errors)
             }
         }.resume()
     }
+    
+    // FIXME: - Race Condition when appending image
     
     func getImageFor(urlString: [String], completion: @escaping ([Data?]?, NetworkErrors?) -> ()) {
         let loadingGroup = DispatchGroup()
         var images: [Data?]? = []
         var errorr: NetworkErrors?
         for urlPath in urlString {
-            guard let url = URL(string: urlPath) else { return }
+            guard let url = URL(string: urlPath) else { images?.append(nil); break }
             loadingGroup.enter()
             URLSession.shared.dataTask(with: url) { data, response, error in
-                if let error = self.connectionHandle(response: response, error: error) {
-                    errorr = error
-                    loadingGroup.leave()
-                }
+                errorr = self.connectionHandle(response: response, error: error)
                 images?.append(data)
                 loadingGroup.leave()
             }.resume()

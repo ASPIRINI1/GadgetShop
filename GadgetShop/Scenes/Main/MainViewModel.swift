@@ -55,6 +55,8 @@ final class MainViewModel: MainViewModelProtocol {
                     break
                 case .connectingError(_):
                     break
+                case .urlPharseFail:
+                    break
                 }
             }
             self.productList = productList
