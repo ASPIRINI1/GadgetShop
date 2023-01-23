@@ -12,4 +12,5 @@ class CartProduct: ProductProtocol {
     var title: String
     var price: Int
     var images: String
+    var imageData: Data?
 }
