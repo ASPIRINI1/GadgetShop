@@ -14,8 +14,11 @@ protocol CartFlowFactoryProtocol {
 
 final class CartFlowFactory: CartFlowFactoryProtocol {
     
+    let networkService = NetwokrService.shared
+    
     func makeCart(_ coordinator: CartFlowCoordinatorProtocol) -> UIViewController {
-        let vc = UIViewController()
+        let viewModel = CartViewModel(networkService: networkService, coordinator: coordinator)
+        let vc = CartViewController(viewModel: viewModel)
         vc.tabBarItem.image = UIImage(systemName: "star")
         vc.tabBarItem.title = "Cart"
         return vc
