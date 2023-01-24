@@ -28,7 +28,8 @@ class VerticalStepper: UIView {
     private lazy var valueLabel = {
         let label = UILabel()
         label.font = UIFont(name: .markPro, size: 14)
-        label.tintColor = itemsColor
+        label.textColor = itemsColor
+        label.text = stringValue
         return label
     }()
     private lazy var stackView = {
@@ -37,9 +38,6 @@ class VerticalStepper: UIView {
         view.axis = .vertical
         view.alignment = .center
         view.distribution = .fillEqually
-        view.backgroundColor = .systemGray6
-        view.layer.cornerRadius = 10
-        view.layer.masksToBounds = true
         return view
     }()
     
@@ -47,17 +45,28 @@ class VerticalStepper: UIView {
     
     lazy var value: Double = minimumValue {
         didSet {
+            valueLabel.text = stringValue
+        }
+    }
+    private var stringValue: String {
+        get {
             if value.truncatingRemainder(dividingBy: 1) == 0 {
-                valueLabel.text = String(format: "%.0f", value)
+                return String(format: "%.0f", value)
             } else {
-                valueLabel.text = String(format: "%.1f", value)
+                return String(format: "%.1f", value)
             }
         }
     }
     var minimumValue: Double = 0
     var maximumValue: Double = 100
     var stepValue: Double = 1
-    var itemsColor = UIColor.black
+    var itemsColor = UIColor.black {
+        didSet {
+            incrementButton.tintColor = itemsColor
+            decrementButton.tintColor = itemsColor
+            valueLabel.textColor = itemsColor
+        }
+    }
     
     enum VerticalStepperStyle {
         case plusOnTop, minuseOnTop
@@ -67,6 +76,9 @@ class VerticalStepper: UIView {
     
     init(style: VerticalStepperStyle, frame: CGRect) {
         super.init(frame: frame)
+        layer.cornerRadius = 10
+        layer.masksToBounds = true
+        backgroundColor = .systemGray6
         switch style {
         case .plusOnTop:
             stackView.addArrangedSubview(incrementButton)
@@ -101,10 +113,10 @@ class VerticalStepper: UIView {
     
     private func activateConstraints() {
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            stackView.leftAnchor.constraint(equalTo: leftAnchor),
-            stackView.rightAnchor.constraint(equalTo: rightAnchor)
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
+            stackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 5),
+            stackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -5)
         ])
     }
 }
