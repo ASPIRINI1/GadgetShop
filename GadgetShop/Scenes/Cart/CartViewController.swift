@@ -12,7 +12,7 @@ class CartViewController: UIViewController {
     // MARK: Private properties
     
     private var viewModel: CartViewModelProtocol
-    private let customView = CartView()
+    private let customView = CartBackgroundView()
     
     // MARK: - Init
     
@@ -73,6 +73,6 @@ extension CartViewController: UITableViewDataSource {
 
 extension CartViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 100
     }
 }

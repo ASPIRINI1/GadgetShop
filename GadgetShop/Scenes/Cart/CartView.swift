@@ -14,6 +14,7 @@ class CartView: UIView {
     private lazy var itemsTableView = {
         let view = UITableView()
         view.register(CartTableViewCell.self)
+        view.backgroundColor = .clear
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -29,7 +30,7 @@ class CartView: UIView {
         return button
     }()
     
-    // MARK: - Private properties
+    // MARK: - Public properties
     
     weak var dataSource: UITableViewDataSource? {
         didSet {
@@ -46,6 +47,8 @@ class CartView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        layer.cornerRadius = 20
+        layer.masksToBounds = true
         backgroundColor = UIColor(.pink)
         addSubview(itemsTableView)
         addSubview(footerView)
@@ -61,7 +64,7 @@ class CartView: UIView {
     
     private func activateConstraints() {
         NSLayoutConstraint.activate([
-            itemsTableView.topAnchor.constraint(equalTo: topAnchor, constant: 20),
+            itemsTableView.topAnchor.constraint(equalTo: topAnchor, constant: 40),
             itemsTableView.leftAnchor.constraint(equalTo: leftAnchor),
             itemsTableView.rightAnchor.constraint(equalTo: rightAnchor),
             
