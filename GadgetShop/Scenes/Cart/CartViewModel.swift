@@ -13,11 +13,11 @@ protocol CartViewModelProtocol {
     var updateTotalPrice: ((Int) -> ())? { get set }
     var updateData: (() -> ())? { get set }
     func viewLoaded()
+    func selectItemCountFor( _ index: Int, count: Int)
     func removeItemFor(_ index: Int)
-    func addItemCountFor( _ index: Int)
-    func removeItemCountFor( _ index: Int)
     func selectCheckoutButton()
     func selectChangeAddressButton()
+    func selectBackButton()
 }
 
 final class CartViewModel: CartViewModelProtocol {
@@ -69,11 +69,7 @@ final class CartViewModel: CartViewModelProtocol {
         
     }
     
-    func addItemCountFor(_ index: Int) {
-        
-    }
-    
-    func removeItemCountFor(_ index: Int) {
+    func selectItemCountFor( _ index: Int, count: Int) {
         
     }
     
@@ -83,5 +79,9 @@ final class CartViewModel: CartViewModelProtocol {
     
     func selectChangeAddressButton() {
         
+    }
+    
+    func selectBackButton() {
+        coordinator.popToMain(true)
     }
 }

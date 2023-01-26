@@ -84,4 +84,8 @@ class CartView: UIView {
     func reloadData() {
         itemsTableView.reloadData()
     }
+    
+    func getIndexPathFor(_ cell: UITableViewCell) -> IndexPath? {
+        return itemsTableView.indexPath(for: cell)
+    }
 }

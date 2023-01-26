@@ -10,6 +10,7 @@ import UIKit
 protocol CartFlowCoordinatorProtocol: CoordinatorProtocol {
     func pushToCart(_ animated: Bool)
     func pushToPaymentScreen(_ animated: Bool)
+    func popToMain(_ animated: Bool)
 }
 
 final class CartFlowCoordinator: CartFlowCoordinatorProtocol {
@@ -36,5 +37,10 @@ final class CartFlowCoordinator: CartFlowCoordinatorProtocol {
     
     func pushToPaymentScreen(_ animated: Bool) {
         navigationController.pushViewController(flowFactory.makePaymentScreen(self), animated: animated)
+    }
+    
+    func popToMain(_ animated: Bool) {
+        tabBarController.tabBar.isHidden = false
+        tabBarController.selectedIndex = 0
     }
 }

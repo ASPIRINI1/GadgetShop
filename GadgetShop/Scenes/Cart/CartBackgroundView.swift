@@ -11,7 +11,7 @@ class CartBackgroundView: UIView {
     
     // MARK: Private properties
     
-    private var headerView = {
+    private lazy var headerView = {
         let leftButton = RoundedButton(frame: .box,
                                        image: UIImage(systemName: "chevron.left"),
                                        title: nil,
@@ -20,18 +20,20 @@ class CartBackgroundView: UIView {
                                         image: CustomInterfaceAssets.mapPoint.uiImage,
                                         title: nil,
                                         color: UIColor(.orange))
-        let view = HeaderView(leftButton: leftButton, title: nil, rightButton: rightButton)
+        leftButton.addAction(leftButtonAction, for: .touchUpInside)
+        rightButton.addAction(rightButtonAction, for: .touchUpInside)
+        let view = HeaderView(leftButton: leftButton, title: "Address", rightButton: rightButton)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    private var myCartLabel = {
+    private lazy var myCartLabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: .markProBold, size: 25)
         label.text = "My Cart"
         return label
     }()
-    private var cartSubview = {
+    private lazy var cartSubview = {
         let view = CartView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -50,6 +52,11 @@ class CartBackgroundView: UIView {
         }
     }
     
+    // MARK: - Callbacks
+    
+    lazy var backButtonPressed: (() -> ())? = nil
+    lazy var addressButtonPressed: (() -> ())? = nil
+    
     // MARK: - Init
     
     override init(frame: CGRect) {
@@ -63,6 +70,15 @@ class CartBackgroundView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Actions
+    
+    private lazy var leftButtonAction = UIAction { [unowned self] action in
+        self.backButtonPressed?()
+    }
+    private lazy var rightButtonAction = UIAction { [unowned self] action in
+        self.addressButtonPressed?()
     }
     
     // MARK: - Private funcs
@@ -88,5 +104,9 @@ class CartBackgroundView: UIView {
     
     func reloadData() {
         cartSubview.reloadData()
+    }
+    
+    func getIndexPathFor(_ cell: UITableViewCell) -> IndexPath? {
+        return cartSubview.getIndexPathFor(cell)
     }
 }

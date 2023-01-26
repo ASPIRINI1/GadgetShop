@@ -36,8 +36,19 @@ class CartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        subscribeForViewActions()
         subscribeForViewModelUpdating()
         viewModel.viewLoaded()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.tabBar.isHidden = false
     }
     
     // MARK: - Private funcs
@@ -53,6 +64,15 @@ class CartViewController: UIViewController {
             self.customView.reloadData()
         }
     }
+    
+    private func subscribeForViewActions() {
+        customView.backButtonPressed = { [unowned self] in
+            self.viewModel.selectBackButton()
+        }
+        customView.addressButtonPressed = { [unowned self] in
+            self.viewModel.selectChangeAddressButton()
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -64,6 +84,7 @@ extension CartViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(CartTableViewCell.self, indexPath)
+        cell.delegate = self
         cell.fill(viewModel.cart?.basket[indexPath.row])
         return cell
     }
@@ -74,5 +95,19 @@ extension CartViewController: UITableViewDataSource {
 extension CartViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+}
+
+// MARK: - CartTableViewCellDelegate
+
+extension CartViewController: CartTableViewCellDelegate {
+    func cartTableViewCell(_ cell: UITableViewCell, didSelectProduct count: Int) {
+        guard let indexPath = customView.getIndexPathFor(cell) else { return }
+        viewModel.selectItemCountFor(indexPath.row, count: count)
+    }
+    
+    func cartTableViewCellDidTapRemoveButton(_ cell: UITableViewCell) {
+        guard let indexPath = customView.getIndexPathFor(cell) else { return }
+        viewModel.removeItemFor(indexPath.row)
     }
 }
