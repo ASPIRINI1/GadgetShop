@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol VerticalStepperDelegate: AnyObject {
+    func verticalStepper(_ stepper: UIView, didChange value: Double)
+}
+
 class VerticalStepper: UIView {
     
     // MARK: Private properties
@@ -40,14 +44,6 @@ class VerticalStepper: UIView {
         view.distribution = .fillEqually
         return view
     }()
-    
-    // MARK: - Public properties
-    
-    lazy var value: Double = minimumValue {
-        didSet {
-            valueLabel.text = stringValue
-        }
-    }
     private var stringValue: String {
         get {
             if value.truncatingRemainder(dividingBy: 1) == 0 {
@@ -55,6 +51,15 @@ class VerticalStepper: UIView {
             } else {
                 return String(format: "%.1f", value)
             }
+        }
+    }
+    
+    // MARK: - Public properties
+    
+    lazy var value: Double = minimumValue {
+        didSet {
+            valueLabel.text = stringValue
+            delegate?.verticalStepper(self, didChange: value)
         }
     }
     var minimumValue: Double = 0
@@ -67,6 +72,7 @@ class VerticalStepper: UIView {
             valueLabel.textColor = itemsColor
         }
     }
+    weak var delegate: VerticalStepperDelegate?
     
     enum VerticalStepperStyle {
         case plusOnTop, minuseOnTop
@@ -99,12 +105,12 @@ class VerticalStepper: UIView {
     
     // MARK: - Actions
     
-    private lazy var incrementAction = UIAction { action in
+    private lazy var incrementAction = UIAction { [unowned self] action in
         guard self.value + self.stepValue <= self.maximumValue else { return }
         self.value += self.stepValue
     }
     
-    private lazy var decrementAction = UIAction { action in
+    private lazy var decrementAction = UIAction { [unowned self] action in
         guard self.value - self.stepValue >= self.minimumValue else { return }
         self.value -= self.stepValue
     }
